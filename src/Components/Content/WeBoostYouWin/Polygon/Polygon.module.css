@@ -1,0 +1,277 @@
+.unionContainer{
+    position: relative;
+    display:flex;
+    align-items: center;
+    right: 125px;
+}
+.polygon{
+    position: absolute;
+    border-radius: 45px;
+    border-width: 1px;
+    border-image-source: linear-gradient(35.95deg, #FFFFFF 21.02%, rgba(255, 255, 255, 0) 80.08%);
+}
+
+.guardian3{
+    position: absolute;
+    bottom: 5%;
+    left: 5%;
+    width: auto;
+    height: 45%;
+    z-index: 2;
+}
+.guardian2{
+    position: absolute;
+}
+.cards{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+.cards > div {
+    position: absolute;
+    transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.card1 {
+    top: 0;
+    z-index: 3;
+    opacity: 0.5;
+    transform: translateY(0);
+}
+.card2 {
+    top: 33%;
+    z-index: 2;
+    opacity: 1;
+    transform: translateY(0);
+}
+.card3 {
+    top: 66%;
+    z-index: 1;
+    opacity: 0.5;
+    transform: translateY(0);
+}
+
+@media (min-width: 320px) {
+    .unionContainer{
+        align-items: start;
+        top:-20px;
+        width: 337px;
+        height: 274px;
+        left: 36px;
+        margin-right: 85px;
+    }
+    .polygon{
+        width: 337px;
+        height: 253px;
+    }
+    .guardian3{
+        opacity: 0;
+        width: 193px;
+        height: 335px;
+        left: -25px;
+        top: -24px;
+    }
+    .guardian2{
+        width: 220px;
+        height: 274px;
+        top: -18px;
+        left: 50px;
+    }
+    .cards{
+        top: 215px;
+        left: -255px;
+        flex-direction: row;
+        width: 300px;
+        height: 120px;
+    }
+    .card1{
+        left: 5%;
+        top: 0;
+    }
+    .card2{
+        left: 98%;
+        top: 0;
+    }
+    .card3{
+        left: 190%;
+        top: 0;
+    }
+}
+
+@media (min-width: 768px) {
+    .unionContainer{
+        align-items: start;
+        top: -120px;
+        width: 560px;
+        height: 437px;
+        left: -8%;
+    }
+    .polygon{
+        width: 556px;
+        height: 437px;
+    }
+    .guardian3{
+        opacity: 1;
+        width: 193px;
+        height: 335px;
+        left: -25px;
+        top: -24px;
+    }
+    .guardian2{
+        width: 349px;
+        height: 437px;
+        top: -120px;
+        left: 76px;
+    }
+    .cards{
+        flex-direction: column;
+        top: 13px;
+        left: 450px;
+        gap: 10px;
+    }
+    .card1{
+        left: auto;
+        top: 10%;
+    }
+    .card2{
+        left: auto;
+        top: 135%;
+    }
+    .card3{
+        left: auto;
+        top: 260%;
+    }
+}
+
+@media (min-width: 992px) {
+    .unionContainer{
+        top: -129px;
+        width: 570px;
+        height: 322px;
+        left: -315px;
+        margin-right: 85px;
+    }
+    .polygon{
+        width: 603px;
+        height: 474px;
+    }
+    .guardian3{
+        opacity: 1;
+        width: 174px;
+        height: 350px;
+        left: -25px;
+        top: -30px;
+    }
+    .guardian2{
+        width: 310px;
+        height: 420px;
+        top: -95px;
+        left: 90px;
+    }
+    .cards{
+        top: 65px;
+        left: 434px;
+        gap: 20px;
+    }
+    .card1{
+        left: auto;
+        top: 10%;
+    }
+    .card2{
+        left: auto;
+        top: 135%;
+    }
+    .card3{
+        left: auto;
+        top: 260%;
+    }
+}
+
+@media (min-width: 1200px) {
+    .unionContainer{
+        align-items: center;
+        top: 5px;
+        width: 764px;
+        height: 482px;
+        left: -375px;
+    }
+    .polygon{
+        width: 670px;
+        height: 526px;
+    }
+    .guardian3{
+        width: 244px;
+        height: 440px;
+        left: -25px;
+        top: 10px;
+    }
+    .guardian2{
+        opacity: 1;
+        width: 430px;
+        height: 550px;
+        top: -100px;
+        left: 110px;
+    }
+    .cards{
+        top: 60px;
+        left: 525px;
+    }
+    .card1{
+        left: auto;
+        top: -180%;
+    }
+    .card2{
+        left: auto;
+        top: -20%;
+    }
+    .card3{
+        left: auto;
+        top: 140%;
+    }
+}
+
+@media (min-width: 1500px) {
+    .unionContainer{
+        top: -2px;
+        width: 824px;
+        height: 542px;
+        left: -450px;
+        margin-bottom: 45px;
+    }
+    .polygon{
+        width: 784px;
+        height: 616px;
+    }
+    .guardian3{
+        opacity: 1;
+        width: 304px;
+        height: 500px;
+        left: -15px;
+    }
+    .guardian2{
+        width: 490px;
+        height: 600px;
+        top: -90px;
+        left: 150px;
+    }
+    .cards{
+        top: 0px;
+        left: 540px;
+    }
+    .card1{
+        left: auto;
+        top: -180%;
+    }
+    .card2{
+        left: auto;
+        top: -20%;
+    }
+    .card3{
+        left: auto;
+        top: 140%;
+    }
+}
+
+

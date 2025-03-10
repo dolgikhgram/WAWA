@@ -1,0 +1,217 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    padding: 24px 43px;
+    background: linear-gradient(270deg, rgba(191, 190, 255, 0.04) 0%, rgba(191, 190, 255, 0.02) 100%);
+    backdrop-filter: blur(182px);
+}
+
+.title {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.description {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.progressContainer {
+    align-self: stretch;
+    display: flex;
+    justify-content: space-between;
+}
+
+.progressBar {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+
+.filledSegment {
+    background-color: rgba(74, 58, 255, 1);
+}
+
+.emptySegment {
+    background-color: rgba(217, 217, 217, 1);
+}
+
+.pointsGained {
+    color: rgba(255, 255, 255, 1);
+}
+
+@media (min-width: 768px){
+    .card {
+        border-radius: 16px;
+        width: 184px;
+        height: 94px;
+        gap: 15px;
+    }
+    .title {
+        margin-top: -10px;
+        margin-left: -20px;
+        font: 300 14px Geologica, sans-serif;
+    }
+    .description {
+        margin-top: -5px;
+        margin-left: -20px;
+        font: 300 10px Geologica, -apple-system, Roboto, Helvetica, sans-serif;
+    }
+    .progressContainer {
+        margin-top: -2px;
+        margin-left: -20px;
+        width: 80%;
+        gap: 10px;
+    }
+    .progressBar {
+        height: 10px;
+        gap: 2px;
+        margin: auto 0;
+    }
+    .pointsGained {
+        font: 500 15px Geologica, sans-serif;
+    }
+}
+
+@media (min-width: 320px){
+    .card {
+        border-radius: 16px;
+        width: 184px;
+        height: 94px;
+        gap: 15px;
+    }
+    .title {
+        margin-top: -10px;
+        margin-left: -20px;
+        font: 300 14px Geologica, sans-serif;
+    }
+    .description {
+        margin-top: -5px;
+        margin-left: -20px;
+        font: 300 10px Geologica, -apple-system, Roboto, Helvetica, sans-serif;
+    }
+    .progressContainer {
+        margin-top: -2px;
+        margin-left: -20px;
+        width: 80%;
+        gap: 10px;
+    }
+    .progressBar {
+        height: 10px;
+        gap: 2px;
+        margin: auto 0;
+    }
+    .pointsGained {
+        font: 500 15px Geologica, sans-serif;
+    }
+}
+
+@media (min-width: 992px){
+    .card {
+        border-radius: 41px;
+        max-width: 165px;
+        max-height: 100px;
+        gap: 0;
+    }
+    .title {
+        margin-top: -5px;
+        margin-left: -20px;
+        font: 250 15px Geologica, sans-serif;
+    }
+    .description {
+        margin-top: -5px;
+        margin-left: -20px;
+        font: 200 12px Geologica, -apple-system, Roboto, Helvetica, sans-serif;
+    }
+    .progressContainer {
+        /*margin-top: -2px;*/
+        /*margin-left: -28px;*/
+        width: 100%;
+        gap: 5px;
+    }
+    .progressBar {
+        height: 19px;
+        gap: 12px;
+        margin: auto 0;
+    }
+    .progressSegment {
+        width: 10px;
+        height: 19px;
+        margin: auto 0;
+    }
+    .pointsGained {
+        font: 500 20px Geologica, sans-serif;
+    }
+}
+
+@media (min-width: 1200px){
+    .card {
+        border-radius: 41px;
+        max-width: 250px;
+        width: 250px;
+        max-height: 120px;
+        height: 150px;
+    }
+    .title {
+        font: 300 20px Geologica, sans-serif;
+    }
+    .description {
+        font: 300 15px/18px Geologica, -apple-system, Roboto, Helvetica, sans-serif;
+        margin-top: 2px;
+    }
+    .progressContainer {
+        margin-top: 17px;
+        width: 100%;
+        gap: 20px;
+    }
+    .progressBar {
+        height: 19px;
+        gap: 2px;
+        margin: auto 0;
+    }
+    .progressSegment {
+        width: 10px;
+        height: 19px;
+        margin: auto 0;
+    }
+    .pointsGained {
+        font: 500 20px Geologica, sans-serif;
+    }
+}
+
+@media (min-width: 1500px){
+    .card {
+        border-radius: 41px;
+        max-width: 315px;
+        width: 315px;
+        height: 150px;
+        padding: 24px 43px;
+    }
+    .title {
+        font: 300 18px Geologica, sans-serif;
+        line-height: 23px;
+    }
+    .description {
+        font: 300 13px Geologica, -apple-system, Roboto, Helvetica, sans-serif;
+        line-height: 16px;
+        margin-top: 8px;
+    }
+    .progressContainer {
+        margin-top: 9px;
+        width: 159px;
+        gap: 20px;
+    }
+    .progressBar {
+        height: 19px;
+        gap: 2px;
+        margin: auto 0;
+    }
+    .progressSegment {
+        width: 10px;
+        height: 19px;
+        margin: auto 0;
+    }
+    .pointsGained {
+        font: 500 20px Geologica, sans-serif;
+    }
+}
+

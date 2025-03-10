@@ -1,0 +1,49 @@
+.progressContainer {
+    align-self: stretch;
+    display: flex;
+    margin-top: 29px;
+    width: 100%;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.progressBar {
+    display: flex;
+    height: 19px;
+    align-items: center;
+    gap: 2px;
+    justify-content: start;
+    margin: auto 0;
+}
+
+.progressSegment {
+    align-self: stretch;
+    display: flex;
+    width: 10px;
+    height: 19px;
+    margin: auto 0;
+}
+@media (min-width: 768px){
+    .progressSegment {
+        width: 7px;
+        height: 13px;
+    }
+}
+@media (min-width: 992px){
+    .progressSegment {
+        width: 10px;
+        height: 19px;
+    }
+}
+.filledSegment {
+    background-color: rgba(74, 58, 255, 1);
+}
+
+.emptySegment {
+    background-color: rgba(217, 217, 217, 1);
+}
+
+.pointsGained {
+    color: rgba(255, 255, 255, 1);
+    font: 500 20px Geologica, sans-serif;
+}

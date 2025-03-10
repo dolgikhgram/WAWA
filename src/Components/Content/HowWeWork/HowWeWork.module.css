@@ -1,0 +1,481 @@
+.containerText {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: end;
+    margin-bottom: 15px;
+}
+.sectionTitle {
+    color: rgba(255, 255, 255, 0.6);
+}
+.mainHeading {
+    background-image: linear-gradient(86.45deg, #FFFFFF 36.69%, rgba(255, 255, 255, 0.2) 132.77%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+}
+.work{
+    background-image: linear-gradient(180deg, rgba(113, 95, 255, 0.6) 0%, #715FFF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+}
+.mainContainer {
+    border-radius: 41px;
+    display: flex;
+    background: linear-gradient(270deg, rgba(191, 190, 255, 0.012) 0%, rgba(191, 190, 255, 0.056) 100%);
+    backdrop-filter: blur(162px)
+}
+.GameBoostContainer{
+    width: 100%;
+}
+.containerText {
+    min-height: 30vh;
+    width: 100%;
+}
+.content {
+    display: flex;
+}
+.numberList {
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease;
+}
+.numberPrimary {
+    color: #fff;
+    font: 400 120px/1 "Magistral", sans-serif;
+    transform: scale(1);
+}
+.numberSecondary {
+    color: rgba(255, 255, 255, 0.2);
+    transform: scale(0.8);
+}
+.divider1 {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+.divider2 {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+.textContent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.heading {
+    color: rgba(255, 255, 255, 1);
+}
+.description {
+    color: rgba(255, 255, 255, 0.6);
+}
+.numberClickable {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    transform-origin: center;
+}
+
+.numberClickable:hover {
+    transform: scale(1.05);
+}
+
+.fadeContent {
+    animation: fadeInOut 0.3s ease;
+}
+
+@keyframes fadeInOut {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (min-width: 320px){
+    .content {
+        align-items: center;
+        flex-direction: column;
+        width: 317px;
+        height: 358px;
+    }
+    .sectionTitle {
+        line-height: 18px;
+        font: 300 12px Geologica, sans-serif;
+    }
+    .mainHeading {
+        letter-spacing: -0.01em;
+        font: 400 30px Magistral, -apple-system, Roboto, Helvetica, sans-serif;
+        line-height: 36px;
+    }
+    .work{
+        letter-spacing: -0.01em;
+        font: 400 30px Magistral, -apple-system, Roboto, Helvetica, sans-serif;
+        line-height: 36px;
+    }
+    .mainContainer {
+        min-height: 358px;
+        width: 315px;
+        margin: 0 auto;
+    }
+    .numberList {
+        flex-direction: row;
+        align-items: center;
+        gap: 20px;
+        margin-top: 45px;
+        margin-bottom: 45px;
+    }
+    .numberPrimary {
+        color: #fff;
+        font: 400 60px "Magistral", sans-serif;
+    }
+    .numberSecondary {
+        font: 400 38px "Magistral", sans-serif;
+    }
+    .divider1 {
+        position: absolute;
+        opacity: 0;
+        width: 199px;
+        height: 1px;
+        margin-left:40px;
+    }
+    .divider2 {
+        width: 2px;
+        margin-right: 0;
+        height: 50px;
+        margin-top: -30px;
+    }
+    .textContent {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        margin-bottom: 45px;
+    }
+    .heading {
+        width: 234px;
+        height: 26px;
+        font-family: Magistral, sans-serif;
+        font-weight: 400;
+        font-size: 22px;
+        line-height: 26px;
+        text-align: center;
+        margin-top: 15px;
+    }
+    .containerText {
+        min-height: 10vh;
+        width: 100%;
+        margin-top: 120px;
+
+    }
+    .description {
+        width: 253px;
+        height: 63px;
+        font-family: Geologica, sans-serif;
+        font-weight: 300;
+        font-size: 14px;
+        line-height: 21px;
+        text-align: center;
+    }
+}
+
+@media (min-width: 768px){
+    .GameBoostContainer{
+        width: 688px;
+    }
+    .content {
+        align-items: center;
+        flex-direction: column;
+        width: 688px;
+        height: 358px;
+        margin: 0 auto;
+    }
+    .sectionTitle {
+        letter-spacing: 0.02em;
+        font: 300 18px Geologica, sans-serif;
+    }
+    .mainHeading {
+        letter-spacing: -0.01em;
+        font: 400 55px Magistral, -apple-system, Roboto, Helvetica, sans-serif;
+    }
+    .work{
+        letter-spacing: -0.01em;
+        font: 400 55px Magistral, -apple-system, Roboto, Helvetica, sans-serif;
+    }
+    .mainContainer {
+        min-height: 358px;
+        width: 688px;
+        margin: 0 auto;
+    }
+    .containerText {
+        min-height: 10vh;
+        width: 100%;
+    }
+    .numberList {
+        align-items: center;
+        flex-direction: row;
+        gap: 50px;
+        margin-top: 45px;
+        margin-bottom: 45px;
+    }
+    .numberPrimary {
+        color: #fff;
+        font: 400 60px "Magistral", sans-serif;
+    }
+    .numberSecondary {
+        font: 400 38px "Magistral", sans-serif;
+    }
+    .divider1 {
+        position: absolute;
+        opacity: 0;
+        width: 199px;
+        height: 1px;
+        margin-left:40px;
+    }
+    .divider2 {
+        width: 2px;
+        margin-right: 0;
+        height: 54px;
+        margin-top: -30px;
+    }
+    .textContent {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        margin-bottom: 0;
+    }
+    .heading {
+        width: 334px;
+        height: 26px;
+        font-family: Magistral, sans-serif;
+        font-weight: 400;
+        font-size: 22px;
+        line-height: 26px;
+        text-align: center;
+        margin-top: 15px;
+    }
+    .description {
+        width: 325px;
+        height: 42px;
+        font-family: Geologica, sans-serif;
+        font-weight: 300;
+        font-size: 14px;
+        line-height: 21px;
+        text-align: center;
+    }
+}
+
+@media (min-width: 992px){
+    .GameBoostContainer {
+        width: 100%;
+    }
+    .sectionTitle {
+        letter-spacing: 0.02em;
+        font: 300 18px Geologica, sans-serif;
+    }
+    .mainHeading {
+        letter-spacing: -0.01em;
+        font: 400 60px/1.2 Magistral, -apple-system, Roboto, Helvetica, sans-serif;
+    }
+    .work{
+        letter-spacing: -0.01em;
+        font: 400 60px/1.2 Magistral, -apple-system, Roboto, Helvetica, sans-serif;
+    }
+    .mainContainer {
+        min-height: 420px;
+        width: 90%;
+        margin: 0 auto;
+    }
+    .containerText {
+        min-height: 10vh;
+        width: 100%;
+    }
+    .content {
+        flex-direction: row;
+        max-width: 1320px;
+        margin: 0 auto;
+        height: 100%;
+    }
+    .numberList {
+        position: static;
+        flex-direction: column;
+        gap: 20px;
+    }
+    .numberPrimary {
+        color: #fff;
+        font: 400 120px/1 "Magistral", sans-serif;
+    }
+    .numberSecondary {
+        font: 400 60px/2 "Magistral", sans-serif;
+    }
+    .divider1 {
+        position: static;
+        opacity: 1;
+        width: 199px;
+        height: 1px;
+        margin-left:40px;
+    }
+    .divider2 {
+        width: 1px;
+        margin-right: 40px;
+        height: 190px;
+    }
+    .textContent {
+        gap: 20px;
+    }
+    .heading {
+        width: 100%;
+        height: 46px;
+        font-family: Magistral, sans-serif;
+        font-weight: 400;
+        font-size: 29px;
+        line-height: 60px;
+    }
+    .description {
+        width: 350px;
+        height: 54px;
+        font-family: Geologica,sans-serif;
+        font-weight: 300;
+        font-size: 18px;
+        line-height: 27px;
+    }
+}
+
+@media (min-width: 1200px){
+    .sectionTitle {
+        letter-spacing: 0.02em;
+        font: 300 18px Geologica, sans-serif;
+    }
+    .mainHeading {
+        letter-spacing: -0.01em;
+        font: 400 60px/1.2 Magistral, -apple-system, Roboto, Helvetica, sans-serif;
+    }
+    .work{
+        letter-spacing: -0.01em;
+        font: 400 60px/1.2 Magistral, -apple-system, Roboto, Helvetica, sans-serif;
+    }
+    .mainContainer {
+        min-height: 508px;
+        width: 90%;
+        margin: 0 auto;
+    }
+    .containerText {
+        min-height: 10vh;
+        width: 100%;
+    }
+    .content {
+        flex-direction: row;
+        max-width: 1320px;
+        margin: 0 auto;
+    }
+    .numberList {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .numberPrimary {
+        color: #fff;
+        font: 400 120px/1 "Magistral", sans-serif;
+    }
+    .numberSecondary {
+        font: 400 60px/2 "Magistral", sans-serif;
+    }
+    .divider1 {
+        width: 199px;
+        height: 1px;
+        margin-left:40px;
+    }
+    .divider2 {
+        width: 1px;
+        margin-right: 40px;
+        height: 190px;
+    }
+    .textContent {
+        gap: 20px;
+    }
+    .heading {
+        width: 100%;
+        height: 46px;
+        font-family: Magistral, sans-serif;
+        font-weight: 400;
+        font-size: 40px;
+        line-height: 60px;
+    }
+    .description {
+        width: 515px;
+        height: 54px;
+        font-family: Geologica,sans-serif;
+        font-weight: 300;
+        font-size: 18px;
+        line-height: 27px;
+    }
+}
+
+@media (min-width: 1500px){
+    .sectionTitle {
+        letter-spacing: 0.02em;
+        font: 300 18px Geologica, sans-serif;
+    }
+    .mainHeading {
+        letter-spacing: -0.01em;
+        font: 400 60px/1.2 Magistral, -apple-system, Roboto, Helvetica, sans-serif;
+    }
+    .work{
+        letter-spacing: -0.01em;
+        font: 400 60px/1.2 Magistral, -apple-system, Roboto, Helvetica, sans-serif;
+    }
+    .mainContainer {
+        min-height: 508px;
+        width: 1320px;
+        margin: 0 auto;
+    }
+    .containerText {
+        min-height: 10vh;
+        width: 100%;
+    }
+    .content {
+        flex-direction: row;
+        max-width: 1320px;
+        margin: 0 auto;
+    }
+    .numberList {
+        gap: 20px;
+    }
+    .numberPrimary {
+        color: #fff;
+        font: 400 120px/1 "Magistral", sans-serif;
+    }
+    .numberSecondary {
+        font: 400 60px/2 "Magistral", sans-serif;
+    }
+    .divider1 {
+        width: 199px;
+        height: 1px;
+        margin-left:40px;
+    }
+    .divider2 {
+        width: 1px;
+        margin-right: 40px;
+    }
+    .textContent {
+        gap: 20px;
+    }
+    .heading {
+        width: 100%;
+        height: 46px;
+        font-family: Magistral, sans-serif;
+        font-weight: 400;
+        font-size: 40px;
+        line-height: 60px;
+    }
+    .description {
+        width: 525px;
+        height: 54px;
+        font-family: Geologica,sans-serif;
+        font-weight: 300;
+        font-size: 18px;
+        line-height: 27px;
+    }
+}
+

@@ -1,0 +1,414 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 90px;
+}
+.starsContainer {
+    display: flex;
+    align-items: center;
+}
+.starRow {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.star {
+    background-color: #FFFFFF;
+}
+.ratingText {
+    color: rgba(255, 255, 255, 0.6);
+}
+.title{
+    font-family: Geologica, serif;
+    font-weight: 300;
+    font-size: 13px;
+    line-height: 20px;
+    color: rgba(255, 255, 255, 0.6);
+}
+.reviewsCount {
+    color: rgba(255, 255, 255, 0.6);
+}
+.reviews{
+    background-image: linear-gradient(180deg, rgba(113, 95, 255, 0.6) 0%, #715FFF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.heading {
+    background-image: linear-gradient(86.45deg, #FFFFFF 36.69%, rgba(255, 255, 255, 0.2) 132.77%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.reviewsContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 450px;
+    padding: 20px 0;
+    position: relative;
+    max-width: 1920px;
+    margin: 0 auto;
+}
+.reviewsWrapper {
+    display: flex;
+    gap: 2rem;
+    transition: transform 0.8s ease;
+    width: 100%;
+    position: relative;
+    justify-content: center;
+    padding: 0 100px;
+}
+.reviewsWrapper > * {
+    flex: 0 0 auto;
+    width: 600px;
+    transition: all 0.8s ease;
+}
+.reviewsWrapper > *:first-child {
+    transform: translateX(5%) scale(0.85);
+    opacity: 0.5;
+}
+.reviewsWrapper > *:nth-child(2) {
+    transform: translateX(0) scale(1);
+    opacity: 1;
+    z-index: 2;
+}
+.reviewsWrapper > *:last-child {
+    transform: translateX(-5%) scale(0.85);
+    opacity: 0.5;
+}
+.slideLeft {
+    transform: translateX(-100%);
+}
+.slideRight {
+    transform: translateX(100%);
+}
+.btnTablet {
+    width: 8px;
+    height: 14px;
+}
+.btnContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+.btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+@media (min-width: 320px){
+    .container {
+        width: 100%;
+    }
+    .starsContainer {
+        position: absolute;
+        opacity: 0;
+        gap: 20px;
+        padding: 0;
+        margin-bottom: 5px;
+    }
+    .starRow {
+        gap: 5px;
+    }
+    .star {
+        width: 20px;
+        height: 20px;
+    }
+    .ratingText {
+        font: 300 18px Geologica, sans-serif;
+    }
+    .reviewsCount {
+        font: 300 18px Geologica, sans-serif;
+    }
+    .reviews{
+        font: 400 30px Magistral, sans-serif;
+        line-height: 36px;
+    }
+    .heading {
+        font: 400 30px Magistral, sans-serif;
+        line-height: 36px;
+    }
+    .btnContainer{
+        position: absolute;
+        opacity: 0;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        width: 100%;
+        height: 50px;
+        gap: 20px;
+    }
+    .btn{
+        width: 50px;
+        height: 50px;
+        border-radius: 100%;
+    }
+    .reviewsWrapper {
+        padding: 0 40px;
+    }
+    .btnTabletContainer{
+        position: absolute;
+        display: flex;
+        align-items: end;
+        justify-content: end;
+        width: 330px;
+    }
+    .btnTablet {
+        align-self: end;
+    }
+}
+
+@media (min-width: 768px){
+    .container {
+        width: 100%;
+    }
+    .starsContainer {
+        position: absolute;
+        opacity: 0;
+        gap: 20px;
+        padding: 0;
+        margin-bottom: 5px;
+    }
+    .starRow {
+        gap: 5px;
+    }
+    .star {
+        width: 20px;
+        height: 20px;
+    }
+    .ratingText {
+        font: 300 18px Geologica, sans-serif;
+    }
+    .reviewsCount {
+        font: 300 18px Geologica, sans-serif;
+    }
+    .reviews{
+        font: 400 30px Magistral, sans-serif;
+    }
+    .heading {
+        font: 400 30px Magistral, sans-serif;
+    }
+    .btnContainer{
+        position: absolute;
+        opacity: 0;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        width: 100%;
+        height: 50px;
+        gap: 20px;
+    }
+    .btn{
+        width: 50px;
+        height: 50px;
+        border-radius: 100%;
+    }
+    .reviewsWrapper {
+        padding: 0 60px;
+    }
+    .btnTabletContainer{
+        position: absolute;
+        display: flex;
+        align-items: end;
+        justify-content: end;
+        width: 725px;
+    }
+    .btnTablet {
+        align-self: end;
+    }
+}
+
+@media (min-width: 992px){
+    .container {
+        width: 100%;
+    }
+    .starsContainer {
+        position: static;
+        opacity: 1;
+        gap: 20px;
+        padding: 0;
+        margin-bottom: 5px;
+    }
+    .title{
+        position: absolute;
+        opacity: 0;
+    }
+    .starRow {
+        gap: 5px;
+    }
+    .star {
+        width: 20px;
+        height: 20px;
+    }
+    .ratingText {
+        font: 300 18px Geologica, sans-serif;
+    }
+    .reviewsCount {
+        font: 300 18px Geologica, sans-serif;
+    }
+    .reviews{
+        font: 400 60px Magistral, sans-serif;
+    }
+    .heading {
+        font: 400 60px Magistral, sans-serif;
+    }
+    .btnContainer{
+        position: static;
+        opacity: 1;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        width: 100%;
+        height: 50px;
+        gap: 20px;
+    }
+    .btn{
+        width: 50px;
+        height: 50px;
+        border-radius: 100%;
+    }
+    .btnTablet {
+        display: none;
+    }
+}
+
+@media (min-width: 1200px){
+    .container {
+        width: 100%;
+    }
+    .starsContainer {
+        gap: 20px;
+        padding: 0;
+        margin-bottom: 5px;
+    }
+    .starRow {
+        gap: 5px;
+    }
+    .star {
+        width: 20px;
+        height: 20px;
+    }
+    .ratingText {
+        font: 300 18px Geologica, sans-serif;
+    }
+    .reviewsCount {
+        font: 300 18px Geologica, sans-serif;
+    }
+    .reviews{
+        font: 400 60px Magistral, sans-serif;
+    }
+    .heading {
+        font: 400 60px Magistral, sans-serif;
+    }
+    .btnContainer{
+        margin-top: 20px;
+        margin-bottom: 20px;
+        width: 100%;
+        height: 50px;
+        gap: 20px;
+    }
+    .btn{
+        width: 50px;
+        height: 50px;
+        border-radius: 100%;
+    }
+}
+
+@media (min-width: 1500px){
+    .container {
+        width: 100%;
+    }
+    .starsContainer {
+        gap: 20px;
+        padding: 0;
+        margin-bottom: 5px;
+    }
+    .starRow {
+        gap: 5px;
+    }
+    .star {
+        width: 20px;
+        height: 20px;
+    }
+    .ratingText {
+        font: 300 18px Geologica, sans-serif;
+    }
+    .reviewsWrapper {
+        display: flex;
+        gap: 6rem;
+        transition: transform 0.5s ease-in-out;
+        width: 100%;
+        position: relative;
+        justify-content: center;
+    }
+    .reviewsContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        min-height: 450px;
+    }
+    .reviewsCount {
+        font: 300 18px Geologica, sans-serif;
+    }
+    .reviews{
+        font: 400 60px Magistral, sans-serif;
+    }
+    .heading {
+        font: 400 60px Magistral, sans-serif;
+    }
+    .btnContainer{
+        margin-top: 20px;
+        margin-bottom: 20px;
+        width: 100%;
+        height: 50px;
+        gap: 20px;
+    }
+    .btn{
+        width: 50px;
+        height: 50px;
+        border-radius: 100%;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+    .reviewsWrapper > *:first-child,
+    .reviewsWrapper > *:last-child {
+        display: none;
+    }
+    .reviewsWrapper {
+        gap: 0;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    .reviewsWrapper > *:first-child,
+    .reviewsWrapper > *:last-child {
+        display: none;
+    }
+    .reviewsWrapper {
+        gap: 0;
+    }
+}
+
+
+
+
+
+

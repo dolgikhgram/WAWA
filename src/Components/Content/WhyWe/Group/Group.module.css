@@ -1,0 +1,142 @@
+.group{
+    background: linear-gradient(270deg, rgba(191, 190, 255, 0.04) 0%, rgba(191, 190, 255, 0.02) 100%);
+    backdrop-filter: blur(162px)
+}
+.img{
+    border-width: 2px;
+}
+.content {
+    padding: 30px;
+}
+.mainTitle{
+    font-family: Magistral,serif;
+    color: rgba(255, 255, 255, 0.8);
+}
+.title{
+    font-family: Geologica,serif;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+@media (min-width: 320px){
+    .group{
+        width: 320px;
+        height: 167px;
+        border-radius: 26px;
+    }
+    .img{
+        width: 27px;
+        height: 27px;
+    }
+    .content {
+        padding: 30px;
+    }
+    .mainTitle{
+        margin-top: 16px;
+        width: 240px;
+        height: 22px;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 22px;
+    }
+    .title{
+        margin-top: 18px;
+        width: 242px;
+        height: 42px;
+        font-weight: 300;
+        font-size: 14px;
+        line-height: 21px;
+    }
+}
+
+
+@media (min-width: 768px){
+    .group{
+        width: 332px;
+        height: 167px;
+        border-radius: 26px;
+    }
+    .img{
+        width: 27px;
+        height: 27px;
+    }
+    .content {
+        padding: 30px;
+    }
+    .mainTitle{
+        margin-top: 16px;
+        width: 240px;
+        height: 22px;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 22px;
+    }
+    .title{
+        margin-top: 18px;
+        width: 242px;
+        height: 42px;
+        font-weight: 300;
+        font-size: 14px;
+        line-height: 21px;
+    }
+}
+
+@media (min-width: 992px){
+    .group{
+        border-radius: 41px;
+        width: 250px;
+        height: 210px;
+    }
+    .img{
+        width: 30px;
+        height: 30px;
+    }
+    .content {
+        padding: 30px;
+    }
+    .mainTitle{
+        margin-top: 16px;
+        width: 164px;
+        height: 45px;
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 26px;
+    }
+    .title{
+        margin-top: 18px;
+        width: 196px;
+        height: 48px;
+        font-weight: 300;
+        font-size: 14px;
+        line-height: 20px;
+    }
+}
+
+@media (min-width: 1200px){
+    .group{
+        width: 300px;
+        height: 260px;
+    }
+    .img{
+        width: 38px;
+        height: 38px;
+    }
+    .content {
+        padding: 30px;
+    }
+    .mainTitle{
+        margin-top: 30px;
+        width: 186px;
+        height: 58px;
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 29px;
+    }
+    .title{
+        margin-top: 20px;
+        width: 242px;
+        height: 48px;
+        font-weight: 300;
+        font-size: 16px;
+        line-height: 24px;
+    }
+}

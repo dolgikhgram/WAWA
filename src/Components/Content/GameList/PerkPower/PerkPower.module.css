@@ -1,0 +1,167 @@
+.container {
+    display: flex;
+    align-items: flex-start;
+}
+.infoContainer {
+    display: flex;
+    flex-direction: column;
+    font-family: Geologica, sans-serif;
+}
+.title {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 17px;
+    align-self: flex-start;
+}
+.description {
+    color: rgba(255, 255, 255, 0.5);
+}
+.powerContainer {
+    display: flex;
+    flex-direction: column;
+}
+.powerBarContainer {
+    display: flex;
+    min-height: 16px;
+    align-items: center;
+    gap: 2px;
+    justify-content: flex-start;
+}
+.powerBarSegment {
+    background-color: rgba(218, 218, 218, 1);
+    align-self: stretch;
+    display: flex;
+}
+.powerValue {
+    color: rgba(218, 218, 218, 1);
+    align-self: center;
+}
+.line{
+    border: 2px solid rgba(128, 128, 128, 0.13);
+}
+
+@media (min-width: 768px){
+    .container {
+        max-width: 300px;
+        gap: 6px;
+    }
+    .infoContainer {
+        font-weight: 200;
+        font-size: 10px;
+    }
+    .title {
+        font-size: 15px;
+    }
+    .description {
+        font-size: 12px;
+        line-height: 15px;
+        margin-top: 5px;
+    }
+    .powerBarSegment {
+        width: 9px;
+        height: 16px;
+        margin: auto 0;
+    }
+    .powerValue {
+        margin-top: 10px;
+        font: 500 17px Geologica, sans-serif;
+    }
+    .line{
+        width: 300px;
+        margin-bottom: 15px;
+    }
+}
+@media (min-width: 992px){
+    .container {
+        max-width: 300px;
+        gap: 6px;
+    }
+    .infoContainer {
+        font-weight: 200;
+        font-size: 10px;
+    }
+    .title {
+        font-size: 15px;
+    }
+    .description {
+        font-size: 12px;
+        line-height: 15px;
+        margin-top: 5px;
+    }
+    .powerBarSegment {
+        width: 9px;
+        height: 16px;
+        margin: auto 0;
+    }
+    .powerValue {
+        margin-top: 10px;
+        font: 500 17px Geologica, sans-serif;
+    }
+    .line{
+        width: 300px;
+        margin-bottom: 15px;
+    }
+}
+@media (min-width: 1200px){
+    .container {
+        max-width: 260px;
+        gap: 6px;
+    }
+    .infoContainer {
+        font-weight: 200;
+        font-size: 10px;
+    }
+    .title {
+        font-size: 15px;
+    }
+    .description {
+        font-size: 10px;
+        line-height: 15px;
+        margin-top: 5px;
+    }
+    .powerBarSegment {
+        width: 9px;
+        height: 16px;
+        margin: auto 0;
+    }
+    .powerValue {
+        margin-top: 10px;
+        font: 500 17px Geologica, sans-serif;
+    }
+    .line{
+        width: 260px;
+        margin-bottom: 15px;
+    }
+
+}
+
+@media (min-width: 1500px){
+    .container {
+        max-width: 326px;
+        gap: 16px;
+    }
+    .infoContainer {
+        font-weight: 300;
+    }
+    .description {
+        font-size: 12px;
+        line-height: 15px;
+        margin-top: 5px;
+    }
+    .title {
+        font-size: 18px;
+    }
+    .powerBarSegment {
+        width: 9px;
+        height: 16px;
+        margin: auto 0;
+    }
+    .powerValue {
+        margin-top: 10px;
+        font: 500 17px Geologica, sans-serif;
+    }
+    .line{
+        width: 327px;
+        margin-bottom: 15px;
+    }
+
+}

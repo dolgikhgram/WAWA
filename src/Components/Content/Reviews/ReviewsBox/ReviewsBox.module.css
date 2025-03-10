@@ -1,0 +1,807 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.content {
+    position: relative;
+    background: linear-gradient(270deg, rgba(191, 190, 255, 0.04) 0%, rgba(191, 190, 255, 0.02) 100%);
+    backdrop-filter: blur(162px);
+    border-radius: 41px;
+    width: 688px;
+    height: 255px;
+    overflow: hidden;
+}
+
+.gamesContainer {
+    display: flex;
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    padding: 8px;
+    gap: 12px;
+    border-radius: 16px;
+    background: rgba(14, 14, 35, 1);
+    align-items: center;
+    z-index: 2;
+}
+
+.img {
+    width: 45px;
+    height: 45px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.textContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.mainTitle {
+    font-family: Magistral, serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.title {
+    font-family: Geologica, serif;
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 18px;
+    color: rgba(255, 255, 255, 0.35);
+}
+
+.usersAccContainer {
+    display: flex;
+    position: absolute;
+    gap: 15px;
+    bottom: 30px;
+    left: 30px;
+    align-items: center;
+    z-index: 2;
+}
+
+.usersAvatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+}
+
+.usersInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.userName {
+    font-family: Magistral, serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    color: rgba(255, 255, 255, 1);
+}
+
+.userStatus {
+    font-family: Magistral, serif;
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 14px;
+    text-decoration: underline;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.reviewContainer {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(270deg, rgba(191, 190, 255, 0.1) 0%, rgba(191, 190, 255, 0.05) 100%);
+    backdrop-filter: blur(162px);
+    border-radius: 41px;
+}
+
+.review {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.reviewMainTitle {
+    font-family: Geologica, serif;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 24px;
+    color: rgba(255, 255, 255, 1);
+    margin-bottom: 8px;
+}
+
+.reviewTitle {
+    font-family: Geologica, serif;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 24px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.line {
+    width: 100%;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.1);
+    margin: auto 0 20px 0;
+}
+
+.btnDataContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: auto;
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 16px;
+    height: 31px;
+    background: rgba(113, 95, 255, 1);
+    border-radius: 21px;
+    border: none;
+}
+
+.btnText {
+    font-family: Geologica, serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: rgba(255, 255, 255, 1);
+    text-transform: uppercase;
+}
+
+.data {
+    font-family: Magistral, serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+@media(min-width: 320px){
+    .container {
+        width: 320px;
+        height: 427px;
+        border-radius: 26px;
+    }
+    .content{
+        display: flex;
+        flex-direction: column;
+        width: 300px;
+        height: 427px;
+        border-radius: 26px;
+    }
+    .gamesContainer{
+        position: relative;
+        width: 75%;
+        height: 70px;
+        border-radius: 16px;
+        top: 80px;
+        left: 20px;
+    }
+    .img{
+        width: 57px;
+        height: 70px;
+    }
+    .textContainer{
+        margin-left: 55px;
+    }
+    .mainTitle{
+        margin-top: 5px;
+        width: 96px;
+        height: 24px;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 24px;
+    }
+    .title{
+        font-weight: 300;
+        font-size: 14px;
+        line-height: 21px;
+        margin-top: 15px;
+    }
+    .usersAccContainer{
+        position: relative;
+        display: flex;
+        width: 147px;
+        height: 70px;
+        top: -90px;
+        left: 35px;
+    }
+    .usersInfo{
+        margin-left: 0;
+    }
+    .usersAvatar {
+        width: 42px;
+        height: 42px;
+        margin-top: 15px;
+        margin-right: 15px;
+    }
+    .userName{
+        width: 39px;
+        height: 22px;
+        font-weight: 400;
+        font-size: 18px;
+        line-height:22px;
+    }
+    .userStatus{
+        font-weight: 300;
+        font-size: 12px;
+        line-height: 14px;
+    }
+    .reviewContainer{
+        position: absolute;
+        width: 300px;
+        height: 255px;
+        border-radius: 26px;
+        top: 180px;
+    }
+    .review{
+        width: 80%;
+        height: 135px;
+        margin-top: 0;
+        margin-left: 0;
+    }
+    .reviewMainTitle{
+        font-weight: 300;
+        font-size: 14px;
+        line-height: 21px;
+    }
+    .reviewTitle{
+        font-weight: 300;
+        font-size: 14px;
+        line-height: 21px;
+    }
+    .line{
+        position: absolute;
+        margin-top: 70px;
+        width: 255px;
+        top: 95px;
+        left: 25px;
+    }
+    .btnDataContainer{
+        position: relative;
+        width: 100%;
+        top: 35px;
+    }
+    .btn{
+        position: static;
+        width: 79px;
+        height: 29px;
+        top: 345px;
+        left: 509px;
+    }
+    .btnText{
+        width: 75px;
+        height: 21px;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 21px;
+    }
+    .data{
+        width: 105px;
+        height: 24px;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 24px;
+    }
+}
+
+@media(min-width: 768px){
+    .container {
+        width: 688px;
+        height: 255px;
+        border-radius: 41px;
+    }
+    .content{
+        display: flex;
+        flex-direction: column;
+        width: 688px;
+        height: 255px;
+        border-radius: 41px;
+    }
+    .gamesContainer{
+        position: relative;
+        width: 268px;
+        height: 70px;
+        border-radius: 16px;
+        top: 30px;
+        left: 35px;
+    }
+    .img{
+        width: 57px;
+        height: 70px;
+    }
+    .textContainer{
+        margin-left: 55px;
+    }
+    .mainTitle{
+        margin-top: 5px;
+        width: 96px;
+        height: 24px;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 24px;
+    }
+    .title{
+        font-weight: 300;
+        font-size: 14px;
+        line-height: 21px;
+        margin-top: 15px;
+    }
+    .usersAccContainer{
+        position: relative;
+        display: flex;
+        width: 147px;
+        height: 70px;
+        top: 80px;
+        left: 50px;
+    }
+    .usersInfo{
+        margin-left: 0;
+    }
+    .usersAvatar {
+        width: 42px;
+        height: 42px;
+        margin-top: 15px;
+        margin-right: 15px;
+    }
+    .userName{
+        width: 39px;
+        height: 22px;
+        font-weight: 400;
+        font-size: 18px;
+        line-height:22px;
+    }
+    .userStatus{
+        font-weight: 300;
+        font-size: 12px;
+        line-height: 14px;
+    }
+    .reviewContainer{
+        position: absolute;
+        width: 332px;
+        height: 255px;
+        border-radius: 28px;
+        top: 0;
+        right: 0;
+    }
+    .review{
+        width: 80%;
+        height: 135px;
+        margin-top: 0;
+        margin-left: 0;
+    }
+    .reviewMainTitle{
+        font-weight: 300;
+        font-size: 14px;
+        line-height: 21px;
+    }
+    .reviewTitle{
+        font-weight: 300;
+        font-size: 14px;
+        line-height: 21px;
+    }
+    .line{
+        position: absolute;
+        margin-top: 70px;
+        width: 265px;
+        top: 95px;
+        left: 25px;
+    }
+    .btnDataContainer{
+        position: relative;
+        width: 100%;
+        top: 55px;
+    }
+    .btn{
+        position: static;
+        width: 99px;
+        height: 31px;
+        top: 345px;
+        left: 509px;
+    }
+    .btnText{
+        width: 75px;
+        height: 21px;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 21px;
+    }
+    .data{
+        width: 105px;
+        height: 24px;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 24px;
+    }
+}
+
+@media(min-width: 992px){
+    .container {
+        width: 67%;
+        height: 415px;
+        border-radius: 41px;
+    }
+    .content{
+        width: 93%;
+        max-width: 1300px;
+        height: 415px;
+        border-radius: 41px;
+    }
+    .gamesContainer{
+        position: absolute;
+        top: 47px;
+        left: 10px;
+        width: 210px;
+        height: 70px;
+    }
+    .img{
+        width: 57px;
+        height: 70px;
+    }
+    .textContainer{
+        margin-left: 55px;
+    }
+    .mainTitle{
+        margin-top: 5px;
+        width: 96px;
+        height: 24px;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 24px;
+    }
+    .title{
+        font-weight: 300;
+        font-size: 14px;
+        line-height: 21px;
+        margin-top: 15px;
+    }
+    .usersAccContainer{
+        display: flex;
+        position: absolute;
+        width: 147px;
+        height: 70px;
+        top: 306px;
+        left: 30px;
+    }
+    .usersInfo{
+        margin-left: 25px;
+    }
+    .usersAvatar {
+        width: 70px;
+        height: 70px;
+        margin-top: 0;
+        margin-right: 0;
+    }
+    .userName{
+        width: 61px;
+        height: 34px;
+        font-weight: 400;
+        font-size: 28px;
+        line-height: 34px;
+    }
+    .userStatus{
+        font-weight: 300;
+        font-size: 12px;
+        line-height: 14px;
+    }
+    .reviewContainer{
+        position: absolute;
+        width: 50%;
+        height: 415px;
+        right: 0;
+        border-radius: 41px;
+        bottom: 0;
+    }
+    .review{
+        width: 80%;
+        height: 135px;
+        margin-top: 10px;
+        margin-left: 10px;
+    }
+    .reviewMainTitle{
+        font-weight: 300;
+        font-size: 15px;
+        line-height: 27px;
+    }
+    .reviewTitle{
+        font-weight: 300;
+        font-size: 15px;
+        line-height: 27px;
+    }
+    .line{
+        position: absolute;
+        margin-top: 85px;
+        width: 80%;
+        top: 235px;
+        left: 40px;
+    }
+    .btnDataContainer{
+        position: absolute;
+        width:90%;
+        top: 345px;
+        left: 30px;
+    }
+    .btn{
+        width: 79px;
+        height: 25px;
+        top: 345px;
+        left: 509px;
+    }
+    .btnText{
+        width: 75px;
+        height: 21px;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 21px;
+    }
+    .data{
+        width: 105px;
+        height: 24px;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 24px;
+    }
+}
+
+@media(min-width: 1200px){
+    .container {
+        width: 67%;
+        height: 415px;
+        border-radius: 41px;
+    }
+    .content{
+        width: 93%;
+        max-width: 1300px;
+        height: 415px;
+        border-radius: 41px;
+    }
+    .gamesContainer{
+        top: 47px;
+        left: 56px;
+        width: 258px;
+        height: 70px;
+    }
+    .img{
+        width: 57px;
+        height: 70px;
+    }
+    .textContainer{
+        margin-left: 45px;
+    }
+    .mainTitle{
+        margin-top: 5px;
+        width: 96px;
+        height: 24px;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 24px;
+    }
+    .title{
+        font-weight: 300;
+        font-size: 14px;
+        line-height: 21px;
+        margin-top: 15px;
+    }
+    .usersAccContainer{
+        display: flex;
+        position: absolute;
+        width: 147px;
+        height: 70px;
+        top: 306px;
+        left: 56px;
+    }
+    .usersInfo{
+        margin-left: 25px;
+    }
+    .usersAvatar {
+        width: 70px;
+        height: 70px;
+    }
+    .userName{
+        width: 61px;
+        height: 34px;
+        font-weight: 400;
+        font-size: 28px;
+        line-height: 34px;
+    }
+    .userStatus{
+        font-weight: 300;
+        font-size: 12px;
+        line-height: 14px;
+    }
+    .reviewContainer{
+        width: 50%;
+        height: 415px;
+        right: 0;
+        border-radius: 41px;
+    }
+    .review{
+        width: 80%;
+        height: 135px;
+        margin-top: 15px;
+        margin-left: 20px;
+    }
+    .reviewMainTitle{
+        font-weight: 300;
+        font-size: 18px;
+        line-height: 27px;
+    }
+    .reviewTitle{
+        font-weight: 300;
+        font-size: 18px;
+        line-height: 27px;
+    }
+    .line{
+        position: absolute;
+        margin-top: 85px;
+        width: 70%;
+        top: 235px;
+        left: 60px;
+    }
+    .btnDataContainer{
+        position: absolute;
+        width:80%;
+        top: 345px;
+        left: 45px;
+    }
+    .btn{
+        width: 99px;
+        height: 31px;
+        top: 345px;
+        left: 509px;
+    }
+    .btnText{
+        width: 75px;
+        height: 21px;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 21px;
+    }
+    .data{
+        width: 105px;
+        height: 24px;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 24px;
+    }
+}
+
+@media(min-width: 1500px){
+    .container {
+        width: 926px;
+        height: 415px;
+        border-radius: 41px;
+    }
+    .content{
+        width: 926px;
+        height: 415px;
+        border-radius: 41px;
+    }
+    .gamesContainer{
+        top: 47px;
+        left: 56px;
+        width: 258px;
+        height: 70px;
+    }
+    .img{
+        width: 57px;
+        height: 70px;
+    }
+    .textContainer{
+        margin-left: 55px;
+    }
+    .mainTitle{
+        margin-top: 5px;
+        width: 96px;
+        height: 24px;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 24px;
+    }
+    .title{
+        font-weight: 300;
+        font-size: 14px;
+        line-height: 21px;
+        margin-top: 15px;
+    }
+    .usersAccContainer{
+        display: flex;
+        position: absolute;
+        width: 147px;
+        height: 70px;
+        top: 306px;
+        left: 56px;
+    }
+    .usersInfo{
+        margin-left: 25px;
+    }
+    .usersAvatar {
+        width: 70px;
+        height: 70px;
+    }
+    .userName{
+        width: 61px;
+        height: 34px;
+        font-weight: 400;
+        font-size: 28px;
+        line-height: 34px;
+    }
+    .userStatus{
+        font-weight: 300;
+        font-size: 12px;
+        line-height: 14px;
+    }
+    .reviewContainer{
+        width: 50%;
+        height: 415px;
+        right: 0;
+        border-radius: 41px;
+    }
+    .review{
+        width: 365px;
+        height: 135px;
+        margin-top: 20px;
+        margin-left: 50px;
+    }
+    .reviewMainTitle{
+        font-weight: 300;
+        font-size: 18px;
+        line-height: 27px;
+    }
+    .reviewTitle{
+        width:365px;
+        font-weight: 300;
+        font-size: 18px;
+        line-height: 27px;
+    }
+    .line{
+        position: absolute;
+        margin-top: 85px;
+        width: 366px;
+        top: 220px;
+        left: 80px;
+    }
+    .btnDataContainer{
+        position: absolute;
+        width:366px;
+        top: 330px;
+        left: 85px;
+    }
+    .btn{
+        width: 99px;
+        height: 31px;
+        top: 345px;
+        left: 509px;
+    }
+    .btnText{
+        width: 75px;
+        height: 21px;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 21px;
+    }
+    .data{
+        width: 105px;
+        height: 24px;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 24px;
+    }
+}

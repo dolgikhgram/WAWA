@@ -1,0 +1,41 @@
+.gameList {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    overflow-x: auto;
+    max-width: 1032px;
+    height: 205px;
+}
+
+.gameCard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 13px;
+    border-radius: 24px;
+    transition: transform 0.2s;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(113, 95, 255, 1);
+
+}
+
+.gameImage1 {
+    width: 112px;
+    height: 148px;
+    object-fit: cover;
+    border-radius: 24px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.gameImage2,
+.gameImage3,
+.gameImage4,
+.gameImage5,
+.gameImage6 {
+    width: 84px;
+    height: 113px;
+    object-fit: cover;
+    border-radius: 24px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}

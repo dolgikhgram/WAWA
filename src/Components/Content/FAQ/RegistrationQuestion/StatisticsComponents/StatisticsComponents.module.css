@@ -1,0 +1,218 @@
+.container{
+    position: absolute;
+    border-radius: 41px;
+    background: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(162x);
+}
+.lines{
+    width: 100%;
+    height: 100%;
+    border-radius: 41px;
+}
+.img{
+    position: absolute;
+}
+.vector{
+    position: absolute;
+    border-radius: 45px;
+    border: 1px solid rgba(255, 255, 255, 0.2)
+}
+.mainTitle{
+    position: absolute;
+    font-family: Magistral,serif;
+    color: rgba(255, 255, 255, 0.8);
+}
+.title{
+    position: absolute;
+    font-family: Magistral,serif;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+@media (min-width: 320px){
+    .container{
+        top:0;
+        right: 0;
+        width: 337px;
+        height: 186px;
+    }
+    .img{
+        width: 112px;
+        height: 45px;
+        top: 23px;
+        left: 24px;
+    }
+    .vector{
+        width: 266px;
+        top:85px;
+        left: 27px;
+    }
+    .mainTitle{
+        width: 167px;
+        height: 25px;
+        top: 102px;
+        left: 27px;
+        font-weight: 400;
+        font-size: 21px;
+        line-height: 25px;
+    }
+    .title{
+        width: 167px;
+        height: 19px;
+        top: 134px;
+        left: 27px;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 20px;
+    }
+}
+
+@media (min-width: 768px){
+    .container{
+        top:0;
+        right: 0;
+        width: 689px;
+        height: 91px;
+    }
+    .img{
+        width: 112px;
+        height: 45px;
+        top: 23px;
+        left: 24px;
+    }
+    .vector{
+        position: absolute;
+        opacity: 0;
+        width: 689px;
+        top:85px;
+        left: 27px;
+    }
+    .mainTitle{
+        width: 167px;
+        height: 25px;
+        top: 33px;
+        left: 311px;
+        font-weight: 400;
+        font-size: 21px;
+        line-height: 25px;
+    }
+    .title{
+        width: 167px;
+        height: 19px;
+        top: 37px;
+        left: 488px;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 20px;
+    }
+}
+@media (min-width: 992px){
+    .container{
+        right: 50px;
+        width: 40%;
+        height: 500px;
+    }
+    .img{
+        width: 158px;
+        height: 64px;
+        top: 126px;
+        left: 61px;
+    }
+    .vector{
+        position: absolute;
+        opacity: 1;
+        width: 65%;
+        top: 218px;
+        left: 37px;
+    }
+    .mainTitle{
+        width: 313px;
+        height: 38px;
+        top: 237px;
+        left: 40px;
+        font-weight: 400;
+        font-size: 32px;
+        line-height: 38px;
+    }
+    .title{
+        width: 313px;
+        height: 29px;
+        top: 281px;
+        left: 40px;
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 29px;
+    }
+}
+@media (min-width: 1200px){
+    .container{
+        right: 60px;
+        width: 30%;
+        height: 426px;
+    }
+    .img{
+        width: 158px;
+        height: 64px;
+        top: 126px;
+        left: 61px;
+    }
+    .vector{
+        width: 70%;
+        top: 218px;
+        left: 65px;
+    }
+    .mainTitle{
+        width: 313px;
+        height: 38px;
+        top: 237px;
+        left: 62px;
+        font-weight: 400;
+        font-size: 32px;
+        line-height: 38px;
+    }
+    .title{
+        width: 313px;
+        height: 29px;
+        top: 281px;
+        left: 62px;
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 29px;
+    }
+}
+
+@media (min-width: 1500px){
+    .container{
+        right: 70px;
+        width: 435px;
+        height: 426px;
+    }
+    .img{
+        width: 158px;
+        height: 64px;
+        top: 126px;
+        left: 61px;
+    }
+    .vector{
+        width: 307px;
+        top: 218px;
+        left: 65px;
+    }
+    .mainTitle{
+        width: 313px;
+        height: 38px;
+        top: 237px;
+        left: 62px;
+        font-weight: 400;
+        font-size: 32px;
+        line-height: 38px;
+    }
+    .title{
+        width: 313px;
+        height: 29px;
+        top: 281px;
+        left: 62px;
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 29px;
+    }
+}

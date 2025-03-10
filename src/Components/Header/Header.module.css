@@ -1,0 +1,132 @@
+.container {
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.frame{
+    display: flex;
+}
+.landing{
+    position: absolute;
+    font-family: "Geologica", serif;
+    font-weight: lighter;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+.landing:hover{
+    opacity: 100%;
+    border-bottom: 1px solid #FFFFFF;
+}
+.landingSecond{
+    font-family: "Geologica", serif;
+    font-weight: lighter;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+.landingSecond:hover{
+    opacity: 80%;
+    border-bottom: 1px solid #FFFFFF;
+}
+.btnBoostYourGame{
+    position: static;
+}
+.menu{
+    width: 25px;
+    height: 7px;
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+}
+
+@media(min-width: 320px){
+    .container {
+        width: 100%;
+        height: 76px;
+    }
+    .frame{
+        width: 499px;
+        height: 27px;
+        gap: 40px;
+    }
+    .landing{
+        position: absolute;
+        font-size: 16px;
+        opacity: 0;
+    }
+    .landingSecond{
+        position: absolute;
+        font-size: 16px;
+        opacity: 0;
+    }
+    .btnBoostYourGame{
+        position: absolute;
+        opacity: 0;
+    }
+    .menu{
+        position: static;
+        opacity: 1;
+        margin-right: 25px;
+    }
+}
+
+@media(min-width: 768px){
+    .container {
+        width: 100%;
+        height: 76px;
+    }
+    .frame{
+        width: 499px;
+        height: 27px;
+        gap: 40px;
+    }
+    .landing{
+        position: absolute;
+        font-size: 16px;
+        opacity: 0;
+    }
+    .landingSecond{
+        position: absolute;
+        font-size: 16px;
+        opacity: 0;
+    }
+    .btnBoostYourGame{
+        position: absolute;
+        opacity: 0;
+    }
+    .menu{
+        position: static;
+        opacity: 1;
+        margin-right: 0;
+    }
+}
+
+@media(min-width: 998px){
+    .container {
+        width: 100%;
+        height: 76px;
+    }
+    .frame{
+        width: 499px;
+        height: 27px;
+        gap: 40px;
+    }
+    .landing{
+        position: static;
+        font-size: 16px;
+        opacity: 80%;
+    }
+    .landingSecond{
+        position: static;
+        font-size: 16px;
+        opacity: 60%;
+    }
+    .btnBoostYourGame{
+        position: static;
+        opacity: 1;
+    }
+    .menu{
+        position: absolute;
+        opacity: 0;
+    }
+}
