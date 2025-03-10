@@ -11,6 +11,23 @@ type GameListPropsType = {
     showFormHandler: ()=> void
 };
 
+type ImageMap = {
+    [key: number]: string;
+};
+
+type TitleMap = {
+    [key: number]: string;
+};
+
+type PerkPowerItem = {
+    title: string;
+    description: string;
+};
+
+type PerkPowerMap = {
+    [key: number]: PerkPowerItem;
+};
+
 const GameList: React.FC<GameListPropsType> = ({id, showFormHandler}) => {
     const [currentCard, setCurrentCard] = useState<number>(0);
     const [screenWidth, setScreenWidth] = useState(window.innerWidth);
@@ -27,8 +44,8 @@ const GameList: React.FC<GameListPropsType> = ({id, showFormHandler}) => {
         };
     }, []);
     console.log(screenWidth);
-    const mainImgMap = {
-        0: '../../../../public/Destiny2Back.png',
+    const mainImgMap: ImageMap = {
+        0: '../../../../public/BlackOps6Back.png',
         1: '../../../../public/CoDMW2.png',
         2: '../../../../public/WarzoneBack.png',
         3: '../../../../public/BlackOps6Back.png',
@@ -36,16 +53,16 @@ const GameList: React.FC<GameListPropsType> = ({id, showFormHandler}) => {
         5: '../../../../public/SP2Back.png',
         6: '../../../../public/BlackOPS6ZombiesBack.png'
     }
-    const mainImgMobileMap = {
+    const mainImgMobileMap: ImageMap = {
         0: '../../../../public/Destiny2BackMobile.png',
         1: '../../../../public/CoDMW2Mobile.png',
         2: '../../../../public/WarzoneBackMobile.png',
         3: '../../../../public/BlackOps6BackMobile.png',
         4: '../../../../public/CoDMW3BackMobile.png',
         5: '../../../../public/SP2BackMobile.png',
-        6: '../../../../public/BlackOPS6ZombiesBackMobile.png.png'
+        6: '../../../../public/BlackOPS6ZombiesBackMobile.png'
     }
-    const soldierMap = {
+    const soldierMap: ImageMap = {
         0:'../../../../public/DestinySoldier.png',
         1:'../../../../public/CoDMW2Soldier.png',
         2:'../../../../public/WarzoneSoldier.png',
@@ -54,7 +71,7 @@ const GameList: React.FC<GameListPropsType> = ({id, showFormHandler}) => {
         5:'../../../../public/SMSoldier.png',
         6:'../../../../public/BO6ZombiesSoldier.png'
     }
-    const mainTitleMap = {
+    const mainTitleMap: TitleMap = {
         0:'Destiny 2',
         1:'CoD MW2',
         2:'WARZONE',
@@ -63,16 +80,16 @@ const GameList: React.FC<GameListPropsType> = ({id, showFormHandler}) => {
         5:'SPACE MARINE 2',
         6:'ZOMBIES'
     }
-    const titleMap = {
+    const titleMap: TitleMap = {
         0:'',
         1:'',
         2:'',
         3:'',
         4:'',
         5:'WARHAMMER',
-        6:'BLACK OPS 6',
+        6:'BLACK OPS 6'
     }
-    const descriptionMap = {
+    const descriptionMap: TitleMap = {
         0:'Boosting in Destiny 2 includes completing raids, dungeons, PvP activities (such as Trials of Osiris and Crucible), Nightfalls, power level upgrades, seasonal content, exotic quests, and triumphs.',
         1:'Boosting in Call of Duty: Modern Warfare 2 includes leveling up your rank, unlocking weapons and attachments, completing camo challenges, earning killstreaks, progressing through Spec Ops missions, and dominating multiplayer matches.',
         2:'Boosting in Call of Duty: Warzone includes increasing your K/D ratio, leveling up weapons, completing battle pass tiers, earning wins, unlocking skins and camos, and completing challenges to dominate the battlefield effortlessly.',
@@ -81,7 +98,7 @@ const GameList: React.FC<GameListPropsType> = ({id, showFormHandler}) => {
         5:'Boosting in Warhammer 40,000: Space Marine 2 includes leveling up your character, unlocking weapons and abilities, completing campaign missions, mastering multiplayer combat, and earning achievements to enhance your gameplay experience efficiently.',
         6:'Boosting in Call of Duty: Black Ops 6 Zombies includes leveling up, unlocking powerful weapons and perks, completing missions, surviving endless waves of undead, and mastering the latest maps.'
     }
-    const perkPowerMap1 = {
+    const perkPowerMap1: PerkPowerMap = {
         0:{
             title:'LIGHT POWER',
             description:'Level up and face the darkness'
@@ -96,14 +113,14 @@ const GameList: React.FC<GameListPropsType> = ({id, showFormHandler}) => {
         },
         3:{
             title:'TRAINING',
-            description:'You’re ready for the next mission'
+            description:'You ready for the next mission'
         },
         4:{
             title:'OPERATOR RANK',
             description:'Rank up and take command on the battlefield'
         },
         5:{
-            title:'EMPEROR’S WRATH',
+            title:'EMPEROR WRATH',
             description:'Purge the heretics, crush the xenos – for the Imperium'
         },
         6:{
@@ -111,14 +128,14 @@ const GameList: React.FC<GameListPropsType> = ({id, showFormHandler}) => {
             description:'stronger'
         }
     }
-    const perkPowerMap2 = {
+    const perkPowerMap2: PerkPowerMap = {
         0:{
             title:'GUARDIAN STRENGTH',
             description:'Upgrade your gear and become legend'
         },
         1:{
             title:'KILLSTREAK',
-            description:'You’re one step closer to that nuke'
+            description:'You\'re one step closer to that nuke'
         },
         2:{
             title:'LOADOUT EFFICIENCY',
@@ -126,7 +143,7 @@ const GameList: React.FC<GameListPropsType> = ({id, showFormHandler}) => {
         },
         3:{
             title:'EXECUTION',
-            description:'Your skills aren’t. Get in, get out, stay alive'
+            description:'Your skills aren\'t. Get in, get out, stay alive'
         },
         4:{
             title:'SUPREMACY',
@@ -147,7 +164,7 @@ const GameList: React.FC<GameListPropsType> = ({id, showFormHandler}) => {
     },[])
     return (
         <div id={id} className={styles.variants}>
-            {/*<img src=''/>*/}
+            {/*<img src='../../../../public/BlackOps6Back.png'/>*/}
             <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                 <GameSelection/>
             </div>
