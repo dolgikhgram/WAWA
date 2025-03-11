@@ -31,7 +31,7 @@ type WhyWePropsType ={
     id:string;
 }
 
-const WhyWe:React.FC<WhyWePropsType> = ({id}) => {
+const WhyWe:React.FC<WhyWePropsType> = React.memo(({id}) => {
     return (
         <div id={id} className={styles.container}>
             <div className={styles.containerText}>
@@ -85,6 +85,6 @@ const WhyWe:React.FC<WhyWePropsType> = ({id}) => {
             </div>
         </div>
     );
-};
+});
 
 export default WhyWe;

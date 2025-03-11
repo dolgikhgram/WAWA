@@ -1,12 +1,12 @@
 import styles from "./Polygon.module.css";
 import LevelUpCard from "./Card/LevelUpCard.tsx";
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
 interface PolygonPropsType {
     isFormOpen: boolean;
 }
 
-const Polygon: React.FC<PolygonPropsType> = ({ isFormOpen }) => {
+const Polygon: React.FC<PolygonPropsType> = React.memo(({ isFormOpen }) => {
     const cardData = [
         {
             title: "XP BOOST",
@@ -87,6 +87,6 @@ const Polygon: React.FC<PolygonPropsType> = ({ isFormOpen }) => {
             </div>
         </div>
     );
-};
+});
 
 export default Polygon;

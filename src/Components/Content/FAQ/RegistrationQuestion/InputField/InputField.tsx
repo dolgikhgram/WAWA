@@ -8,7 +8,7 @@ interface InputFieldProps {
     width?: string
 }
 
-const InputField: React.FC<InputFieldProps> = ({ label, type, id, width }) => {
+const InputField: React.FC<InputFieldProps> = React.memo(({ label, type, id, width }) => {
     return (
         <div className={styles.inputWrapper}>
             <div id={id} style={{width: width || '100%' }}>
@@ -22,6 +22,6 @@ const InputField: React.FC<InputFieldProps> = ({ label, type, id, width }) => {
             </div>
         </div>
     );
-};
+});
 
 export default InputField;

@@ -8,7 +8,7 @@ interface PerkPowerProps {
     segments: number;
 }
 
-const PerkPower: React.FC<PerkPowerProps> = ({ title, description, powerValue, segments }) => {
+const PerkPower: React.FC<PerkPowerProps> = React.memo(({ title, description, powerValue, segments }) => {
     return (
         <div>
             <div className={styles.line}></div>
@@ -29,6 +29,6 @@ const PerkPower: React.FC<PerkPowerProps> = ({ title, description, powerValue, s
         </div>
 
     );
-};
+});
 
 export default PerkPower;

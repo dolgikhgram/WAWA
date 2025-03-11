@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useCallback, useState} from 'react';
 import styles from './Reviews.module.css';
 import ReviewsBox from "./ReviewsBox/ReviewsBox.tsx";
 
@@ -60,12 +60,12 @@ const reviewsData = [
     }
 ];
 
-const Reviews: React.FC<ReviewsPropsType> = ({id}) => {
+const Reviews: React.FC<ReviewsPropsType> = React.memo(({id}) => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isAnimating, setIsAnimating] = useState(false);
     const [slideDirection, setSlideDirection] = useState<'slideLeft' | 'slideRight' | ''>('');
 
-    const handlePrevClick = () => {
+    const handlePrevClick = useCallback(() => {
         if (isAnimating) return;
         setIsAnimating(true);
         setSlideDirection('slideRight');
@@ -77,9 +77,9 @@ const Reviews: React.FC<ReviewsPropsType> = ({id}) => {
             setSlideDirection('');
             setIsAnimating(false);
         }, 800);
-    };
+    },[]);
 
-    const handleNextClick = () => {
+    const handleNextClick = useCallback(() => {
         if (isAnimating) return;
         setIsAnimating(true);
         setSlideDirection('slideLeft');
@@ -91,7 +91,7 @@ const Reviews: React.FC<ReviewsPropsType> = ({id}) => {
             setSlideDirection('');
             setIsAnimating(false);
         }, 800);
-    };
+    },[]);
 
     return (
         <div id={id}>
@@ -137,6 +137,6 @@ const Reviews: React.FC<ReviewsPropsType> = ({id}) => {
             </div>
         </div>
     );
-};
+});
 
 export default Reviews;

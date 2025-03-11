@@ -6,7 +6,7 @@ type QuestionPropsType = {
     answer: string
 }
 
-const Question: React.FC<QuestionPropsType> = ({ title, answer }) => {
+const Question: React.FC<QuestionPropsType> = React.memo(({ title, answer }) => {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
@@ -31,6 +31,6 @@ const Question: React.FC<QuestionPropsType> = ({ title, answer }) => {
             )}
         </div>
     );
-};
+});
 
 export default Question;

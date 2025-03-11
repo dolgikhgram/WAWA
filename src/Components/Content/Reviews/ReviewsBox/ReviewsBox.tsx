@@ -21,7 +21,7 @@ type ReviewsBoxProps = {
     };
 };
 
-const ReviewsBox: React.FC<ReviewsBoxProps> = ({review}) => {
+const ReviewsBox: React.FC<ReviewsBoxProps> = React.memo(({review}) => {
     return (
         <div className={styles.container}>
             <div className={styles.content}>
@@ -54,6 +54,6 @@ const ReviewsBox: React.FC<ReviewsBoxProps> = ({review}) => {
             </div>
         </div>
     );
-};
+});
 
 export default ReviewsBox;

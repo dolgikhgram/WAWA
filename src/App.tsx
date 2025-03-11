@@ -2,7 +2,7 @@ import './App.css'
 import Header from './Components/Header/Header.tsx';
 import Footer from "./Components/Footer/Footer.tsx";
 import Form from "./Components/Form/Form.tsx";
-import {useState} from "react";
+import {useCallback, useState} from "react";
 import WeBoostYouWin from "./Components/Content/WeBoostYouWin/WeBoostYouWin.tsx";
 import GameList from "./Components/Content/GameList/GameList.tsx";
 import HowWeWork from "./Components/Content/HowWeWork/HowWeWork.tsx";
@@ -15,21 +15,21 @@ import BackgroundFlashes from './Components/BackgroundFlashes/BackgroundFlashes.
 function App() {
     const [showForm, setShowForm] = useState(false);
     const [showMenu, setShowMenu] = useState(false);
-    const showFormHandler = () => {
+    const showFormHandler = useCallback( () => {
         setShowForm(true);
-    }
-    const showMenuHandler = () => {
+    },[])
+    const showMenuHandler = useCallback(() => {
         setShowMenu(true);
-    }
-    const closeFormHandler = () => {
+    },[])
+    const closeFormHandler = useCallback( () => {
         setShowForm(false);
-    }
-    const closeMenuHandler = () => {
+    },[])
+    const closeMenuHandler = useCallback(() => {
         setShowMenu(false);
-    }
+    },[])
         return (
         <div className={'container'}>
-            <BackgroundFlashes />
+            <BackgroundFlashes/>
             <div style={{position: "relative", display: "flex", flexDirection: "column", alignItems:"center"}}>
                 <img 
                     className={"wallpaper"} 

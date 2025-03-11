@@ -7,7 +7,7 @@ type RegistrationQuestionPropsType = {
     showFormHandler: () => void
 }
 
-const RegistrationQuestion: React.FC<RegistrationQuestionPropsType> = ({showFormHandler}) => {
+const RegistrationQuestion: React.FC<RegistrationQuestionPropsType> = React.memo(({showFormHandler}) => {
     return (
         <div className={styles.container}>
             <img className={styles.background} src='../../../../../public/RegistrationQuestionBackground.png'
@@ -49,6 +49,6 @@ const RegistrationQuestion: React.FC<RegistrationQuestionPropsType> = ({showForm
             <StatisticsComponents/>
         </div>
     );
-};
+});
 
 export default RegistrationQuestion;

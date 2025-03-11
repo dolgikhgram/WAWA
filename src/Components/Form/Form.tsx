@@ -6,7 +6,7 @@ type FormPropsType = {
     closeFormHandler:()=>void,
 }
 
-const Form : React.FC<FormPropsType> = ({closeFormHandler}) => {
+const Form : React.FC<FormPropsType> =React.memo(({closeFormHandler}) => {
     return (
         <div>
             <div onClick={closeFormHandler} className={styles.overlay}/>
@@ -91,6 +91,6 @@ const Form : React.FC<FormPropsType> = ({closeFormHandler}) => {
             </div>
         </div>
     );
-};
+});
 
 export default Form;

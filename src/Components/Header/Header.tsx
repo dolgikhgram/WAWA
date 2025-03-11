@@ -7,7 +7,7 @@ type HeaderPropsType = {
     showMenuHandler: ()=> void;
 }
 
-const Header: React.FC<HeaderPropsType> = ({showFormHandler, showMenuHandler}) => {
+const Header: React.FC<HeaderPropsType> =React.memo(({showFormHandler, showMenuHandler}) => {
     // const  [isOpenMenu, setIsOpenMenu]=useState(false);
     const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
         e.preventDefault();
@@ -40,6 +40,6 @@ const Header: React.FC<HeaderPropsType> = ({showFormHandler, showMenuHandler}) =
                 </button>
         </div>
     );
-};
+});
 
 export default Header;

@@ -8,7 +8,7 @@ type MenuPropsType = {
 }
 
 
-const Menu : React.FC<MenuPropsType> = ({showFormHandler, closeMenuHandler}) => {
+const Menu : React.FC<MenuPropsType> = React.memo(({showFormHandler, closeMenuHandler}) => {
     return (
         <div className={styles.overlay}>
             <div className={styles.container}>
@@ -36,6 +36,6 @@ const Menu : React.FC<MenuPropsType> = ({showFormHandler, closeMenuHandler}) => 
             </div>
         </div>
     );
-};
+});
 
 export default Menu;

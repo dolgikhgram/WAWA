@@ -31,7 +31,7 @@ const questionMap = [
     },
 ]
 
-const FAQ : React.FC<FAQPropsType>  = ({id, showFormHandler}) => {
+const FAQ : React.FC<FAQPropsType>  = React.memo(({id, showFormHandler}) => {
     return (
         <div id={id} style={{display: "flex", justifyContent: "center", alignContent: "center", flexDirection: "column", marginBottom:'85px', width:'100%'}}>
             <div style={{display:'flex', justifyContent:'center', alignContent:'center'}}>
@@ -58,6 +58,6 @@ const FAQ : React.FC<FAQPropsType>  = ({id, showFormHandler}) => {
         </div>
 
     );
-};
+});
 
 export default FAQ;

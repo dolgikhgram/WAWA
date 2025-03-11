@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './GameSelection.module.css';
 
-const GameSelection: React.FC = () => {
+const GameSelection: React.FC = React.memo(() => {
     return (
         <>
             <div className={styles.container}>
@@ -13,6 +13,6 @@ const GameSelection: React.FC = () => {
             </div>
         </>
     );
-};
+});
 
 export default GameSelection;

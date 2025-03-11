@@ -6,7 +6,7 @@ type GroupPropsType = {
     title:string
 }
 
-const Group:React.FC<GroupPropsType> = ({mainTitle,title}) => {
+const Group:React.FC<GroupPropsType> = React.memo(({mainTitle,title}) => {
     return (
         <div>
             <div className={styles.group}>
@@ -18,6 +18,6 @@ const Group:React.FC<GroupPropsType> = ({mainTitle,title}) => {
             </div>
         </div>
     );
-};
+});
 
 export default Group;

@@ -16,7 +16,7 @@ const games: Game[] = [
     { id: 6, image: "https://cdn.builder.io/api/v1/image/assets/TEMP/9581b53b3e30ecd08d3dcd0499756dcb85ab29250f3f252edbc4cba093a16704?apiKey=8a3404d7eee74db5a8def1a4eb5e7a09&", altText: "Game 6" },
 ];
 
-const GameCards: React.FC = () => {
+const GameCards: React.FC = React.memo( () => {
     return (
         <div className={styles.gameList}>
             {games.map((game) => (
@@ -26,6 +26,6 @@ const GameCards: React.FC = () => {
             ))}
         </div>
     );
-};
+});
 
 export default GameCards;

@@ -2,6 +2,7 @@ import Button from "../../Button/Button.tsx";
 import styles from './WeBoostYouWin.module.css'
 import Polygon from "./Polygon/Polygon.tsx";
 import SaveTimeComponent from "./SaveTimeComponent/SaveTimeComponent.tsx";
+import React from "react";
 
 type WeBoostYouWinPropsType = {
     showFormHandler:()=>void,
@@ -9,7 +10,7 @@ type WeBoostYouWinPropsType = {
     isMenuOpen: boolean
 }
 
-const WeBoostYouWin : React.FC<WeBoostYouWinPropsType> = ({showFormHandler, isFormOpen, isMenuOpen}) => {
+const WeBoostYouWin : React.FC<WeBoostYouWinPropsType> = React.memo(({showFormHandler, isFormOpen, isMenuOpen}) => {
     return (
         <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
             <div className={styles.weBoostYouWinContainer}>
@@ -68,6 +69,6 @@ const WeBoostYouWin : React.FC<WeBoostYouWinPropsType> = ({showFormHandler, isFo
                 <SaveTimeComponent/>
         </div>
     );
-};
+});
 
 export default WeBoostYouWin;

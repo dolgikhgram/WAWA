@@ -4,11 +4,11 @@ import styles from "./MainImg.module.css";
 type MainImgPropsType = {
     soldierImg: string,
     currentCard: number,
-    mainImg?: undefined
+    mainImg?: string
 }
 
 
-const MainImg: React.FC<MainImgPropsType> = ({mainImg, soldierImg, currentCard}) => {
+const MainImg: React.FC<MainImgPropsType> = React.memo(({mainImg, soldierImg, currentCard}) => {
     return (
         <div className={styles.container}>
             <div className={styles.imageWrapper}>
@@ -42,6 +42,6 @@ const MainImg: React.FC<MainImgPropsType> = ({mainImg, soldierImg, currentCard})
             </div>
         </div>
     );
-};
+});
 
 export default MainImg;

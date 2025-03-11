@@ -7,7 +7,7 @@ interface Flash {
     left: number;
 }
 
-const BackgroundFlashes: React.FC = () => {
+const BackgroundFlashes: React.FC = React.memo(() => {
     const [flashes, setFlashes] = useState<Flash[]>([]);
 
     useEffect(() => {
@@ -77,6 +77,6 @@ const BackgroundFlashes: React.FC = () => {
             ))}
         </div>
     );
-};
+});
 
 export default BackgroundFlashes; 

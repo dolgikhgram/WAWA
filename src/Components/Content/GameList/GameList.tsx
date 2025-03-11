@@ -28,7 +28,7 @@ type PerkPowerMap = {
     [key: number]: PerkPowerItem;
 };
 
-const GameList: React.FC<GameListPropsType> = ({id, showFormHandler}) => {
+const GameList: React.FC<GameListPropsType> = React.memo(({id, showFormHandler}) => {
     const [currentCard, setCurrentCard] = useState<number>(0);
     const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
@@ -211,6 +211,6 @@ const GameList: React.FC<GameListPropsType> = ({id, showFormHandler}) => {
             </div>
         </div>
     );
-};
+});
 
 export default GameList;

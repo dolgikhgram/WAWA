@@ -25,7 +25,7 @@ const elementMap = {
     },
 }
 
-const HowWeWork: React.FC<HowWeWorkPropsType> = ({id}) => {
+const HowWeWork: React.FC<HowWeWorkPropsType> = React.memo(({id}) => {
     const [selectedNumber, setSelectedNumber] = useState('01');
     const [isAnimating, setIsAnimating] = useState(false);
 
@@ -38,9 +38,12 @@ const HowWeWork: React.FC<HowWeWorkPropsType> = ({id}) => {
 
     const handleNumberClick = (number: string) => {
         if (number === selectedNumber) return;
+        
         setIsAnimating(true);
         setSelectedNumber(number);
-        setTimeout(() => setIsAnimating(false), 300);
+        const timer = setTimeout(() => setIsAnimating(false), 300);
+        
+        return () => clearTimeout(timer);
     };
 
     return (
@@ -83,6 +86,6 @@ const HowWeWork: React.FC<HowWeWorkPropsType> = ({id}) => {
             </div>
         </div>
     );
-};
+});
 
 export default HowWeWork;

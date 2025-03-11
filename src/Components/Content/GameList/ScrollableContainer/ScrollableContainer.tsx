@@ -22,18 +22,16 @@ type ScrollableContainerPropsType = {
     currentCardHandler: (index: number) => void,
 }
 
-const ScrollableContainer: React.FC<ScrollableContainerPropsType> = ({ currentCardHandler }) => {
+const ScrollableContainer: React.FC<ScrollableContainerPropsType> = React.memo(({ currentCardHandler }) => {
     const listRef = useRef<HTMLUListElement>(null);
     const [currentIndex, setCurrentIndex] = useState(gamesList.length);
     const [highlightedIndex, setHighlightedIndex] = useState(gamesList.length + 1);
     const [isAnimating, setIsAnimating] = useState(false);
 
-    // Создаем расширенный список для бесконечной прокрутки
     const extendedItems = [...gamesList, ...gamesList, ...gamesList];
 
     useEffect(() => {
         if (listRef.current) {
-            // Начальная позиция - середина списка
             const items = listRef.current.querySelectorAll(`.${styles.item}`);
             if (items.length > 0) {
                 const itemWidth = items[0].getBoundingClientRect().width;
@@ -105,6 +103,6 @@ const ScrollableContainer: React.FC<ScrollableContainerPropsType> = ({ currentCa
             </button>
         </div>
     );
-};
+});
 
 export default ScrollableContainer;

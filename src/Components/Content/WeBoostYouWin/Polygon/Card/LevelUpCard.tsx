@@ -10,7 +10,7 @@ interface LevelUpCardProps {
     pointsGained: number;
 }
 
-const LevelUpCard: React.FC<LevelUpCardProps> = ({
+const LevelUpCard: React.FC<LevelUpCardProps> = React.memo(({
                                                      title,
                                                      description,
                                                      totalSegments,
@@ -27,6 +27,6 @@ const LevelUpCard: React.FC<LevelUpCardProps> = ({
             </div>
         </div>
     );
-};
+});
 
 export default LevelUpCard;
