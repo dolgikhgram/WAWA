@@ -290,16 +290,10 @@
     }
     .imageBackGround {
         width: 400px;
-        height: 642px;
+        height: 101%;
 
         left: 0;
         border-radius: 50px;
-    }
-    .imageSoldier{
-        width: 277px;
-        height: 567px;
-        left: -50px;
-        top: 70px;
     }
     .imageSoldierDestiny2{
         position: absolute;
@@ -310,45 +304,45 @@
     }
     .imageSoldierCoDMW2{
         position: absolute;
-        width: 266px;
-        height: 569px;
-        top: 122px;
-        left: 195px;
+        width: 319px;
+        height: 682px;
+        top: 12px;
+        left: 155px;
     }
     .imageSoldierWarzone{
         position: absolute;
-        width: 276px;
-        height: 596px;
-        top: 105px;
-        left: 160px;
+        width: 331px;
+        height: 715px;
+        top: -8px;
+        left: 129px;
     }
     .imageSoldierBlackOps{
         position: absolute;
-        width: 248px;
-        height: 573px;
-        top: 125px;
-        left: 160px;
+        width: 298px;
+        height: 688px;
+        top: 6px;
+        left: 125px;
     }
     .imageSoldierCoDMW3{
         position: absolute;
-        width: 263px;
-        height: 568px;
-        top: 125px;
-        left: 160px;
+        width: 298px;
+        height: 682px;
+        top: 15px;
+        left: 150px;
     }
     .imageSoldierSM2{
         position: absolute;
-        width: 398px;
-        height: 517px;
-        top: 150px;
-        left: 0;
+        width: 478px;
+        height: 620px;
+        top: 47px;
+        left: -45px;
     }
     .imageSoldierBlackOpsZombies{
         position: absolute;
-        width: 277px;
-        height: 567px;
-        top: 135px;
-        left: -70px;
+        width: 332px;
+        height: 680px;
+        top: 15px;
+        left: -85px;
     }
 }
 
@@ -371,12 +365,6 @@
         height: 622px;
         left: 0;
         border-radius: 50px;
-    }
-    .imageSoldier{
-        width: 277px;
-        height: 567px;
-        top: 0;
-        left:0;
     }
     .imageSoldierDestiny2{
         position: absolute;

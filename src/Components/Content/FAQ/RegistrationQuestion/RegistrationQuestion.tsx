@@ -10,7 +10,7 @@ type RegistrationQuestionPropsType = {
 const RegistrationQuestion: React.FC<RegistrationQuestionPropsType> = React.memo(({showFormHandler}) => {
     return (
         <div className={styles.container}>
-            <img className={styles.background} src='../../../../../public/RegistrationQuestionBackground.png'
+            <img className={styles.background} src='./RegistrationQuestionBackground.png'
                  alt='background'>
             </img>
             <div style={{display: 'flex', flexDirection: 'column'}}>
@@ -27,7 +27,7 @@ const RegistrationQuestion: React.FC<RegistrationQuestionPropsType> = React.memo
                     <div>
                         <button className={styles.btn} onClick={()=>showFormHandler()}>
                             <div className={styles.textBtn}>Send data</div>
-                            <img src='../../../../../public/VectorBtnQuestion.png' alt='vector'/>
+                            <img src='./VectorBtnQuestion.png' alt='vector'/>
                         </button>
                         <div className={styles.termsWrapper}>
                             <input type="checkbox" id="terms" className={styles.termsCheckbox}/>

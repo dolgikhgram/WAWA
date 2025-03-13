@@ -18,7 +18,7 @@ const Question: React.FC<QuestionPropsType> = React.memo(({ title, answer }) => 
                     onClick={() => setIsOpen(!isOpen)}
                 >
                     <img 
-                        src='../../../../../public/VectorUpwards.png' 
+                        src='./VectorUpwards.png'
                         alt='vector'
                         style={{ transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.3s ease' }}
                     />

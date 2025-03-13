@@ -43,33 +43,33 @@ const GameList: React.FC<GameListPropsType> = React.memo(({id, showFormHandler})
             window.removeEventListener('resize', handleResize);
         };
     }, []);
-    console.log(screenWidth);
+
     const mainImgMap: ImageMap = {
-        0: '../../../../public/BlackOps6Back.png',
-        1: '../../../../public/CoDMW2.png',
-        2: '../../../../public/WarzoneBack.png',
-        3: '../../../../public/BlackOps6Back.png',
-        4: '../../../../public/CoDMW3Back.png',
-        5: '../../../../public/SP2Back.png',
-        6: '../../../../public/BlackOPS6ZombiesBack.png'
+        0: './BlackOps6Back.png',
+        1: './CoDMW2.png',
+        2: './WarzoneBack.png',
+        3: './BlackOps6Back.png',
+        4: './CoDMW3Back.png',
+        5: './SP2Back.png',
+        6: './BlackOPS6ZombiesBack.png'
     }
     const mainImgMobileMap: ImageMap = {
-        0: '../../../../public/Destiny2BackMobile.png',
-        1: '../../../../public/CoDMW2Mobile.png',
-        2: '../../../../public/WarzoneBackMobile.png',
-        3: '../../../../public/BlackOps6BackMobile.png',
-        4: '../../../../public/CoDMW3BackMobile.png',
-        5: '../../../../public/SP2BackMobile.png',
-        6: '../../../../public/BlackOPS6ZombiesBackMobile.png'
+        0: './Destiny2BackMobile.png',
+        1: './CoDMW2Mobile.png',
+        2: './WarzoneBackMobile.png',
+        3: './BlackOps6BackMobile.png',
+        4: './CoDMW3BackMobile.png',
+        5: './SP2BackMobile.png',
+        6: './BlackOPS6ZombiesBackMobile.png.png'
     }
     const soldierMap: ImageMap = {
-        0:'../../../../public/DestinySoldier.png',
-        1:'../../../../public/CoDMW2Soldier.png',
-        2:'../../../../public/WarzoneSoldier.png',
-        3:'../../../../public/BlackOps6Soldier.png',
-        4:'../../../../public/CoDMW3Soldier.png',
-        5:'../../../../public/SMSoldier.png',
-        6:'../../../../public/BO6ZombiesSoldier.png'
+        0:'./DestinySoldier.png',
+        1:'./CoDMW2Soldier.png',
+        2:'./WarzoneSoldier.png',
+        3:'./BlackOps6Soldier.png',
+        4:'./CoDMW3Soldier.png',
+        5:'./SMSoldier.png',
+        6:'./BO6ZombiesSoldier.png'
     }
     const mainTitleMap: TitleMap = {
         0:'Destiny 2',
@@ -164,7 +164,6 @@ const GameList: React.FC<GameListPropsType> = React.memo(({id, showFormHandler})
     },[])
     return (
         <div id={id} className={styles.variants}>
-            {/*<img src='../../../../public/BlackOps6Back.png'/>*/}
             <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                 <GameSelection/>
             </div>
@@ -174,15 +173,15 @@ const GameList: React.FC<GameListPropsType> = React.memo(({id, showFormHandler})
                         ? mainImgMobileMap[currentCard]
                         : mainImgMap[currentCard]
                 }
-                         soldierImg={soldierMap[currentCard]} currentCard={currentCard} />
+                        soldierImg={soldierMap[currentCard]} currentCard={currentCard} />
                 <div className={styles.titleContainer}>
                     <div className={styles.mainTitleContainer}>
                         <div className={styles.title}>
                             <div className={styles.mainTitle}>{titleMap[currentCard]}</div>
                             <div className={styles.secondaryTitle}>{mainTitleMap[currentCard]}</div>
                         </div>
-                        <div className={styles.btn}>
-                            <Button size={'small'} color={'secondary'} showFormHandler={showFormHandler}>Order boosting</Button>
+                        <div className={styles.btn}> <Button size={'small'} color={'secondary'} showFormHandler={showFormHandler}>Order boosting</Button>
+                           
                         </div>
                     </div>
                     <div className={styles.descriptionContainer}>
@@ -206,7 +205,9 @@ const GameList: React.FC<GameListPropsType> = React.memo(({id, showFormHandler})
                             />
                         </div>
                     </div>
-                    <ScrollableContainer currentCardHandler={currentCardHandler}/>
+                    <div className={styles.scrollableContainer}>
+                        <ScrollableContainer currentCardHandler={currentCardHandler}/>
+                    </div>
                 </div>
             </div>
         </div>

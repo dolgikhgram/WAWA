@@ -8,7 +8,6 @@ type HeaderPropsType = {
 }
 
 const Header: React.FC<HeaderPropsType> =React.memo(({showFormHandler, showMenuHandler}) => {
-    // const  [isOpenMenu, setIsOpenMenu]=useState(false);
     const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
         e.preventDefault();
         const element = document.getElementById(id);
@@ -22,7 +21,7 @@ const Header: React.FC<HeaderPropsType> =React.memo(({showFormHandler, showMenuH
 
     return (
         <div className={styles.container}>
-            <img className={styles.wawa} src='/WAWA.png' alt='WAWA' />
+            <img className={styles.wawa} src='./WAWA.png' alt='WAWA' />
             <div className={styles.frame}>
                 <a href={'#GameList'} className={styles.landing} onClick={(e) => scrollToSection(e, 'GameList')}>Game list</a>
                 <a href={'#HowWeWork'} className={styles.landing} onClick={(e) => scrollToSection(e, 'HowWeWork')}>How we work</a>
@@ -36,7 +35,7 @@ const Header: React.FC<HeaderPropsType> =React.memo(({showFormHandler, showMenuH
                 </Button>
             </div>
                 <button className={styles.menu} onClick={()=> showMenuHandler()}>
-                    <img src='../../../public/menuBtn.png' alt='menuBtn' />
+                    <img src='./menuBtn.png' alt='menuBtn' />
                 </button>
         </div>
     );

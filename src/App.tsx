@@ -33,7 +33,7 @@ function App() {
             <div style={{position: "relative", display: "flex", flexDirection: "column", alignItems:"center"}}>
                 <img 
                     className={"wallpaper"} 
-                    src="./wallpaper.png" 
+                    src="./wallpaper.png"
                     alt='wallpaper' 
                     style={{
                         width: "100vw",
@@ -57,7 +57,7 @@ function App() {
             </div>
             <HowWeWork id={"HowWeWork"}/>
             <WhyWe id={"WhyWe"}/>
-            <Reviews id={"Reviews"}/>
+            <Reviews id={"Reviews"}  showFormHandler={showFormHandler}/>
             <FAQ id={"FAQ"} showFormHandler={showFormHandler} />
             <Footer/>
             {showForm ? <Form closeFormHandler={closeFormHandler}/> : null}

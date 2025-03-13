@@ -19,9 +19,10 @@ type ReviewsBoxProps = {
             date: string;
         };
     };
+    showFormHandler:() => void;
 };
 
-const ReviewsBox: React.FC<ReviewsBoxProps> = React.memo(({review}) => {
+const ReviewsBox: React.FC<ReviewsBoxProps> = React.memo(({review,showFormHandler}) => {
     return (
         <div className={styles.container}>
             <div className={styles.content}>
@@ -44,7 +45,7 @@ const ReviewsBox: React.FC<ReviewsBoxProps> = React.memo(({review}) => {
                         <div className={styles.reviewMainTitle}>{review.review.text}</div>
                         <div className={styles.line}></div>
                         <div className={styles.btnDataContainer}>
-                            <div className={styles.btn}>
+                            <div className={styles.btn} onClick={() => showFormHandler()}>
                                 <div className={styles.btnText}>{review.review.type}</div>
                             </div>
                             <div className={styles.data}>{review.review.date}</div>

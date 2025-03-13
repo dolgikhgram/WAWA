@@ -229,7 +229,7 @@
         max-width: 1600px;
     }
     .mainTitle {
-        width: 50%;
+        width: 510px;
         height: 72px;
         top: 25px;
         left: 58px;
@@ -239,7 +239,7 @@
     }
     .inputGroup {
         width: 60%;
-        gap: 10px;
+        gap: 15px;
         font-size: 20px;
         top: 135px;
         left: 100px;
@@ -261,7 +261,7 @@
     }
     .inputContainer {
         flex-direction: column;
-        gap: 10px;
+        gap: 25px;
         width: 100%;
     }
     .termsWrapper {
@@ -295,7 +295,7 @@
         max-width: 1600px;
     }
     .mainTitle {
-        width: 41%;
+        width: 490px;
         height: 72px;
         top: 25px;
         left: 75px;

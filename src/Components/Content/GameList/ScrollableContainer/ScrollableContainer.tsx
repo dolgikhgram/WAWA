@@ -9,13 +9,13 @@ interface GameData {
 }
 
 const gamesList: GameData[] = [
-    { id: 0, imgSrc: '../../../../../public/Destiny2.2.png', altText: 'Destiny 2' },
-    { id: 1, imgSrc: '../../../../../public/MW2.png', altText: 'Modern Warfare 2' },
-    { id: 2, imgSrc: '../../../../../public/CallOfDutyWarzone.png', altText: 'Call of Duty Warzone' },
-    { id: 3, imgSrc: '../../../../../public/CallOfDutyBlackOps6.png', altText: 'Call of Duty Black Ops' },
-    { id: 4, imgSrc: '../../../../../public/CallOfDutyMW3.png', altText: 'Call of Duty MW3' },
-    { id: 5, imgSrc: '../../../../../public/spaceMarine.png', altText: 'Space Marine' },
-    { id: 6, imgSrc: '../../../../../public/pugolo.png', altText: 'Pugolo' },
+    { id: 0, imgSrc: './Destiny2.2.png', altText: 'Destiny 2' },
+    { id: 1, imgSrc: './MW2.png', altText: 'Modern Warfare 2' },
+    { id: 2, imgSrc: './CallOfDutyWarzone.png', altText: 'Call of Duty Warzone' },
+    { id: 3, imgSrc: './CallOfDutyBlackOps6.png', altText: 'Call of Duty Black Ops' },
+    { id: 4, imgSrc: './CallOfDutyMW3.png', altText: 'Call of Duty MW3' },
+    { id: 5, imgSrc: './spaceMarine.png', altText: 'Space Marine' },
+    { id: 6, imgSrc: './pugolo.png', altText: 'Pugolo' },
 ];
 
 type ScrollableContainerPropsType = {
@@ -40,7 +40,6 @@ const ScrollableContainer: React.FC<ScrollableContainerPropsType> = React.memo((
             }
         }
     }, []);
-
     const handleNextClick = () => {
         if (isAnimating || !listRef.current) return;
         
@@ -73,15 +72,17 @@ const ScrollableContainer: React.FC<ScrollableContainerPropsType> = React.memo((
             setIsAnimating(false);
         }, 300);
     };
-
+    useEffect(() => {
+        handleNextClick()
+    }, []);
     return (
         <div className={styles.container}>
             <div className={styles.scrollableContainer}>
                 <ul className={styles.list} ref={listRef}>
                     {extendedItems.map((item, index) => (
-                        <li
+                         <li
                             key={`${item.id}-${index}`}
-                            className={`${styles.item} ${index === highlightedIndex ? styles.firstVisible : ''}`}
+                            className={`${styles.item} ${index === highlightedIndex ? styles.firstVisible : ''} ${ index === highlightedIndex-1 ? styles.firstItem : ''}`}
                         >
                             <div className={styles.gameCard}>
                                 <img 
@@ -99,7 +100,7 @@ const ScrollableContainer: React.FC<ScrollableContainerPropsType> = React.memo((
                 onClick={handleNextClick}
                 aria-label="Scroll right"
             >
-                <img src='../../../../../public/btnCardsR.png' alt={'vector'} />
+                <img src='./btnCardsR.png' alt={'vector'} />
             </button>
         </div>
     );

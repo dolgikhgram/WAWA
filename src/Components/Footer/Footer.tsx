@@ -7,7 +7,7 @@ const Footer = React.memo(() => {
         <div className={styles.container}>
             <div className={styles.header}>
                 <div className={styles.logoContainer}>
-                    <img className={styles.logo} src='../../../public/WAWAFooter.png' alt='WAWA'/>
+                    <img className={styles.logo} src='./WAWAFooter.png' alt='WAWA'/>
                     <div className={styles.text}>Пользовательское соглашение</div>
                     <div className={styles.text}>Политика конфиденциальности</div>
                 </div>

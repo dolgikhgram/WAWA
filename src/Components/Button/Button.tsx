@@ -9,7 +9,7 @@ type ButtonPropsType = {
 }
 
 
-const Button :React.FC<ButtonPropsType>  = ({children,showFormHandler,size= "medium", color='primary'}) => {
+const Button :React.FC<ButtonPropsType>  = React.memo( ({children,showFormHandler,size= "medium", color='primary'}) => {
 
     const sizeMapWidth = {
         small: '191px',
@@ -40,13 +40,13 @@ const Button :React.FC<ButtonPropsType>  = ({children,showFormHandler,size= "med
                 </div>
                 <div style={{width: circleMap[size], height: circleMap[size]}} className={s.circle}>
                     {color === 'primary' ?
-                        <img className={s.vector} src='../../../public/VectorBtn.png' alt={'Vector'}/>
-                        : <img style={{width: circleMap[size], height: circleMap[size]}}  className={s.vector} src='../../../public/кругСоСтрелкой.png' alt={'Vector'}/>
+                        <img className={s.vector} src='./VectorBtn.png' alt={'Vector'}/>
+                        : <img style={{width: circleMap[size], height: circleMap[size]}}  className={s.vector} src='./кругСоСтрелкой.png' alt={'Vector'}/>
                     }
                 </div>
             </button>
         </div>
     );
-};
+});
 
 export default Button;

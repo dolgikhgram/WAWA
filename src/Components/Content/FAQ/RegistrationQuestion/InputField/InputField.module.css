@@ -26,18 +26,17 @@
     }
     .inputLabel {
         left: 0;
-        bottom: 20%;
+        bottom: 30%;
         width: 250px;
         height: 30px;
         font-weight: 300;
-        font-size: 14px;
-        line-height: 21px;
+        font-size: 13px;
+        line-height: 11px;
     }
     .inputField {
         padding: 0;
-        border-radius: 3px;
         width: 262px;
-        font-size: 20px;
+        font-size: 16px;
     }
     .inputField:focus  + .inputLabel {
         top: -15px;
@@ -62,7 +61,7 @@
         padding: 0;
         border-radius: 3px;
         width: 292px;
-        font-size: 20px;
+        font-size: 13px;
     }
     .inputField:focus  + .inputLabel {
         top: -15px;
@@ -70,7 +69,7 @@
     }
 }
 
-@media(min-width: 968px) {
+@media(min-width: 992px) {
     .inputWrapper {
         font-size: 20px;
     }
@@ -81,13 +80,13 @@
         height: 30px;
         font-weight: 300;
         font-size: 20px;
-        line-height: 30px;
+        line-height: 10px;
     }
     .inputField {
-        padding: 12px;
+        padding-top: 16px ;
         border-radius: 3px;
         width: 90%;
-        font-size: 20px;
+        font-size: 16px;
     }
     .inputField:focus  + .inputLabel {
         top: -25px;
@@ -105,14 +104,14 @@
         width: 250px;
         height: 30px;
         font-weight: 300;
-        font-size: 20px;
-        line-height: 30px;
+        font-size: 18px;
+        line-height: 15px;
     }
     .inputField {
-        padding: 12px;
+        padding: 0;
         border-radius: 3px;
-        width: 90%;
-        font-size: 20px;
+        width: 100%;
+        font-size: 16px;
     }
     .inputField:focus  + .inputLabel {
         top: -25px;
@@ -126,15 +125,15 @@
     }
     .inputLabel {
         left: 0;
-        bottom: 50%;
+        bottom: 60%;
         width: 250px;
         height: 30px;
         font-weight: 300;
         font-size: 20px;
-        line-height: 30px;
+        line-height: 0;
     }
     .inputField {
-        padding: 12px;
+        padding: 0;
         border-radius: 3px;
         width: 90%;
         font-size: 20px;

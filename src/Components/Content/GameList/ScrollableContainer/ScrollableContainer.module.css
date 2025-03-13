@@ -8,7 +8,9 @@
     overflow: hidden;
     margin: 0 40px;
 }
-
+.firstItem{
+    opacity: 0;
+}
 .list {
     display: flex;
     gap: 15px;
@@ -53,7 +55,7 @@
     width: 48px;
     height: 100%;
     border: none;
-    background: linear-gradient(90deg, rgba(18, 18, 18, 0) 0%, rgba(18, 18, 18, 0.8) 50%, rgb(18, 18, 18) 100%);
+    background: linear-gradient(90deg, rgba(18, 18, 18, 0) 0%, rgba(18, 18, 18, 0.4) 50%, rgb(18, 18, 12) 100%);
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -79,22 +81,26 @@
 }
 
 .firstVisible {
+    border: 2px solid rgba(113, 95, 255, 1) !important;
+    transform: scale(1.1) !important;
+    z-index: 2;
     position: relative;
-    transform: scale(1.07);
-    z-index: 1;
+    box-shadow: 0 0 5px rgba(107, 75, 255, 0.6);
+    padding: 2px;
+    border-radius: 24px;
+}
+
+.firstVisible .gameCard {
+    border-radius: 22px;
+    overflow: hidden;
+}
+
+.firstVisible .img {
+    border-radius: 22px;
 }
 
 .firstVisible .gameCard::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border: 2px solid #6B4BFF;
-    border-radius: 24px;
-    pointer-events: none;
-    z-index: 1;
+    display: none;
 }
 
 @media (min-width: 320px) {
@@ -136,14 +142,20 @@
     .scrollButtonRight {
         right: 0;
     }
-    .firstVisible .gameCard::after {
+    .firstVisible {
         border-radius: 14px;
+    }
+    .firstVisible .gameCard {
+        border-radius: 12px;
+    }
+    .firstVisible .img {
+        border-radius: 12px;
     }
 }
 
 @media (min-width: 768px) {
     .container {
-        top: -214px;
+        top: -260px;
         left: 113px;
         width: 75%;
         height: 240px;
@@ -164,11 +176,6 @@
         width: 100%;
         height: 100%;
     }
-    .firstVisible .gameCard::after {
-        width: 100%;
-        height: 100%;
-        border-radius: 24px;
-    }
     .scrollButtonRight {
         top: 0;
         right: 0;
@@ -177,7 +184,7 @@
     }
     .scrollButton {
         top: 10px;
-        left: 654px;
+        left: 735px;
         width: 39px;
         height: 107px;
         background: linear-gradient(90deg, rgba(18, 18, 18, 0) 0%, rgba(18, 18, 18, 0.8) 50%, rgb(18, 18, 18) 100%);
@@ -186,7 +193,7 @@
 
 @media (min-width: 992px) {
     .container {
-        top: -160px;
+        top: -250px;
         left: 230px;
         width: 75%;
         height: 240px;
@@ -202,12 +209,9 @@
     .gameCard {
         width: 90px;
         height: 110px;
+        border-radius: 24px;
     }
     .img {
-        width: 100%;
-        height: 100%;
-    }
-    .firstVisible .gameCard::after {
         width: 100%;
         height: 100%;
     }
@@ -219,7 +223,7 @@
     }
     .scrollButton {
         top: 10px;
-        left: 654px;
+        left: 745px;
         width: 39px;
         height: 107px;
     }
@@ -248,10 +252,6 @@
         width: 100%;
         height: 100%;
     }
-    .firstVisible .gameCard::after {
-        width: 100%;
-        height: 100%;
-    }
     .scrollButtonRight {
         top: 0;
         right: 0;
@@ -260,7 +260,7 @@
     }
     .scrollButton {
         top: 10px;
-        left: 555px;
+        left: 845px;
         width: 39px;
         height: 140px;
     }
@@ -289,10 +289,6 @@
         width: 100%;
         height: 100%;
     }
-    .firstVisible .gameCard::after {
-        width: 100%;
-        height: 100%;
-    }
     .scrollButtonRight {
         top: 0;
         right: 0;
@@ -301,9 +297,8 @@
     }
     .scrollButton {
         top: 10px;
-        left: 710px;
+        left: 945px;
         width: 39px;
         height: 140px;
     }
-
 }

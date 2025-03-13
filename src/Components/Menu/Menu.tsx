@@ -13,7 +13,7 @@ const Menu : React.FC<MenuPropsType> = React.memo(({showFormHandler, closeMenuHa
         <div className={styles.overlay}>
             <div className={styles.container}>
                 <div className={styles.cross} onClick={()=>closeMenuHandler()}>
-                    <img src='../../../public/Крестик.png'/>
+                    <img src='./Крестик.png'/>
                 </div>
                 <div style={{display: 'flex', alignItems: 'center'}}>
                     <div className={styles.line}></div>

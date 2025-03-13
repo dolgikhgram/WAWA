@@ -6,7 +6,7 @@ interface ProgressBarProps {
     filledSegments: number;
 }
 
-const ProgressBar: React.FC<ProgressBarProps> = ({ totalSegments, filledSegments }) => {
+const ProgressBar: React.FC<ProgressBarProps> = React.memo(({ totalSegments, filledSegments }) => {
     return (
         <div className={styles.progressBar}>
             {[...Array(totalSegments)].map((_, index) => (
@@ -19,6 +19,6 @@ const ProgressBar: React.FC<ProgressBarProps> = ({ totalSegments, filledSegments
             ))}
         </div>
     );
-};
+});
 
 export default ProgressBar;

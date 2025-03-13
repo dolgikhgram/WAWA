@@ -65,10 +65,7 @@ const Polygon: React.FC<PolygonPropsType> = React.memo(({ isFormOpen }) => {
             {
 
             }
-            <img className={styles.polygon} src={screenWidth < 768 ? '../../../../../public/polygon2.0Mobile.png'  :  '../../../../../public/polygon2.0.png'}  alt='polygon'/>
-            {/*<img className={styles.polygon} src='../../../../../public/polygon2.0.png' alt='polygon'/>*/}
-            {/*<img className={styles.guardian3} src='../../../../../public/guardian3.png' alt='guardian3'/>*/}
-            {/*<img className={styles.guardian2} src='../../../../../public/guardian2.png' alt='guardian2'/>*/}
+            <img className={styles.polygon} src={screenWidth < 768 ? './polygon2.0Mobile.png'  :  './polygon2.0.png'}  alt='polygon'/>
             <div className={styles.cards} style={{opacity: isFormOpen ? 0 : 1, transition: 'opacity 0.3s ease-in-out'}}>
                 {currentOrder.map((index, position) => (
                     <div

@@ -12,7 +12,7 @@ type WeBoostYouWinPropsType = {
 
 const WeBoostYouWin : React.FC<WeBoostYouWinPropsType> = React.memo(({showFormHandler, isFormOpen, isMenuOpen}) => {
     return (
-        <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+        <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}>
             <div className={styles.weBoostYouWinContainer}>
                 <div className={styles.content}>
                     <div>
@@ -64,7 +64,7 @@ const WeBoostYouWin : React.FC<WeBoostYouWinPropsType> = React.memo(({showFormHa
                 <Polygon isFormOpen={isFormOpen || isMenuOpen}/>
             </div>
             <div className={styles.arrowContainer}>
-                <img src='../../../../public/ep_arrow-up.png' alt='ep_arrow-up'/>
+                <img src='./ep_arrow-up.png' alt='ep_arrow-up'/>
             </div>
                 <SaveTimeComponent/>
         </div>

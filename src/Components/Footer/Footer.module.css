@@ -24,8 +24,8 @@
 }
 .containerICons{
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: start;
+    justify-content: left;
 }
 .gameIcons {
     display: flex;
@@ -75,6 +75,7 @@
         position: relative;
         bottom: 25%;
         opacity: 1;
+        right: 10px;
     }
     .gameIcons {
         border-radius: 52px;
@@ -161,6 +162,7 @@
     .containerICons{
         position: static;
         opacity: 1;
+        margin-right: 5%;
     }
     .gameIcons {
         border-radius: 52px;

@@ -45,8 +45,6 @@ const Form : React.FC<FormPropsType> =React.memo(({closeFormHandler}) => {
                                         WebkitAppearance: 'none',
                                         MozAppearance: 'none',
                                         border: '1px solid #ccc',
-                                        width: '25px',
-                                        height: '25px',
                                         cursor: 'pointer',
                                         position: 'relative'
                                     }}
@@ -80,13 +78,13 @@ const Form : React.FC<FormPropsType> =React.memo(({closeFormHandler}) => {
                                 <div className={styles.btnTitle}>
                                     Send data
                                 </div>
-                                <img className={styles.img} src='../../../public/VectorBtnQuestion.png' alt='vector'/>
+                                <img className={styles.img} src='./VectorBtnQuestion.png' alt='vector'/>
                             </button>
                         </div>
                     </form>
                 </div>
                 <button className={styles.x} onClick={closeFormHandler}>
-                    <img src='../../../public/VEctorForBtn.png' alt='vector'/>
+                    <img src='./VEctorForBtn.png' alt='vector'/>
                 </button>
             </div>
         </div>

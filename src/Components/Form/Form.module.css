@@ -130,6 +130,7 @@
     font-weight: 300;
     font-size: 18px;
     line-height: 23px;
+    color: black;
 }
 .btn:hover .btnTitle{
     color: white;
@@ -174,7 +175,7 @@
         line-height: 100%;
         margin: 0;
         top:99px;
-        right:170px;
+        right:180px;
     }
     .mainTitleToOrder{
         height: 50px;
@@ -189,7 +190,7 @@
     }
 }
 
-@media(min-width: 687px){
+@media(min-width: 768px){
     .x{
         width: 25px;
         height: 25px;
@@ -239,7 +240,7 @@
     }
 }
 
-@media(min-width: 968px){
+@media(min-width: 992px){
     .x{
         top:-5px;
         right:25px;

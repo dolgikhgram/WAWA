@@ -150,6 +150,7 @@
     align-items: center;
     justify-content: center;
     padding: 5px 16px;
+    cursor:pointer;
     height: 31px;
     background: rgba(113, 95, 255, 1);
     border-radius: 21px;
@@ -163,6 +164,7 @@
     line-height: 21px;
     color: rgba(255, 255, 255, 1);
     text-transform: uppercase;
+    cursor: pointer;
 }
 
 .data {

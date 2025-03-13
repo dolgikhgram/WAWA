@@ -12,7 +12,7 @@
     display: flex;
     align-items: center;
     justify-content :space-between;
-    max-width: 1600px ;
+    /*max-width: 1600px ;*/
 }
 .titleContainer{
     display: flex;
@@ -114,9 +114,31 @@
     background-color: #e5e7eb;
 }
 .arrowContainer{
+    width: 100%;
     margin-top: 185px ;
     display: flex;
     justify-content: center;
+    align-items: center;
+}
+
+@keyframes bounceArrow {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.arrowContainer {
+    margin: 20px 0;
+}
+
+.arrowContainer img {
+    animation: bounceArrow 2s ease-in-out infinite;
 }
 
 @media (min-width: 320px) {
@@ -199,6 +221,7 @@
         flex-direction: column;
         gap:10px;
         margin-left: 20px;
+        width: 768px;
     }
     .titleContainer{
         position:static;
@@ -252,11 +275,10 @@
     .btn{
         position: relative;
         top: 450px;
-        left: 35%;
+        left: 29%;
     }
     .arrowContainer{
-        margin-top: 0px;
-        margin-left: 11%;
+        margin-top: 0;
     }
     .divider {
         width: 0;
@@ -275,6 +297,7 @@
     .weBoostYouWinContainer{
         flex-direction: row;
         gap:20px;
+        width: 992px;
     }
     .titleContainer{
         flex-direction: column;
@@ -307,8 +330,8 @@
     .description {
         position: relative;
         left: 0;
-        width: 50%;
-        font-size: 19px;
+        width: 49%;
+        font-size: 14px;
         justify-content: start;
         line-height: 25px;
     }
@@ -340,10 +363,10 @@
         margin-right: 15px;
     }
     .containerText {
-        max-width: 135px;
+        max-width: 125px;
         color: rgba(255, 255, 255, 0.8);
         padding-top: -7px;
-        font: 300 30px/28px Geologica, -apple-system, Roboto, Helvetica, sans-serif;
+        font: 300 19px Geologica, -apple-system, Roboto, Helvetica, sans-serif;
     }
 }
 
@@ -351,6 +374,7 @@
     .weBoostYouWinContainer{
         flex-direction: row;
         gap:20px;
+        width: 1200px;
     }
     .weBoostText{
         justify-content: start;
@@ -378,9 +402,9 @@
         justify-content: start;
     }
     .description {
-        width: 53%;
+        width: 51%;
         position: relative;
-        font-size: 15px;
+        font-size: 14px;
         line-height: 22px;
         left: 0;
         justify-content: start;
@@ -413,6 +437,7 @@
 
 @media (min-width: 1500px) {
     .weBoostYouWinContainer{
+        width: 1500px;
         gap:20px;
         flex-direction: row;
     }

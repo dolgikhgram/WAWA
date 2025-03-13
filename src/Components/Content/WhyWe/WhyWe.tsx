@@ -3,28 +3,28 @@ import styles from "./WhyWe.module.css";
 import Group from "./Group/Group.tsx";
 
 const arrVector = [
-    '../../../../public/Vector1.png',
-    '../../../../public/Vector2.png',
-    '../../../../public/Vector3.png',
-    '../../../../public/Vector4.png',
-    '../../../../public/Vector5.png',
-    '../../../../public/Vector6.png',
-    '../../../../public/Vector7.png',
-    '../../../../public/Vector8.png',
-    '../../../../public/Vector9.png',
-    '../../../../public/Vector10.png',
-    '../../../../public/Vector11.png',
-    '../../../../public/Vector12.png',
-    '../../../../public/Vector13.png',
-    '../../../../public/Vector14.png',
-    '../../../../public/Vector15.png',
-    '../../../../public/Vector16.png',
-    '../../../../public/Vector17.png',
-    '../../../../public/Vector18.png',
-    '../../../../public/Vector19.png',
-    '../../../../public/Vector20.png',
-    '../../../../public/Vector21.png',
-    '../../../../public/Vector22.png',
+    './Vector1.png',
+    './Vector2.png',
+    './Vector3.png',
+    './Vector4.png',
+    './Vector5.png',
+    './Vector6.png',
+    './Vector7.png',
+    './Vector8.png',
+    './Vector9.png',
+    './Vector10.png',
+    './Vector11.png',
+    './Vector12.png',
+    './Vector13.png',
+    './Vector14.png',
+    './Vector15.png',
+    './Vector16.png',
+    './Vector17.png',
+    './Vector18.png',
+    './Vector19.png',
+    './Vector20.png',
+    './Vector21.png',
+    './Vector22.png',
 ]
 
 type WhyWePropsType ={
@@ -58,7 +58,7 @@ const WhyWe:React.FC<WhyWePropsType> = React.memo(({id}) => {
                             }
                         </div>
                         <div className={styles.avatarWrapper}>
-                            <img className={styles.imgAvatars} src='../../../../public/Users.png' alt='Ellipse 10'/>
+                            <img className={styles.imgAvatars} src='./Users.png' alt='Ellipse 10'/>
                             <div className={styles.titleAvatars}>
                                 <div>Over 1,000 people have</div>
                                 <div>already joined us</div>
