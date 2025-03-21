@@ -6,7 +6,7 @@ const GameSelection: React.FC = React.memo(() => {
         <>
             <div className={styles.container}>
                 <div className={styles.sectionTitle}>OUR GAMES</div>
-                <div style={{display: 'flex', justifyContent: 'center', gap: '20px'}}>
+                <div className={styles.titleContainer}>
                     <div className={styles.choose}>Choose</div>
                     <div className={styles.mainHeading}>your game</div>
                 </div>

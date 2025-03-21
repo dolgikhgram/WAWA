@@ -13,8 +13,13 @@
     -moz-appearance: none;
     appearance: none;
     background: transparent;
+    border-radius: 0;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
     border-bottom: 2px solid rgba(255, 255, 255, 0.6);
     color: rgba(255, 255, 255, 0.6);
+    box-shadow: none;
 }
 .inputField:focus  + .inputLabel {
     color: rgba(255, 255, 255, 0.6);
@@ -26,7 +31,7 @@
     }
     .inputLabel {
         left: 0;
-        bottom: 30%;
+        bottom: -35%;
         width: 250px;
         height: 30px;
         font-weight: 300;
@@ -37,10 +42,20 @@
         padding: 0;
         width: 262px;
         font-size: 16px;
+        -webkit-appearance: none;
+        appearance: none;
+        border: none;
+        border-radius: 0;
+        border-top: 0;
+        border-left: 0;
+        border-right: 0;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.6);
+        outline: none;
+        box-shadow: none;
     }
     .inputField:focus  + .inputLabel {
-        top: -15px;
-        font-size: 11px;
+        top: -18px;
+        font-size: 10px;
     }
 }
 
@@ -50,7 +65,7 @@
     }
     .inputLabel {
         left: 0;
-        bottom: 20%;
+        bottom: 0;
         width: 250px;
         height: 30px;
         font-weight: 300;
@@ -59,7 +74,6 @@
     }
     .inputField {
         padding: 0;
-        border-radius: 3px;
         width: 292px;
         font-size: 13px;
     }
@@ -75,21 +89,20 @@
     }
     .inputLabel {
         left: 0;
-        bottom: 50%;
+        bottom: -20%;
         width: 250px;
         height: 30px;
         font-weight: 300;
-        font-size: 20px;
+        font-size: 16px;
         line-height: 10px;
     }
     .inputField {
         padding-top: 16px ;
-        border-radius: 3px;
         width: 90%;
         font-size: 16px;
     }
     .inputField:focus  + .inputLabel {
-        top: -25px;
+        top: -8px;
         font-size: 15px;
     }
 }
@@ -100,7 +113,7 @@
     }
     .inputLabel {
         left: 0;
-        bottom: 50%;
+        bottom: 0;
         width: 250px;
         height: 30px;
         font-weight: 300;
@@ -109,8 +122,7 @@
     }
     .inputField {
         padding: 0;
-        border-radius: 3px;
-        width: 100%;
+        width: 90%;
         font-size: 16px;
     }
     .inputField:focus  + .inputLabel {
@@ -125,7 +137,7 @@
     }
     .inputLabel {
         left: 0;
-        bottom: 60%;
+        bottom: -20%;
         width: 250px;
         height: 30px;
         font-weight: 300;
@@ -134,7 +146,6 @@
     }
     .inputField {
         padding: 0;
-        border-radius: 3px;
         width: 90%;
         font-size: 20px;
     }

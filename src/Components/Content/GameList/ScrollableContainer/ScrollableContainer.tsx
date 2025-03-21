@@ -20,9 +20,10 @@ const gamesList: GameData[] = [
 
 type ScrollableContainerPropsType = {
     currentCardHandler: (index: number) => void,
+    isTransitioning?: boolean
 }
 
-const ScrollableContainer: React.FC<ScrollableContainerPropsType> = React.memo(({ currentCardHandler }) => {
+const ScrollableContainer: React.FC<ScrollableContainerPropsType> = React.memo(({ currentCardHandler, isTransitioning }) => {
     const listRef = useRef<HTMLUListElement>(null);
     const [currentIndex, setCurrentIndex] = useState(gamesList.length);
     const [highlightedIndex, setHighlightedIndex] = useState(gamesList.length + 1);
@@ -40,16 +41,16 @@ const ScrollableContainer: React.FC<ScrollableContainerPropsType> = React.memo((
             }
         }
     }, []);
-    const handleNextClick = () => {
-        if (isAnimating || !listRef.current) return;
+
+    // Общая функция для обработки переключения карточек
+    const handleCardChange = (nextIndex: number, nextHighlightedIndex: number) => {
+        if (isAnimating || isTransitioning || !listRef.current) return;
         
         setIsAnimating(true);
         const items = listRef.current.querySelectorAll(`.${styles.item}`);
         if (items.length > 0) {
             const itemWidth = items[0].getBoundingClientRect().width;
             const marginRight = 20;
-            let nextIndex = currentIndex + 1;
-            let nextHighlightedIndex = highlightedIndex + 1;
             
             // Если достигли конца второго набора, перепрыгиваем в начало второго набора
             if (nextIndex >= gamesList.length * 2) {
@@ -63,8 +64,12 @@ const ScrollableContainer: React.FC<ScrollableContainerPropsType> = React.memo((
 
             setCurrentIndex(nextIndex);
             setHighlightedIndex(nextHighlightedIndex);
+            
+            // Главное изменение - вызываем обработчик с использованием модуля, а не индекса списка
+            // Это обеспечит правильный индекс для родительского компонента GameList
             currentCardHandler(nextIndex % gamesList.length);
             
+            // Обновляем позицию списка
             listRef.current.style.transform = `translateX(-${nextIndex * (itemWidth + marginRight)}px)`;
         }
 
@@ -72,9 +77,30 @@ const ScrollableContainer: React.FC<ScrollableContainerPropsType> = React.memo((
             setIsAnimating(false);
         }, 300);
     };
+
+    const handleNextClick = () => {
+        const nextIndex = currentIndex + 1;
+        const nextHighlightedIndex = highlightedIndex + 1;
+        handleCardChange(nextIndex, nextHighlightedIndex);
+    };
+
+    // Обработчик клика на карточку
+    const handleCardClick = (index: number) => {
+        // Игнорируем клик на текущую выделенную карточку
+        if (index === highlightedIndex) return;
+        
+        // Вычисляем разницу между текущим индексом и индексом карточки, на которую кликнули
+        const diff = index - highlightedIndex;
+        const nextIndex = currentIndex + diff;
+        const nextHighlightedIndex = highlightedIndex + diff;
+        
+        handleCardChange(nextIndex, nextHighlightedIndex);
+    };
+
     useEffect(() => {
         handleNextClick()
     }, []);
+
     return (
         <div className={styles.container}>
             <div className={styles.scrollableContainer}>
@@ -83,6 +109,7 @@ const ScrollableContainer: React.FC<ScrollableContainerPropsType> = React.memo((
                          <li
                             key={`${item.id}-${index}`}
                             className={`${styles.item} ${index === highlightedIndex ? styles.firstVisible : ''} ${ index === highlightedIndex-1 ? styles.firstItem : ''}`}
+                            onClick={() => handleCardClick(index)}
                         >
                             <div className={styles.gameCard}>
                                 <img 
@@ -99,6 +126,13 @@ const ScrollableContainer: React.FC<ScrollableContainerPropsType> = React.memo((
                 className={`${styles.scrollButton} ${styles.scrollButtonRight}`}
                 onClick={handleNextClick}
                 aria-label="Scroll right"
+                type="button"
+                tabIndex={0}
+                style={{
+                    WebkitTapHighlightColor: 'transparent',
+                    WebkitAppearance: 'none',
+                    MozAppearance: 'none'
+                }}
             >
                 <img src='./btnCardsR.png' alt={'vector'} />
             </button>

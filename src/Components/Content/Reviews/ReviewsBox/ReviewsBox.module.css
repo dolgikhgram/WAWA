@@ -273,13 +273,13 @@
         position: absolute;
         margin-top: 70px;
         width: 255px;
-        top: 95px;
+        top: 115px;
         left: 25px;
     }
     .btnDataContainer{
-        position: relative;
-        width: 100%;
-        top: 35px;
+        position: absolute;
+        width: 80%;
+        top: 200px;
     }
     .btn{
         position: static;
@@ -403,13 +403,13 @@
         position: absolute;
         margin-top: 70px;
         width: 265px;
-        top: 95px;
-        left: 25px;
+        top: 110px;
+        left: 35px;
     }
     .btnDataContainer{
-        position: relative;
-        width: 100%;
-        top: 55px;
+        position: absolute;
+        width: 80%;
+        top: 195px;
     }
     .btn{
         position: static;
@@ -763,6 +763,8 @@
         margin-left: 50px;
     }
     .reviewMainTitle{
+        position: relative;
+        left: -25px;
         font-weight: 300;
         font-size: 18px;
         line-height: 27px;
@@ -778,13 +780,13 @@
         margin-top: 85px;
         width: 366px;
         top: 220px;
-        left: 80px;
+        left: 50px;
     }
     .btnDataContainer{
         position: absolute;
         width:366px;
         top: 330px;
-        left: 85px;
+        left: 55px;
     }
     .btn{
         width: 99px;

@@ -80,7 +80,7 @@
         left: 50px;
     }
     .cards{
-        top: 215px;
+        top: 545px;
         left: -255px;
         flex-direction: row;
         width: 300px;
@@ -127,8 +127,8 @@
     }
     .cards{
         flex-direction: column;
-        top: 13px;
-        left: 450px;
+        top: 335px;
+        left: 434px;
         gap: 10px;
     }
     .card1{
@@ -171,7 +171,7 @@
         left: 90px;
     }
     .cards{
-        top: 65px;
+        top: 360px;
         left: 434px;
         gap: 20px;
     }
@@ -215,8 +215,8 @@
         left: 110px;
     }
     .cards{
-        top: 60px;
-        left: 525px;
+        top: 420px;
+        left: 505px;
     }
     .card1{
         left: auto;
@@ -257,8 +257,8 @@
         left: 150px;
     }
     .cards{
-        top: 0px;
-        left: 540px;
+        top: 455px;
+        left: 600px;
     }
     .card1{
         left: auto;

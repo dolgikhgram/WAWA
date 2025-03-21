@@ -11,13 +11,13 @@ const Question: React.FC<QuestionPropsType> = React.memo(({ title, answer }) => 
 
     return (
         <div>
-            <div className={styles.FAQ}>
+            <div className={styles.FAQ} onClick={() => setIsOpen(!isOpen)}>
                 <div className={styles.title}>{title}</div>
-                <button 
-                    className={styles.btn} 
+                <button
+                    className={styles.btn}
                     onClick={() => setIsOpen(!isOpen)}
                 >
-                    <img 
+                    <img
                         src='./VectorUpwards.png'
                         alt='vector'
                         style={{ transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.3s ease' }}

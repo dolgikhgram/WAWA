@@ -5,6 +5,7 @@
     justify-content: center;
     background: linear-gradient(270deg, rgba(191, 190, 255, 0.04) 0%, rgba(191, 190, 255, 0.02) 100%);
     backdrop-filter: blur(162px);
+    cursor: pointer;
 }
 .title{
     position: absolute;

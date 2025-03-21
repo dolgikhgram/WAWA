@@ -72,7 +72,7 @@
         height: 100%;
         left:-15px;
         top: -15px;
-        margin-left: 100px;
+        margin-left: 50px;
     }
     .MainTittle{
         width: 82px;
@@ -85,8 +85,9 @@
         width: 85%;
         height: 60px;
         font-weight: 300;
-        font-size: 16px;
+        font-size: 17px;
         line-height: 24px;
+        margin-left: 5px;
     }
     .FAQContainer{
         margin-left: 0;
@@ -96,6 +97,7 @@
 
 @media(min-width:992px){
     .container {
+        align-items: start;
         margin-top: 0;
         flex-direction: row;
         width: 90%;
@@ -104,7 +106,7 @@
     .titleContainer{
         position: relative;
         width:40%;
-        top: -100px;
+        top: 40px;
         left:-50px;
         height: 100%;
         margin-left: 100px;
@@ -122,6 +124,7 @@
         font-weight: 300;
         font-size: 15px;
         line-height: 25px;
+        margin-left: 10px;
     }
     .FAQContainer{
         margin-left: 5px;
@@ -131,14 +134,15 @@
 
 @media(min-width:1200px){
     .container {
+        align-items: start;
         width: 90%;
         margin-bottom: 10px;
     }
     .titleContainer{
         position: relative;
         width:40%;
-        top: -120px;
-        left: -60px;
+        top: 40px;
+        left:-80px;
         height: 100%;
         margin-left: 100px;
     }
@@ -155,6 +159,7 @@
         font-weight: 300;
         font-size: 20px;
         line-height: 30px;
+        margin-left: 5px;
     }
     .FAQContainer{
         margin-left: 5px;
@@ -164,13 +169,14 @@
 
 @media(min-width:1500px){
     .container {
+        align-items: start;
         width: 90%;
         margin-bottom: 10px;
     }
     .titleContainer{
         position: relative;
         width:40%;
-        top: -100px;
+        top: 30px;
         left:-80px;
         height: 100%;
         margin-left: 100px;
