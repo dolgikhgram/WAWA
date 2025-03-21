@@ -44,11 +44,35 @@ const Polygon: React.FC<PolygonPropsType> = React.memo(({ isFormOpen }) => {
     const [animationTrigger, setAnimationTrigger] = useState(0); // Used to trigger CSS animations
     const animationRef = useRef<ReturnType<typeof setTimeout> | null>(null);
     
+    // Generate unique animation identifiers for this component instance
+    const uniqueId = useRef(`polygon_${Math.random().toString(36).substr(2, 9)}`);
+    const animationNames = {
+        topToMiddle: `${uniqueId.current}_topToMiddle`,
+        middleToBottom: `${uniqueId.current}_middleToBottom`,
+        bottomToTop: `${uniqueId.current}_bottomToTop`
+    };
+    
     // Define z-indices for proper layering
     const zIndices = {
         0: 2, // top card
         1: 3, // middle card
         2: 1, // bottom card
+    };
+
+    // Create scoped style object for animations
+    const animationStyles = {
+        [`@keyframes ${animationNames.topToMiddle}`]: {
+            '0%': { transform: 'scale(0.85) translateY(0)' },
+            '100%': { transform: 'scale(1) translateY(125%)' }
+        },
+        [`@keyframes ${animationNames.middleToBottom}`]: {
+            '0%': { transform: 'scale(1) translateY(0)' },
+            '100%': { transform: 'scale(0.85) translateY(125%)' }
+        },
+        [`@keyframes ${animationNames.bottomToTop}`]: {
+            '0%': { transform: 'scale(0.85) translateY(0)' },
+            '100%': { transform: 'scale(0.85) translateY(-250%)' }
+        }
     };
 
     useEffect(() => {
@@ -118,12 +142,24 @@ const Polygon: React.FC<PolygonPropsType> = React.memo(({ isFormOpen }) => {
     };
 
     // Get inline styles for each card
-    const getCardStyle = (position: number) => {
+    const getCardStyle = (position: number, id: number) => {
         const scale = position === 1 ? 1 : 0.85;
+        let animation = '';
+        
+        if (animationTrigger > 0) {
+            const animationName = position === 0 
+                ? animationNames.topToMiddle 
+                : position === 1 
+                    ? animationNames.middleToBottom 
+                    : animationNames.bottomToTop;
+            
+            animation = `${animationName} 800ms ease-in-out forwards`;
+        }
         
         return {
             transform: `scale(${scale})`,
             zIndex: zIndices[position as keyof typeof zIndices],
+            animation: animation
         };
     };
 
@@ -135,8 +171,8 @@ const Polygon: React.FC<PolygonPropsType> = React.memo(({ isFormOpen }) => {
             return (
                 <div
                     key={card.id}
-                    className={getCardClassNames(cardPosition)}
-                    style={getCardStyle(cardPosition)}
+                    className={styles[`card${cardPosition + 1}`]}
+                    style={getCardStyle(cardPosition, card.id)}
                     data-animation-key={animationTrigger} // Force re-evaluation of animations
                 >
                     <LevelUpCard
@@ -151,44 +187,27 @@ const Polygon: React.FC<PolygonPropsType> = React.memo(({ isFormOpen }) => {
         });
     };
 
+    // Convert animation styles to CSS string
+    const getCssText = () => {
+        let cssText = '';
+        for (const [key, value] of Object.entries(animationStyles)) {
+            cssText += `${key} { `;
+            for (const [prop, propValue] of Object.entries(value)) {
+                cssText += `${prop} { ${propValue}; } `;
+            }
+            cssText += `} `;
+        }
+        return cssText;
+    };
+
     return (
         <div className={styles.unionContainer}>
-            {/* Use a unique class wrapper for scoped animations */}
+            {/* Scoped CSS keyframe animations */}
             <style>
-                {`
-                .polygonAnimationScope .${styles.animateTopToMiddle} {
-                    animation: 800ms ease-in-out forwards;
-                    animation-name: polygon_topToMiddle_${animationTrigger};
-                }
-                
-                .polygonAnimationScope .${styles.animateMiddleToBottom} {
-                    animation: 800ms ease-in-out forwards;
-                    animation-name: polygon_middleToBottom_${animationTrigger};
-                }
-                
-                .polygonAnimationScope .${styles.animateBottomToTop} {
-                    animation: 800ms ease-in-out forwards;
-                    animation-name: polygon_bottomToTop_${animationTrigger};
-                }
-
-                @keyframes polygon_topToMiddle_${animationTrigger} {
-                    0% { transform: scale(0.85) translateY(0); }
-                    100% { transform: scale(1) translateY(125%); }
-                }
-                
-                @keyframes polygon_middleToBottom_${animationTrigger} {
-                    0% { transform: scale(1) translateY(0); }
-                    100% { transform: scale(0.85) translateY(125%); }
-                }
-                
-                @keyframes polygon_bottomToTop_${animationTrigger} {
-                    0% { transform: scale(0.85) translateY(0); }
-                    100% { transform: scale(0.85) translateY(-250%); }
-                }
-                `}
+                {getCssText()}
             </style>
             <img className={styles.polygon} src={screenWidth < 768 ? './polygon2.0Mobile.png'  :  './polygon2.0.png'}  alt='polygon'/>
-            <div className={`polygonAnimationScope ${styles.cards}`} style={{opacity: isFormOpen ? 0 : 1, transition: 'opacity 0.3s ease-in-out'}}>
+            <div className={styles.cards} style={{opacity: isFormOpen ? 0 : 1, transition: 'opacity 0.3s ease-in-out'}}>
                 {renderCards()}
             </div>
         </div>
