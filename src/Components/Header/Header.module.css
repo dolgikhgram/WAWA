@@ -15,6 +15,7 @@
     font-weight: lighter;
     color: #FFFFFF;
     text-decoration: none;
+    z-index: 1;
 }
 .landing:hover{
     opacity: 100%;

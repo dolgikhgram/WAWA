@@ -8,6 +8,13 @@
     backdrop-filter: blur(13px);
     z-index: 1000;
 }
+.btnCheckBoxContainer{
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    gap: 20px;
+    flex-direction: column;
+}
 .container {
     position: fixed;
     top: 50%;
@@ -135,6 +142,9 @@
 .btn:hover .btnTitle{
     color: white;
 }
+.btn:hover .img{
+    color: white;
+}
 
 
 @media(min-width: 320px){
@@ -150,6 +160,9 @@
     }
     .inputs{
         margin-top: 50px;
+    }
+    .btnCheckBoxContainer{
+        gap: 30px;
     }
     .form {
         width: 320px;
@@ -184,8 +197,11 @@
         line-height: 100%;
         background-image: linear-gradient(0deg, #715FFF, #715FFF);
     }
+    .checkBoxTitle {
+        width: 300px;
+    }
     .checkBox{
-        width: 40px;
+        width: 25px;
         height: 25px;
     }
 }
@@ -204,6 +220,9 @@
     .inputs{
         margin-top: 50px;
     }
+    .btnCheckBoxContainer{
+        gap: 20px;
+    }
     .form {
         width: 100%;
         height: 100%;
@@ -219,6 +238,9 @@
         font-size: 44px;
         line-height: 50px;
         padding: 0;
+    }
+    .checkBoxTitle {
+        width: 477px;
     }
     .mainTitleToOrder{
         height: 50px;
@@ -247,7 +269,7 @@
     }
     .inputs12Container{
         flex-direction: row;
-        gap:10px;
+        gap:30px;
     }
     .inputs{
         margin-top: 100px;

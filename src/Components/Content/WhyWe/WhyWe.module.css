@@ -3,7 +3,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 45px;
+    margin-top: 140px;
 }
 .containerText {
     display: flex;
@@ -86,6 +86,9 @@
 }
 
 @media(min-width: 320px){
+    .container{
+        margin-top: 90px;
+    }
     .containerText {
         width: 315px;
         margin: 25px;
@@ -268,6 +271,9 @@
 }
 
 @media(min-width: 992px){
+    .container{
+        margin-top: 140px;
+    }
     .containerText {
         width: 100%;
         margin: 25px;

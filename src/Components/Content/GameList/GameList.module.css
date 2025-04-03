@@ -73,8 +73,14 @@
 .perkPower{
     margin-top: 60px;
 }
+.variants{
+    margin-top: 140px;
+}
 
 @media (min-width: 320px) {
+    .variants{
+        margin-top: 90px;
+    }
     .container {
         display: flex;
         flex-direction: column;
@@ -235,6 +241,7 @@
 @media (min-width: 992px) {
     .variants{
         margin-bottom: 50px;
+        margin-top: 140px;
     }
     .container {
         display: flex;
@@ -258,7 +265,7 @@
     .btn {
         position: absolute ;
         right: 45px;
-        top: -250px;
+        top: -200px;
         z-index: 10;
     }
     .title{
@@ -336,8 +343,8 @@
     }
     .btn {
         position: fixed;
-        right: 185px;
-        top: -450px;
+        right: 85px;
+        top: -390px;
         z-index: 10;
     }
     .title{
@@ -417,8 +424,8 @@
     }
     .btn {
         position: fixed;
-        right: 185px;
-        top: -480px;
+        right: 65px;
+        top: -430px;
         z-index: 10;
     }
     .title{

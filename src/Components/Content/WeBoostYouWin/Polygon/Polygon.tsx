@@ -26,7 +26,7 @@ const Polygon: React.FC<PolygonPropsType> = React.memo(({ isFormOpen }) => {
         },
         {
             id: 2,
-            title: "PESTIGE",
+            title: "PRESTIGE",
             description: "Rise above the rest. Prove your dominance on the battlefield",
             totalSegments: 13,
             filledSegments: 11,
@@ -120,29 +120,7 @@ const Polygon: React.FC<PolygonPropsType> = React.memo(({ isFormOpen }) => {
         };
     }, []);
 
-    // Get CSS class names for each card based on position and animation state
-    const getCardClassNames = (cardPosition: number) => {
-        // Base class for position
-        const positionClass = styles[`card${cardPosition + 1}`];
-        
-        // Animation classes
-        let animationClass = '';
-        
-        if (animationTrigger > 0) {
-            if (cardPosition === 0) { // Top to middle
-                animationClass = styles.animateTopToMiddle;
-            } else if (cardPosition === 1) { // Middle to bottom
-                animationClass = styles.animateMiddleToBottom;
-            } else { // Bottom to top
-                animationClass = styles.animateBottomToTop;
-            }
-        }
-        
-        return `${positionClass} ${animationClass}`;
-    };
-
-    // Get inline styles for each card
-    const getCardStyle = (position: number, id: number) => {
+    const getCardStyle = (position: number) => {
         const scale = position === 1 ? 1 : 0.85;
         let animation = '';
         
@@ -172,7 +150,7 @@ const Polygon: React.FC<PolygonPropsType> = React.memo(({ isFormOpen }) => {
                 <div
                     key={card.id}
                     className={styles[`card${cardPosition + 1}`]}
-                    style={getCardStyle(cardPosition, card.id)}
+                    style={getCardStyle(cardPosition)}
                     data-animation-key={animationTrigger} // Force re-evaluation of animations
                 >
                     <LevelUpCard
@@ -206,7 +184,7 @@ const Polygon: React.FC<PolygonPropsType> = React.memo(({ isFormOpen }) => {
             <style>
                 {getCssText()}
             </style>
-            <img className={styles.polygon} src={screenWidth < 768 ? './polygon2.0Mobile.png'  :  './polygon2.0.png'}  alt='polygon'/>
+            <img className={styles.polygon} src={screenWidth < 768 ? './polygon2.0Mobile.svg'  :  './polygon2.0.png'}  alt='polygon'/>
             <div className={styles.cards} style={{opacity: isFormOpen ? 0 : 1, transition: 'opacity 0.3s ease-in-out'}}>
                 {renderCards()}
             </div>

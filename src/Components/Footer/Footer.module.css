@@ -96,10 +96,12 @@
         height: 101px;
         border-top-left-radius: 41px;
         border-top-right-radius: 41px;
-        backdrop-filter: blur(162px)
     }
     .logoContainer{
-        flex-direction: column;
+        width: 100%;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
         gap: 10px;
     }
     .logo{
@@ -111,6 +113,7 @@
         letter-spacing: -5px;
     }
     .text{
+        width: 130px;
         font-weight: 400;
         font-size: 14px;
         line-height: 17px;
@@ -118,6 +121,7 @@
     .containerICons{
         position: static;
         opacity: 1;
+        margin-right: 5%;
     }
     .gameIcons {
         border-radius: 52px;
@@ -155,6 +159,7 @@
         letter-spacing: -5px;
     }
     .text{
+        width: 250px;
         font-weight: 400;
         font-size: 14px;
         line-height: 17px;

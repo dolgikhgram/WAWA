@@ -232,6 +232,7 @@ const GameList: React.FC<GameListPropsType> = React.memo(({id, showFormHandler})
         if (isTransitioning) return;
         
         setIsTransitioning(true);
+        // Вместо того, чтобы изменять выбранный индекс, мы напрямую устанавливаем его
         setCurrentCard(index);
         
         // Устанавливаем таймаут только для сброса состояния перехода
@@ -308,7 +309,7 @@ const GameList: React.FC<GameListPropsType> = React.memo(({id, showFormHandler})
                 <GameSelection/>
             </div>
                 <GameDataContext.Provider value={gameData}>
-                    <div className={containerClassName}>
+                    <div style={{marginTop:"30px"}} className={containerClassName}>
                         <MainImg {...mainImgProps} />
                         <div className={contentClassName}>
                             <div className={styles.mainTitleContainer}>

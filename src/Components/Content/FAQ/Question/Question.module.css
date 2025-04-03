@@ -36,8 +36,9 @@
         padding-left: 10px;
     }
     .title{
+        margin-left: 5px;
         left: 15px;
-        width: 80%;
+        width: 77%;
         height: 22px;
         font-weight: 300;
         font-size: 16px;
@@ -56,6 +57,7 @@
         font-size: 16px;
         line-height: 150%;
         margin-left: 15px;
+        margin-bottom: 10px;
     }
 }
 
@@ -68,6 +70,7 @@
         padding-left: 30px;
     }
     .title{
+        margin-left: 20px;
         left: 15px;
         width: 80%;
         height: 22px;
@@ -100,11 +103,12 @@
         padding-left: 30px;
     }
     .title{
+        margin-left: 5px;
         left: 15px;
         width: 700px;
         height: 22px;
         font-weight: 300;
-        font-size: 15px;
+        font-size: 13px;
         line-height: 20px;
     }
     .btn{
@@ -119,6 +123,7 @@
         font-size: 12px;
         line-height: 20px;
         margin-left: 15px;
+        margin-bottom: 10px;
     }
 }
 
@@ -127,15 +132,16 @@
         width: 90%;
         height: 65px;
         border-radius: 41px;
-        margin-bottom: 15px;
+        margin-bottom: 20px;
         padding-left: 30px;
     }
     .title{
+        margin-left: 10px;
         left: 15px;
         width: 750px;
         height: 22px;
         font-weight: 400;
-        font-size: 18px;
+        font-size: 17px;
         line-height: 22px;
     }
     .btn{
@@ -158,10 +164,11 @@
         width: 95%;
         height: 65px;
         border-radius: 41px;
-        margin-bottom: 15px;
+        margin-bottom: 20px;
         padding-left: 30px;
     }
     .title{
+        margin-left: 15px;
         left: 15px;
         width: 750px;
         height: 22px;

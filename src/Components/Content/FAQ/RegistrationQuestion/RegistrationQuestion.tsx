@@ -80,10 +80,6 @@ const RegistrationQuestion: React.FC<RegistrationQuestionPropsType> = React.memo
                         />
                     </div>
                     <div>
-                        <button className={styles.btn} onClick={handleSendData}>
-                            <div className={styles.textBtn}>Send data</div>
-                            <img src='./VectorBtnQuestion.png' alt='vector'/>
-                        </button>
                         <div className={styles.termsWrapper}>
                             <input type="checkbox" id="terms" className={styles.termsCheckbox}/>
                             <div className={styles.labelContainer}>
@@ -98,6 +94,10 @@ const RegistrationQuestion: React.FC<RegistrationQuestionPropsType> = React.memo
                                 </label>
                             </div>
                         </div>
+                        <button className={styles.btn} onClick={handleSendData}>
+                            <div className={styles.textBtn}>Send data</div>
+                            <img src='./VectorBtnQuestion.png' alt='vector'/>
+                        </button>
                     </div>
                 </div>
             </div>

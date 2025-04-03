@@ -34,7 +34,12 @@ const InputField: React.FC<InputFieldProps> = memo(({
                     autoComplete="off"
                     spellCheck="false"
                 />
-                <label htmlFor={id} className={styles.inputLabel}>{label}</label>
+                <label 
+                    htmlFor={id} 
+                    className={`${styles.inputLabel} ${value && value.length > 0 ? styles.hideLabel : ''}`}
+                >
+                    {label}
+                </label>
             </div>
         </div>
     );

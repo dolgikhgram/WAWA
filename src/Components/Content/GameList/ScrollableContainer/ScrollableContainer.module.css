@@ -2,15 +2,33 @@
     position: relative;
     width: 100%;
     padding: 0;
+    overflow: hidden; /* Добавляем overflow:hidden для обрезки невлезающих элементов */
 }
 
 .scrollableContainer {
     overflow: hidden;
     margin: 0 40px;
+    width: 100%; /* Устанавливаем ширину 100% */
+    box-sizing: border-box; /* Учитываем padding при расчете ширины */
 }
-.firstItem{
+
+/* Добавляем класс для контейнера с отступом */
+.adjustedContainer {
+    margin-left: 60px; /* Увеличиваем левый отступ */
+    padding-left: 20px; /* Добавляем дополнительный левый отступ */
+    width: calc(100% - 80px); /* Компенсируем увеличенный отступ */
+}
+
+/* Стиль для первой (невидимой) карточки, обеспечивающей правильный отступ */
+.firstItem {
     opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    /* Сохраняем размер для правильного расположения элементов */
+    width: 55px; 
+    height: 69px;
 }
+
 .list {
     display: flex;
     gap: 15px;
@@ -19,12 +37,32 @@
     list-style: none;
     transition: transform 0.3s ease;
     will-change: transform;
+    /* Добавляем отступы для всего списка */
+    padding-left: 30px;
+    padding-right: 30px;
 }
 
 .item {
+    position: relative;
+    transition: all 0.3s ease-in-out;
+    outline: none; /* Убираем стандартную обводку при фокусе */
     flex: 0 0 auto;
-    transition: all 0.3s ease;
     cursor: pointer;
+    margin-right: 5px; /* Добавляем дополнительный отступ между карточками */
+}
+
+.item:focus {
+    outline: 2px solid #ffffff3d; /* Добавляем свою обводку при фокусе */
+    border-radius: 8px;
+}
+
+.item:focus:not(:focus-visible) {
+    outline: none; /* Убираем обводку, если фокус не от клавиатуры */
+}
+
+.focused .item {
+    opacity: 1;
+    visibility: visible;
 }
 
 .item:hover .img:not(.dimmed) {
@@ -38,12 +76,16 @@
 
 .gameCard {
     position: relative;
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease-in-out;
     width: 100%;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.item:focus .gameCard {
+    transform: scale(1.05); /* Небольшая анимация при фокусе */
 }
 
 .img {
@@ -79,10 +121,6 @@
     box-shadow: none;
 }
 
-.scrollButton:focus {
-    outline: none;
-}
-
 .scrollButton img {
     z-index: 1;
     opacity: 0.8;
@@ -93,10 +131,6 @@
     -webkit-transform: translateZ(0);
     -moz-transform: translateZ(0);
     transform: translateZ(0);
-}
-
-.scrollButton:hover img {
-    opacity: 1;
 }
 
 .scrollButtonRight {
@@ -110,7 +144,7 @@
     z-index: 2;
     position: relative;
     box-shadow: 0 0 5px rgba(107, 75, 255, 0.6);
-    padding: 2px;
+    padding: 8px;
     border-radius: 24px;
 }
 
@@ -127,36 +161,80 @@
     display: none;
 }
 
+.nextItem {
+    opacity: 0.9;
+    transform: scale(1);
+}
+
+/* Стиль для карточек, которые не помещаются полностью */
+.notFullyVisible {
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+}
+
+.currentGame {
+    position: relative;
+}
+
+/* Удаляю/отключаю фиолетовую точку под выделенной картой */
+.currentGame::after {
+    content: none; /* Изменяем content на none, чтобы точка исчезла */
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 6px;
+    background-color: rgba(113, 95, 255, 1);
+    border-radius: 50%;
+    display: none; /* Дополнительно скрываем элемент */
+}
+
 @media (min-width: 320px) {
     .container {
         position: fixed;
         top: -500px;
-        left: -15px;
-        width: 380px;
+        left: -10px;
+        width: 415px;
         height: 160px;
         margin-bottom: 25px;
+        overflow: hidden; /* Убедимся, что overflow:hidden работает на мобильных */
     }
     .list {
         position: relative;
-        width: 100%;
+        width: 90%;
+        left: -60px;
         height: 160px;
-        max-width: 900px;
-        padding: 10px 0;
+        padding: 10px 30px; /* Увеличиваем боковые отступы */
     }
+    /* Уменьшаем размеры карточек на мобильном для предотвращения наложения */
     .item {
-        width: 55px;
-        height: 69px;
+        width: 50px;
+        height: 65px;
         border-radius: 14px;
+        margin-right: 10px; /* Больший отступ на маленьких экранах */
+    }
+    .firstItem {
+        width: 50px;
+        height: 65px;
     }
     .gameCard {
-        width: 55px;
-        height: 69px;
+        width: 50px;
+        height: 65px;
         border-radius: 14px;
     }
     .img {
         border-radius: 14px;
     }
+    /* Смещаем контейнер вправо для предотвращения наложения */
+    .adjustedContainer {
+        margin-left: 0;
+        padding-left: 0;
+        width: calc(100% - 0); /* Компенсируем увеличенный отступ */
+    }
     .scrollButton {
+        opacity: 0;
         width: 40px;
         height: 40px;
         left:345px;
@@ -164,7 +242,6 @@
         transform: none;
         background: transparent;
         position: fixed;
-        background: rgba(18, 18, 18, 0.5);
         border-radius: 50%;
         display: flex;
         align-items: center;
@@ -182,13 +259,21 @@
         background: transparent;
     }
     .firstVisible {
-        border-radius: 14px;
+        border-radius: 20px;
     }
     .firstVisible .gameCard {
         border-radius: 12px;
     }
     .firstVisible .img {
         border-radius: 12px;
+    }
+    .scrollButton .arrowIcon {
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%) !important;
     }
 }
 
@@ -197,16 +282,29 @@
         position: relative;
         top: -260px;
         left: 113px;
-        width: 75%;
+        width: 80%;
         height: 240px;
     }
     .list {
         gap: 15px;
         height: 240px;
+        left: 0;
+        padding: 10px 30px; /* Увеличиваем боковые отступы */
     }
     .item {
         width: 90px;
         height: 110px;
+        margin-right: 8px; /* Сохраняем дополнительный отступ */
+    }
+    .firstItem {
+        width: 90px;
+        height: 110px;
+    }
+    /* Смещаем контейнер вправо для планшетов */
+    .adjustedContainer {
+        margin-left: 0;
+        padding-left: 20px;
+        width: calc(100% - 80px); /* Компенсируем увеличенный отступ */
     }
     .gameCard {
         width: 90px;
@@ -223,18 +321,35 @@
         padding-left: 40px;
     }
     .scrollButton {
-        top: 10px;
-        left: 735px;
-        width: 39px;
-        height: 107px;
-        background: linear-gradient(90deg, rgba(18, 18, 18, 0) 0%, rgba(18, 18, 18, 0.8) 50%, rgb(18, 18, 18) 100%);
-        border-radius: 0;
-        position: absolute;
+        opacity: 1;
+        width: 40px;
+        height: 40px;
+        left: 882px;
+        top: -470px;
+        transform: none;
+        background: transparent;
+        position: fixed;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .arrowIcon{
+        width: 35px;
+        height: 35px;
     }
     .scrollButton img {
         position: static;
         width: 24px;
         height: 24px;
+    }
+    .scrollButton .arrowIcon {
+        width: 24px;
+        height: 24px;
+        position: absolute;
+        left: 80%;
+        top: 50%;
+        transform: translate(-50%, -50%) !important;
     }
 }
 
@@ -242,7 +357,7 @@
     .container {
         top: -250px;
         left: 230px;
-        width: 75%;
+        width: 76%;
         height: 240px;
     }
     .list {
@@ -250,6 +365,11 @@
         height: 240px;
     }
     .item {
+        width: 90px;
+        height: 110px;
+    }
+    /* Обновляем размеры первой карточки для десктопов */
+    .firstItem {
         width: 90px;
         height: 110px;
     }
@@ -262,6 +382,10 @@
         width: 100%;
         height: 100%;
     }
+    .arrowIcon{
+        width: 25px;
+        height: 25px;
+    }
     .scrollButtonRight {
         top: 0;
         right: 0;
@@ -269,11 +393,23 @@
         padding-left: 40px;
     }
     .scrollButton {
-        top: 10px;
-        left: 745px;
+        top: -239px;
+        left: 955px;
+        border-radius: 25px;
         width: 39px;
-        height: 107px;
+        height: 110px;
         background: linear-gradient(90deg, rgba(18, 18, 18, 0) 0%, rgba(18, 18, 18, 0.8) 50%, rgb(18, 18, 18) 100%);
+    }
+    .firstVisible{
+        border-radius: 36px;
+    }
+    .firstVisible .gameCard {
+        border-radius: 24px;
+    }
+    /* Смещаем контейнер вправо для десктопов */
+    .adjustedContainer {
+        margin-left: 10px;
+        padding-left: 0;
     }
 }
 
@@ -281,7 +417,7 @@
     .container {
         top:60px;
         left: -23px;
-        width: 64%;
+        width: 62%;
         height: 240px;
     }
     .list {
@@ -289,6 +425,11 @@
         height: 240px;
     }
     .item {
+        width: 114px;
+        height: 143px;
+    }
+    /* Обновляем размеры первой карточки для больших экранов */
+    .firstItem {
         width: 114px;
         height: 143px;
     }
@@ -307,11 +448,17 @@
         padding-left: 40px;
     }
     .scrollButton {
-        top: 10px;
-        left: 845px;
+        top: 72px;
+        left: 741px;
+        border-radius: 25px;
         width: 39px;
-        height: 140px;
+        height: 138px;
         background: linear-gradient(90deg, rgba(18, 18, 18, 0) 0%, rgba(18, 18, 18, 0.8) 50%, rgb(18, 18, 18) 100%);
+    }
+    /* Смещаем контейнер вправо для больших экранов */
+    .adjustedContainer {
+        margin-left: 15px;
+        padding-left: 30px;
     }
 }
 
@@ -330,6 +477,11 @@
         width: 114px;
         height: 143px;
     }
+    /* Обновляем размеры первой карточки для очень больших экранов */
+    .firstItem {
+        width: 114px;
+        height: 143px;
+    }
     .gameCard {
         width: 114px;
         height: 143px;
@@ -345,10 +497,105 @@
         padding-left: 40px;
     }
     .scrollButton {
-        top: 10px;
-        left: 945px;
+        top: 90px;
+        left: 845px;
+        border-radius: 25px;
         width: 39px;
         height: 140px;
         background: linear-gradient(90deg, rgba(18, 18, 18, 0) 0%, rgba(18, 18, 18, 0.8) 50%, rgb(18, 18, 18) 100%);
     }
+    /* Смещаем контейнер вправо для очень больших экранов */
+    .adjustedContainer {
+        margin-left: 0;
+        padding-left: 35px;
+    }
+}
+
+/* Анимации для карточек */
+.exiting {
+    animation: fadeOutLeft 0.3s ease forwards;
+    pointer-events: none;
+}
+
+.entering {
+    animation: fadeInRight 0.3s ease forwards;
+}
+
+.prevExiting {
+    animation: fadeOutRight 0.3s ease forwards;
+    pointer-events: none;
+}
+
+.prevEntering {
+    animation: fadeInLeft 0.3s ease forwards;
+}
+
+@keyframes fadeOutLeft {
+    0% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(-15px);
+    }
+}
+
+@keyframes fadeInRight {
+    0% {
+        opacity: 0.5;
+        transform: translateX(15px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeOutRight {
+    0% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(15px);
+    }
+}
+
+@keyframes fadeInLeft {
+    0% {
+        opacity: 0.5;
+        transform: translateX(-15px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Стили для векторной иконки стрелки */
+.arrowIcon {
+    z-index: 1;
+    opacity: 0.8;
+    /* Убираем transition, чтобы избежать любых анимаций */
+    filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.5));
+    /* Фиксируем положение стрелки */
+    position: absolute;
+}
+
+/* Полностью удаляем все трансформации при наведении */
+.scrollButton:hover .arrowIcon {
+    /* Не меняем никаких свойств при наведении */
+}
+
+/* Кнопки скроллинга */
+.scrollButtonLeft {
+    left: 0;
+    z-index: 10;
+}
+
+.scrollButtonRight {
+    right: 0;
+    z-index: 10;
 }

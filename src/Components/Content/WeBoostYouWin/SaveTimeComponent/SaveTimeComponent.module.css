@@ -1,13 +1,6 @@
 @font-face {
     font-family: 'Magistral';
-    src: url('/src/assets/font/Magistral-Light.woff2') format('woff2');
-    font-weight: 300;
-    font-style: normal;
-    font-display: swap;
-}
-@font-face {
-    font-family: 'Magistral';
-    src: url('/src/assets/font/Magistral-Medium.woff2') format('woff2');
+    src: url('/src/assets/font/Magistral-Medium.woff') format('woff2');
     font-weight: 300;
     font-style: normal;
     font-display: swap;
@@ -16,7 +9,8 @@
     display: flex;
     flex-direction: column;
     align-items: end;
-    margin: 45px 100px;
+    margin: 0 100px;
+    margin-top: 45px;
 }
 .heading {
     position : relative;

@@ -25,6 +25,11 @@
     color: rgba(255, 255, 255, 0.6);
 }
 
+.hideLabel {
+    opacity: 0;
+    pointer-events: none;
+}
+
 @media(min-width: 320px){
     .inputWrapper {
         font-size: 20px;
@@ -122,7 +127,7 @@
     }
     .inputField {
         padding: 0;
-        width: 90%;
+        width: 80%;
         font-size: 16px;
     }
     .inputField:focus  + .inputLabel {
@@ -134,6 +139,7 @@
 @media(min-width: 1500px) {
     .inputWrapper {
         font-size: 20px;
+        gap:90px;
     }
     .inputLabel {
         left: 0;
@@ -146,7 +152,7 @@
     }
     .inputField {
         padding: 0;
-        width: 90%;
+        width: 100%;
         font-size: 20px;
     }
     .inputField:focus  + .inputLabel {

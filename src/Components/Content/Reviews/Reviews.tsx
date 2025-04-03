@@ -23,7 +23,7 @@ const reviewsData = [
             avatar: './PrillX.png',
         },
         review: {
-            text: '“Wanted to unlock the full Root of Nightmares armor set for my Titan, but raid RNG is brutal. These guys ran the raid weekly until I had the full set! Now my character looks incredible, and I’m ready for endgame content!”',
+            text: 'Wanted to unlock the full Root of Nightmares armor set for my Titan, but raid RNG is brutal. These guys ran the raid weekly until I had the full set! Now my character looks incredible, and I\'m ready for endgame content!',
             type: 'BOOSTING',
             date: '20.02.2025'
         }
@@ -40,7 +40,7 @@ const reviewsData = [
             avatar: './KDKing.png'
         },
         review: {
-            text: "“I was stuck trying to complete the Root of Nightmares raid on Master difficulty. These guys carried me through it like it was nothing! I got my Collective Obligation exotic and a full set of Adept weapons. 100% worth it!”",
+            text: 'I was stuck trying to complete the Root of Nightmares raid on Master difficulty. These guys carried me through it like it was nothing! I got my Collective Obligation exotic and a full set of Adept weapons. 100% worth it!',
             type: 'BOOSTING',
             date: '02.02.2025'
         }
@@ -57,7 +57,7 @@ const reviewsData = [
             avatar: './RankRush.png',
         },
         review: {
-            text: '“Grinding Trials of Osiris was pure pain, so I ordered a flawless boost. In just one evening, they secured my 7-0 flawless card, got me the Astral Horizon shotgun with perfect perks, and even farmed some extra Ascendant Shards. Insane work!”',
+            text: 'Grinding Trials of Osiris was pure pain, so I ordered a flawless boost. In just one evening, they secured my 7-0 flawless card, got me the Astral Horizon shotgun with perfect perks, and even farmed some extra Ascendant Shards. Insane work!',
             type: 'BOOSTING',
             date: '17.03.2025'
         }
@@ -74,7 +74,7 @@ const reviewsData = [
             avatar: './XPPhantom.png',
         },
         review: {
-            text: '“The Dark Matter Ultra camo grind was way too much for me, so I let the pros handle it. They completed all weapon challenges, even the longshots and launcher kills, in record time. Now my guns look insane!”',
+            text: 'The Dark Matter Ultra camo grind was way too much for me, so I let the pros handle it. They completed all weapon challenges, even the longshots and launcher kills, in record time. Now my guns look insane!',
             type: 'BOOSTING',
             date: '12.02.2025'
         }
@@ -91,7 +91,7 @@ const reviewsData = [
             avatar: './XPPhantom.png',
         },
         review: {
-            text: '“The Dark Matter Ultra camo grind was way too much for me, so I let the pros handle it. They completed all weapon challenges, even the longshots and launcher kills, in record time. Now my guns look insane!”',
+            text: 'The Dark Matter Ultra camo grind was way too much for me, so I let the pros handle it. They completed all weapon challenges, even the longshots and launcher kills, in record time. Now my guns look insane!',
             type: 'BOOSTING',
             date: '15.03.2025'
         }
@@ -108,7 +108,7 @@ const reviewsData = [
             avatar: './ForeDrendis.png',
         },
         review: {
-            text: '“I really wanted the Orion camo but didn’t have the patience to grind longshots and hipfire kills. These guys finished it in just a few days, and now every gun in my loadout looks legendary. Worth every penny!”',
+            text: 'I really wanted the Orion camo but didn\'t have the patience to grind longshots and hipfire kills. These guys finished it in just a few days, and now every gun in my loadout looks legendary. Worth every penny!',
             type: 'BOOSTING',
             date: '11.01.2025'
         }
@@ -125,46 +125,57 @@ const reviewsData = [
             avatar: './IMalefik.png',
         },
         review: {
-            text: '“Ranked Play was a nightmare solo, so I ordered a boost. They took me from Silver 2 to Crimson in no time, and I even got the special rewards for reaching that rank. Now I can flex on my friends!”',
+            text: 'Ranked Play was a nightmare solo, so I ordered a boost. They took me from Silver 2 to Crimson in no time, and I even got the special rewards for reaching that rank. Now I can flex on my friends!',
             type: 'BOOSTING',
             date: '16.03.2025'
         }
     },
-
 ];
 
-const Reviews: React.FC<ReviewsPropsType> = React.memo(({id,showFormHandler}) => {
+const Reviews: React.FC<ReviewsPropsType> = React.memo(({id, showFormHandler}) => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isAnimating, setIsAnimating] = useState(false);
-    const [slideDirection, setSlideDirection] = useState<'slideLeft' | 'slideRight' | ''>('');
+    const [isButtonVisible, setIsButtonVisible] = useState(true);
+    const [slideDirection, setSlideDirection] = useState<'slideInFromLeft' | 'slideInFromRight' | ''>('');
 
     const handlePrevClick = useCallback(() => {
         if (isAnimating) return;
         setIsAnimating(true);
-        setSlideDirection('slideRight');
-
+        setIsButtonVisible(false);
+        setSlideDirection('slideInFromLeft');
+        
+        setCurrentIndex(prev => (prev - 1 + reviewsData.length) % reviewsData.length);
+        
         setTimeout(() => {
-            setCurrentIndex(prevIndex =>
-                prevIndex === 0 ? reviewsData.length - 1 : prevIndex - 1
-            );
-            setSlideDirection('');
             setIsAnimating(false);
-        }, 800);
-    },[]);
+            setIsButtonVisible(true);
+            setSlideDirection('');
+        }, 500);
+    }, [isAnimating]);
 
     const handleNextClick = useCallback(() => {
         if (isAnimating) return;
         setIsAnimating(true);
-        setSlideDirection('slideLeft');
-
+        setIsButtonVisible(false);
+        setSlideDirection('slideInFromRight');
+        
+        setCurrentIndex(prev => (prev + 1) % reviewsData.length);
+        
         setTimeout(() => {
-            setCurrentIndex(prevIndex =>
-                prevIndex === reviewsData.length - 1 ? 0 : prevIndex + 1
-            );
-            setSlideDirection('');
             setIsAnimating(false);
-        }, 800);
-    },[]);
+            setIsButtonVisible(true);
+            setSlideDirection('');
+        }, 500);
+    }, [isAnimating]);
+
+    const getCardPosition = (index: number) => {
+        if (index === currentIndex) return 'center';
+        if (index === (currentIndex - 1 + reviewsData.length) % reviewsData.length) return 'left';
+        if (index === (currentIndex + 1) % reviewsData.length) return 'right';
+        if (index === (currentIndex - 2 + reviewsData.length) % reviewsData.length) return 'farLeft';
+        if (index === (currentIndex + 2) % reviewsData.length) return 'farRight';
+        return '';
+    };
 
     return (
         <div id={id}>
@@ -183,12 +194,27 @@ const Reviews: React.FC<ReviewsPropsType> = React.memo(({id,showFormHandler}) =>
                 </div>
             </div>
             <div className={styles.reviewsContainer}>
-                <div className={`${styles.reviewsWrapper} ${styles[slideDirection]}`}>
-                    <ReviewsBox review={reviewsData[currentIndex]} showFormHandler={showFormHandler}/>
-                    <ReviewsBox review={reviewsData[(currentIndex + 1) % reviewsData.length]} showFormHandler={showFormHandler}/>
-                    <ReviewsBox review={reviewsData[(currentIndex + 2) % reviewsData.length]} showFormHandler={showFormHandler}/>
+                <div className={styles.reviewsWrapper}>
+                    {reviewsData.map((review, index) => (
+                        <div
+                            key={index}
+                            className={`
+                                ${styles.reviewCard} 
+                                ${styles[getCardPosition(index)]}
+                                ${index === currentIndex ? styles[slideDirection] : ''}
+                            `}
+                            style={{
+                                display: getCardPosition(index) ? 'block' : 'none'
+                            }}
+                        >
+                            <ReviewsBox review={review} showFormHandler={showFormHandler}/>
+                        </div>
+                    ))}
                 </div>
-                <div className={styles.btnTabletContainer} onClick={handleNextClick}>
+                <div 
+                    className={`${styles.btnTabletContainer} ${!isButtonVisible ? styles.hidden : ''}`} 
+                    onClick={handleNextClick}
+                >
                     <img className={styles.btnTablet} src='./BtnTablet.png' alt="next"/>
                 </div>
             </div>

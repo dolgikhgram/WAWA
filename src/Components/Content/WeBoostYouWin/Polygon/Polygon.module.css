@@ -9,6 +9,18 @@
     border-radius: 45px;
     border-width: 1px;
     border-image-source: linear-gradient(35.95deg, #FFFFFF 21.02%, rgba(255, 255, 255, 0) 80.08%);
+    -webkit-border-radius: 45px;
+    -moz-border-radius: 45px;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    transform: translateZ(0);
+    image-rendering: auto;
+    -ms-interpolation-mode: bicubic;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .guardian3{
@@ -63,8 +75,15 @@
         margin-right: 85px;
     }
     .polygon{
+        top:-25px;
         width: 337px;
         height: 253px;
+        object-fit: contain;
+        transform: translateZ(0);
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        image-rendering: auto;
+        -ms-interpolation-mode: bicubic;
     }
     .guardian3{
         opacity: 0;
@@ -100,6 +119,17 @@
     }
 }
 
+@media (min-width: 375px) and (max-width: 767px) {
+    .polygon{
+        width: 100%;
+        max-width: 337px;
+        height: auto;
+        -webkit-aspect-ratio: 337/253;
+        object-fit: contain;
+        -webkit-object-fit: contain;
+    }
+}
+
 @media (min-width: 768px) {
     .unionContainer{
         align-items: start;
@@ -111,6 +141,9 @@
     .polygon{
         width: 556px;
         height: 437px;
+        object-fit: contain;
+        image-rendering: auto;
+        -ms-interpolation-mode: bicubic;
     }
     .guardian3{
         opacity: 1;

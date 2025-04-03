@@ -1,6 +1,7 @@
 .container {
     display: flex;
     max-width: 1452px;
+    margin-top: 140px;
 }
 .titleContainer{
     display: flex;

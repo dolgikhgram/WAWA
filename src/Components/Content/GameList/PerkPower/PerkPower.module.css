@@ -103,8 +103,9 @@
 }
 @media (min-width: 1200px){
     .container {
-        max-width: 260px;
+        max-width: 340px;
         gap: 6px;
+        justify-content: space-between;
     }
     .infoContainer {
         font-weight: 200;
@@ -117,6 +118,7 @@
         font-size: 10px;
         line-height: 15px;
         margin-top: 5px;
+        width: 170px;
     }
     .powerBarSegment {
         width: 9px;
@@ -128,7 +130,7 @@
         font: 500 17px Geologica, sans-serif;
     }
     .line{
-        width: 260px;
+        width: 320px;
         margin-bottom: 15px;
     }
 
@@ -136,8 +138,9 @@
 
 @media (min-width: 1500px){
     .container {
-        max-width: 326px;
+        max-width: 396px;
         gap: 16px;
+        justify-content: space-between;
     }
     .infoContainer {
         font-weight: 300;
@@ -146,6 +149,7 @@
         font-size: 12px;
         line-height: 15px;
         margin-top: 5px;
+        width: 170px;
     }
     .title {
         font-size: 18px;
@@ -160,7 +164,7 @@
         font: 500 17px Geologica, sans-serif;
     }
     .line{
-        width: 327px;
+        width: 390px;
         margin-bottom: 15px;
     }
 

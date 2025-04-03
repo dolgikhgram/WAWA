@@ -3,6 +3,7 @@
     align-items: center;
     justify-content: center;
     position: relative;
+    margin-top: 140px;
 }
 .background{
     position: absolute;
@@ -37,6 +38,9 @@
 }
 .btn:hover .textBtn {
     color: rgba(255, 255, 255, 1);
+}
+.btn:hover img {
+    filter: brightness(0) invert(1);
 }
 .textBtn{
     font-family: Geologica,serif;
@@ -81,6 +85,7 @@
 }
 .termsText {
     color: rgba(255, 255, 255, 0.6);
+    font-family: Geologica,serif;
     font-size: 14px;
     line-height: 20px;
     cursor: pointer;
@@ -103,7 +108,7 @@
         width: 271px;
         height: 36px;
         top: 210px;
-        left: 30px;
+        left: 35px;
         font-weight: 400;
         font-size: 30px;
         line-height: 36px;
@@ -120,7 +125,7 @@
         width: 231px;
         height: 55px;
         border-radius: 52px;
-        top: 275px;
+        top: 200px;
         left: 5px;
     }
     .textBtn {
@@ -136,9 +141,9 @@
         width: 100%;
     }
     .termsWrapper {
-        top: 175px;
+        top: 275px;
         left: 0;
-        gap: 20px;
+        gap: 10px;
         font-size: 14px;
         line-height: 21px;
     }
@@ -149,8 +154,8 @@
     }
     .termsText {
         font-weight: 300;
-        font-size: 12px;
-        line-height: 19px;
+        font-size: 11px;
+        line-height: 17px;
     }
 }
 @media(min-width: 768px) {
@@ -167,7 +172,7 @@
         width: 271px;
         height: 36px;
         top: 104px;
-        left: 20px;
+        left: 26px;
         font-weight: 400;
         font-size: 30px;
         line-height: 36px;
@@ -185,7 +190,7 @@
         height: 55px;
         border-radius: 52px;
         top: 123px;
-        left: 340px;
+        left: 0;
     }
     .textBtn {
         width: 87px;
@@ -201,8 +206,8 @@
     }
     .termsWrapper {
         top: 110px;
-        left: 2px;
-        gap: 20px;
+        left: 340px;
+        gap: 10px;
         font-size: 14px;
         line-height: 21px;
     }
@@ -232,14 +237,14 @@
         width: 510px;
         height: 72px;
         top: 25px;
-        left: 58px;
+        left: 22px;
         font-weight: 400;
-        font-size: 50px;
+        font-size: 40px;
         line-height: 72px;
     }
     .inputGroup {
         width: 60%;
-        gap: 15px;
+        gap: 10px;
         font-size: 20px;
         top: 135px;
         left: 100px;
@@ -249,8 +254,8 @@
         width: 231px;
         height: 55px;
         border-radius: 52px;
-        top: 295px;
-        left: -11px;
+        top: 232px;
+        left: -5px;
     }
     .textBtn {
         width: 87px;
@@ -265,10 +270,10 @@
         width: 100%;
     }
     .termsWrapper {
-        top: 220px;
-        left: -4px;
+        top: 290px;
+        left: 0;
         gap: 21px;
-        font-size: 12px;
+        font-size: 11px;
         line-height: 19px;
     }
     .termsCheckbox {
@@ -295,10 +300,10 @@
         max-width: 1600px;
     }
     .mainTitle {
-        width: 490px;
+        width: 500px;
         height: 72px;
         top: 25px;
-        left: 75px;
+        left: 100px;
         font-weight: 400;
         font-size: 55px;
         line-height: 72px;
@@ -308,15 +313,15 @@
         gap: 39px;
         font-size: 20px;
         top: 170px;
-        left: 90px;
+        left: 105px;
     }
     .btn {
         gap: 16px;
         width: 231px;
         height: 55px;
         border-radius: 52px;
-        top: 170px;
-        left: 0;
+        top: 155px;
+        left: 355px;
     }
     .inputContainer {
         flex-direction: row;
@@ -331,9 +336,9 @@
         line-height: 23px;
     }
     .termsWrapper {
-        top: 165px;
-        left: 365px;
-        gap: 15px;
+        top: 150px;
+        left: 0;
+        gap: 10px;
         font-size: 14px;
         line-height: 21px;
     }
@@ -344,7 +349,7 @@
     }
     .termsText {
         font-weight: 300;
-        font-size: 14px;
+        font-size: 13px;
         line-height: 20px;
     }
 }
@@ -364,7 +369,7 @@
         width: 541px;
         height: 72px;
         top: 25px;
-        left: 150px;
+        left: 160px;
         font-weight: 400;
         font-size: 60px;
         line-height: 72px;
@@ -381,8 +386,8 @@
         width: 231px;
         height: 55px;
         border-radius: 52px;
-        top:170px;
-        left: 0;
+        top:150px;
+        left: 415px;
     }
     .textBtn{
         width: 87px;
@@ -393,13 +398,13 @@
     }
     .inputContainer {
         flex-direction: row;
-        gap: 20px;
+        gap: 79px;
         width: 100%;
     }
     .termsWrapper {
-        top: 165px;
-        left: 365px;
-        gap: 21px;
+        top: 140px;
+        left: 0;
+        gap: 15px;
         font-size: 14px;
         line-height: 21px;
     }

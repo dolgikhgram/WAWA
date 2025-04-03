@@ -7,21 +7,35 @@
     height: 620px;
 }
 .image {
-    object-fit: contain;
-    object-position: center;
-    border-radius: 50px;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.3s ease-in-out;
+    border-radius: 26px;
+    left: 0;
 }
 .imageBackGround {
     position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.3s ease-in-out;
     opacity: 75%;
     border-radius: 50px;
-    background: rgba(0, 0, 0, 0.2);
     left: 0;
 }
-.imageSoldier{
+.imageSoldier,
+.imageSoldierDestiny2,
+.imageSoldierCoDMW2,
+.imageSoldierWarzone,
+.imageSoldierBlackOps,
+.imageSoldierCoDMW3,
+.imageSoldierSM2,
+.imageSoldierBlackOpsZombies {
     position: absolute;
-    left: -50px;
-    top: 70px;
+    transition: all 0.3s ease-in-out;
+    opacity: 1;
 }
 
 @media (min-width: 320px) {
@@ -38,10 +52,10 @@
     .image {
         position: absolute;
         width: 320px;
-        height: 231px;
+        height: 222px;
         border-radius: 26px;
         left: 0;
-        top:-5px;
+        top: 0;
     }
     .imageBackGround {
         width: 320px;
@@ -119,11 +133,10 @@
         height: 360px;
     }
     .image {
-        position: absolute;
-        width: 248px;
+        width: 234px;
         height: 360px;
-        left: -7px;
-        top:0;
+        left: 0;
+        top: 0;
         border-radius: 26px;
     }
     .imageBackGround {
@@ -201,11 +214,10 @@
         height: 360px;
     }
     .image {
-        position: absolute;
-        width: 248px;
-        height:360px;
-        left: -7px;
-        top:0;
+        width: 233px;
+        height: 360px;
+        left: 0;
+        top: 0;
         border-radius: 26px;
     }
     .imageBackGround {
@@ -284,14 +296,14 @@
         height: 620px;
     }
     .image {
-        position: static;
-        width: 100%;
-        height: 100%;
+        width: 398px;
+        height: 620px;
+        border-radius: 26px;
+        left: 0px;
     }
     .imageBackGround {
         width: 400px;
         height: 101%;
-
         left: 0;
         border-radius: 50px;
     }
@@ -304,28 +316,28 @@
     }
     .imageSoldierCoDMW2{
         position: absolute;
-        width: 319px;
+        width: 330px;
         height: 682px;
         top: 12px;
         left: 155px;
     }
     .imageSoldierWarzone{
         position: absolute;
-        width: 331px;
+        width: 337px;
         height: 715px;
         top: -8px;
         left: 129px;
     }
     .imageSoldierBlackOps{
         position: absolute;
-        width: 298px;
+        width: 305px;
         height: 688px;
         top: 6px;
         left: 125px;
     }
     .imageSoldierCoDMW3{
         position: absolute;
-        width: 298px;
+        width: 315px;
         height: 682px;
         top: 15px;
         left: 150px;
@@ -339,7 +351,7 @@
     }
     .imageSoldierBlackOpsZombies{
         position: absolute;
-        width: 332px;
+        width: 340px;
         height: 680px;
         top: 15px;
         left: -85px;
@@ -356,9 +368,10 @@
         height: 620px;
     }
     .image {
-        width: 400px;
+        width: 398px;
         height: 620px;
         border-radius: 26px;
+        left: 0px;
     }
     .imageBackGround {
         width: 400px;
@@ -366,53 +379,15 @@
         left: 0;
         border-radius: 50px;
     }
-    .imageSoldierDestiny2{
-        position: absolute;
-        width: 430px;
-        height: 643px;
-        top: 66px;
-        left:0;
-    }
-    .imageSoldierCoDMW2{
-        position: absolute;
-        width: 319px;
-        height: 682px;
-        top: 12px;
-        left: 155px;
-    }
-    .imageSoldierWarzone{
-        position: absolute;
-        width: 331px;
-        height: 715px;
-        top: -8px;
-        left: 129px;
-    }
-    .imageSoldierBlackOps{
-        position: absolute;
-        width: 298px;
-        height: 688px;
-        top: 6px;
-        left: 125px;
-    }
-    .imageSoldierCoDMW3{
-        position: absolute;
-        width: 298px;
-        height: 682px;
-        top: 15px;
-        left: 150px;
-    }
-    .imageSoldierSM2{
-        position: absolute;
-        width: 478px;
-        height: 620px;
-        top: 47px;
-        left: -45px;
-    }
-    .imageSoldierBlackOpsZombies{
-        position: absolute;
-        width: 332px;
-        height: 680px;
-        top: 15px;
-        left: -85px;
-    }
+}
+
+.fadeOut {
+    opacity: 0;
+    position: absolute;
+    pointer-events: none;
+}
+
+.fadeIn {
+    opacity: 1;
+    position: absolute;
 }

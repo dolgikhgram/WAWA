@@ -3,7 +3,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    margin-top: 90px;
+    margin-top: 140px;
     margin-bottom: 55px;
 }
 .starsContainer {
@@ -42,15 +42,12 @@
     -webkit-text-fill-color: transparent;
 }
 .reviewsContainer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    min-height: 450px;
-    padding: 20px 0;
     position: relative;
-    max-width: 1920px;
-    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
 }
 .reviewsContainer2 {
     display: flex;
@@ -60,30 +57,35 @@
 }
 .reviewsWrapper {
     display: flex;
-    gap: 2rem;
-    transition: transform 0.8s ease;
-    width: 100%;
-    position: relative;
     justify-content: center;
-    padding: 0 100px;
+    align-items: center;
+    gap: 2rem;
+    position: relative;
 }
-.reviewsWrapper > * {
-    flex: 0 0 auto;
-    width: 600px;
-    transition: all 0.8s ease;
+.reviewCard {
+    transition: all 0.5s ease;
+    position: absolute;
 }
-.reviewsWrapper > *:first-child {
-    transform: translateX(5%) scale(0.85);
-    opacity: 0.5;
+.reviewCard.left {
+    transform: translateX(-100%) scale(0.8);
+    opacity: 0.6;
 }
-.reviewsWrapper > *:nth-child(2) {
+.reviewCard.center {
     transform: translateX(0) scale(1);
     opacity: 1;
     z-index: 2;
 }
-.reviewsWrapper > *:last-child {
-    transform: translateX(-5%) scale(0.85);
-    opacity: 0.5;
+.reviewCard.right {
+    transform: translateX(100%) scale(0.8);
+    opacity: 0.6;
+}
+.reviewCard.farLeft {
+    transform: translateX(-200%) scale(0.8);
+    opacity: 0;
+}
+.reviewCard.farRight {
+    transform: translateX(200%) scale(0.8);
+    opacity: 0;
 }
 .slideLeft {
     transform: translateX(-100%);
@@ -126,6 +128,7 @@
 @media (min-width: 320px){
     .container {
         width: 100%;
+        margin-top: 90px;
     }
     .starsContainer {
         position: absolute;
@@ -151,6 +154,9 @@
         font: 400 30px Magistral, sans-serif;
         line-height: 36px;
     }
+    .reviewsContainer{
+        min-height: 465px;
+    }
     .heading {
         font: 400 30px Magistral, sans-serif;
         line-height: 36px;
@@ -170,17 +176,60 @@
         border-radius: 100%;
     }
     .reviewsWrapper {
-        padding: 0 40px;
+        width: 100%;
+        padding: 0 20px;
     }
-    .btnTabletContainer{
+    .btnTabletContainer {
         position: absolute;
         display: flex;
         align-items: end;
         justify-content: end;
         width: 330px;
+        margin-top: 60px;
+        transition: opacity 0.3s ease;
+    }
+    .btnTabletContainer.hidden {
+        opacity: 0;
     }
     .btnTablet {
         align-self: end;
+    }
+    .reviewCard.left,
+    .reviewCard.right,
+    .reviewCard.farLeft,
+    .reviewCard.farRight {
+        display: none !important;
+    }
+    .reviewCard.center {
+        transform: translateX(0) scale(1);
+        opacity: 1;
+        z-index: 2;
+    }
+    .slideInFromRight {
+        animation: slideInRight 0.5s ease-out;
+    }
+    .slideInFromLeft {
+        animation: slideInLeft 0.5s ease-out;
+    }
+    @keyframes slideInRight {
+        from {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+    @keyframes slideInLeft {
+        from {
+            transform: translateX(-100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
     }
 }
 
@@ -209,16 +258,19 @@
         font: 300 18px Geologica, sans-serif;
     }
     .reviews{
-        font: 400 30px Magistral, sans-serif;
+        font: 400 60px Magistral, sans-serif;
+    }
+    .title{
+        font-size: 18px;
     }
     .heading {
-        font: 400 30px Magistral, sans-serif;
+        font: 400 60px Magistral, sans-serif;
     }
     .btnContainer{
         position: absolute;
         opacity: 0;
-        margin-top: 20px;
-        margin-bottom: 20px;
+        margin-top: 0;
+        margin-bottom: 0px;
         width: 100%;
         height: 50px;
         gap: 20px;
@@ -228,24 +280,51 @@
         height: 50px;
         border-radius: 100%;
     }
+    .reviewsContainer{
+        min-height: 380px;
+    }
     .reviewsWrapper {
+        top:-50px;
         padding: 0 60px;
     }
-    .btnTabletContainer{
+    .btnTabletContainer {
         position: absolute;
         display: flex;
         align-items: end;
         justify-content: end;
         width: 725px;
+        top: 70px;
+        transition: opacity 0.3s ease;
+    }
+    .btnTabletContainer.hidden {
+        opacity: 0;
     }
     .btnTablet {
         align-self: end;
+    }
+    .reviewCard.left,
+    .reviewCard.right,
+    .reviewCard.farLeft,
+    .reviewCard.farRight {
+        display: none !important;
+    }
+    .reviewCard.center {
+        transform: translateX(0) scale(1);
+        opacity: 1;
+        z-index: 2;
+    }
+    .slideInFromRight {
+        animation: slideInRight 0.5s ease-out;
+    }
+    .slideInFromLeft {
+        animation: slideInLeft 0.5s ease-out;
     }
 }
 
 @media (min-width: 992px){
     .container {
         width: 100%;
+        margin-top: 140px;
     }
     .starsContainer {
         position: static;
@@ -268,6 +347,13 @@
     .ratingText {
         font: 300 18px Geologica, sans-serif;
     }
+    .reviewsWrapper{
+        top:30px;
+    }
+    .reviewsContainer{
+        min-height: 475px;
+        top:-65px;
+    }
     .reviewsCount {
         font: 300 18px Geologica, sans-serif;
     }
@@ -280,8 +366,8 @@
     .btnContainer{
         position: static;
         opacity: 1;
-        margin-top: 20px;
-        margin-bottom: 20px;
+        margin-top: -10px;
+        margin-bottom: 140px;
         width: 100%;
         height: 50px;
         gap: 20px;
@@ -293,6 +379,41 @@
     }
     .btnTablet {
         display: none;
+    }
+    .reviewCard.left,
+    .reviewCard.right,
+    .reviewCard.farLeft,
+    .reviewCard.farRight {
+        display: block !important;
+    }
+    .reviewCard.left {
+        transform: translateX(-100%) scale(0.8);
+        opacity: 0.6;
+    }
+    .reviewCard.center {
+        transform: translateX(0) scale(1);
+        opacity: 1;
+        z-index: 2;
+    }
+    .reviewCard.right {
+        transform: translateX(100%) scale(0.8);
+        opacity: 0.6;
+    }
+    .reviewCard.farLeft {
+        transform: translateX(-200%) scale(0.8);
+        opacity: 0;
+    }
+    .reviewCard.farRight {
+        transform: translateX(200%) scale(0.8);
+        opacity: 0;
+    }
+    .reviewsWrapper {
+        display: flex;
+        gap: 3rem;
+        transition: transform 0.5s ease-in-out;
+        position: relative;
+        justify-content: center;
+        top: 30px;
     }
 }
 
@@ -315,6 +436,22 @@
     .ratingText {
         font: 300 18px Geologica, sans-serif;
     }
+    .reviewsWrapper {
+        display: flex;
+        gap: 3rem;
+        transition: transform 0.5s ease-in-out;
+        width: 1300px;
+        position: relative;
+        justify-content: center;
+    }
+    .reviewsContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        min-height: 475px;
+        top:-60px;
+    }
     .reviewsCount {
         font: 300 18px Geologica, sans-serif;
     }
@@ -325,8 +462,8 @@
         font: 400 60px Magistral, sans-serif;
     }
     .btnContainer{
-        margin-top: 20px;
-        margin-bottom: 20px;
+        margin-top: 0;
+        margin-bottom: 140px;
         width: 100%;
         height: 50px;
         gap: 20px;
@@ -370,7 +507,8 @@
         justify-content: center;
         align-items: center;
         width: 100%;
-        min-height: 450px;
+        min-height: 475px;
+        top:-60px;
     }
     .reviewsCount {
         font: 300 18px Geologica, sans-serif;
@@ -382,8 +520,8 @@
         font: 400 60px Magistral, sans-serif;
     }
     .btnContainer{
-        margin-top: 20px;
-        margin-bottom: 20px;
+        margin-top: 0;
+        margin-bottom: 140px;
         width: 100%;
         height: 50px;
         gap: 20px;
@@ -395,13 +533,17 @@
     }
 }
 
-@media (min-width: 320px) and (max-width: 767px) {
-    .reviewsWrapper > *:first-child,
-    .reviewsWrapper > *:last-child {
-        display: none;
+@media (min-width: 320px) and (max-width: 991px) {
+    .reviewCard.left,
+    .reviewCard.right,
+    .reviewCard.farLeft,
+    .reviewCard.farRight {
+        display: none !important;
     }
-    .reviewsWrapper {
-        gap: 0;
+    .reviewCard.center {
+        transform: translateX(0) scale(1);
+        opacity: 1;
+        z-index: 2;
     }
 }
 
