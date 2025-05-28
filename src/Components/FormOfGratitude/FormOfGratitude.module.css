@@ -1,0 +1,122 @@
+.overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(14, 14, 35, 0.8);
+    backdrop-filter: blur(13px);
+    z-index: 1000;
+}
+.container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1001;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.formContainer{
+    width: 556px;
+    height: 389px;
+    border-radius: 20px;
+    background: linear-gradient(270deg, rgba(191, 190, 255, 0.08) 0%, rgba(191, 190, 255, 0.04) 100%);
+    backdrop-filter: blur(162px)
+}
+.content{
+    padding: 36px 40px;
+}
+
+.icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:100px;
+    height:100px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%);
+    border-radius: 50%;
+}
+
+.border{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius:50px;
+}
+.img{
+    width: 100px;
+    height: 100px;
+    margin: 3px;
+}
+.mainTitle{
+    width: 430px;
+    height: 100px;
+    font-family: Magistral,sans-serif;
+    font-weight: 400;
+    font-size: 44px;
+    line-height: 50px;
+    padding-top: 40px;
+}
+.text{
+    background-image: linear-gradient(86.45deg, #FFFFFF 36.69%, rgba(255, 255, 255, 0.2) 132.77%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.title {
+    font-family: Magistral,sans-serif;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 100%;
+    color: rgba(255, 255, 255, 0.6);
+    padding-top: 20px;
+}
+.x{
+    cursor: pointer;
+    position: relative;
+    left: 509px;
+    top:26px;
+}
+
+@media(max-width:768px){
+    .formContainer{
+        width:325px;
+        height: 264px;
+    }
+    .content{
+        padding: 15px 25px;
+    }
+    .img{
+        position: relative;
+        top: -15px;
+        width: 82px;
+        height: 82px;
+        margin: 3px;
+    }
+    .mainTitle{
+        width: 191px;
+        height: 58px;
+        font-family: Magistral,sans-serif;
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 100%;
+        padding-top: 20px;
+    }
+    .title {
+        font-family: Magistral,sans-serif;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 100%;
+        color: rgba(255, 255, 255, 0.6);
+        padding-top: 0;
+    }
+    .x{
+        cursor: pointer;
+        position: relative;
+        left: 279px;
+        top:20px;
+    }
+}

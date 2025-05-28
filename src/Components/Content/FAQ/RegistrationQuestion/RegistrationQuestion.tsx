@@ -22,7 +22,16 @@ const RegistrationQuestion: React.FC<RegistrationQuestionPropsType> = React.memo
         }));
     };
 
+    const isFormValid = () => {
+        return formData.name.trim() !== '' && 
+               formData.gmail.trim() !== '' && 
+               formData.number.trim() !== '' && 
+               formData.question.trim() !== '';
+    };
+
     const handleSendData = () => {
+        if (!isFormValid()) return;
+        
         // Очищаем все значения полей
         setFormData({
             name: '',
@@ -94,7 +103,11 @@ const RegistrationQuestion: React.FC<RegistrationQuestionPropsType> = React.memo
                                 </label>
                             </div>
                         </div>
-                        <button className={styles.btn} onClick={handleSendData}>
+                        <button 
+                            className={`${styles.btn} ${!isFormValid() ? styles.disabled : ''}`} 
+                            onClick={handleSendData}
+                            disabled={!isFormValid()}
+                        >
                             <div className={styles.textBtn}>Send data</div>
                             <img src='./VectorBtnQuestion.png' alt='vector'/>
                         </button>

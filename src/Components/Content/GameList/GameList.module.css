@@ -49,7 +49,16 @@
     font-weight: 400;
     font-size: 50px;
     line-height: 60px;
-    background-image: linear-gradient(86.45deg, #FFFFFF 36.69%, rgba(255, 255, 255, 0.2) 132.77%);
+    background-image:linear-gradient(66.45deg, #FFFFFF 7.69%, rgba(255, 255, 255, 0) 108.77%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.secondaryTitleSM2{
+    font-family: Magistral,serif;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 60px;
+    background-image:linear-gradient(66.45deg, #FFFFFF 15.69%, rgba(255, 255, 255, 0.1) 156.77%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -103,7 +112,7 @@
         font-size: 20px;
         line-height: 24px;
         top:370px;
-        left: 95px;
+        left: 85px;
     }
     .title{
         align-items: center;
@@ -119,6 +128,19 @@
         font-weight: 400;
         font-size: 32px;
         line-height: 38px;
+        background-image:linear-gradient(66.45deg, #FFFFFF 7.69%, rgba(255, 255, 255, 0) 154.77%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    .secondaryTitleSM2{
+        position: absolute;
+        top:395px;
+        font-weight: 400;
+        font-size: 32px;
+        line-height: 38px;
+        background-image:linear-gradient(66.45deg, #FFFFFF 15.69%, rgba(255, 255, 255, 0.1) 156.77%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
     }
     .descriptionContainer{
         position: absolute;
@@ -199,6 +221,20 @@
         font-weight: 400;
         font-size: 32px;
         line-height: 38px;
+        background-image:linear-gradient(66.45deg, #FFFFFF 7.69%, rgba(255, 255, 255, 0) 154.77%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    .secondaryTitleSM2{
+        position: absolute;
+        top:51px;
+        left:280px;
+        font-weight: 400;
+        font-size: 32px;
+        line-height: 38px;
+        background-image:linear-gradient(66.45deg, #FFFFFF 15.69%, rgba(255, 255, 255, 0.1) 156.77%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
     }
     .descriptionContainer{
         position: static;
@@ -278,6 +314,20 @@
         font-weight: 400;
         font-size: 32px;
         line-height: 38px;
+        background-image:linear-gradient(66.45deg, #FFFFFF 7.69%, rgba(255, 255, 255, 0) 154.77%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    .secondaryTitleSM2{
+        position: absolute;
+        top:51px;
+        left:270px;
+        font-weight: 400;
+        font-size: 32px;
+        line-height: 38px;
+        background-image:linear-gradient(66.45deg, #FFFFFF 15.69%, rgba(255, 255, 255, 0.1) 156.77%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
     }
     .descriptionContainer{
         position: static;
@@ -336,6 +386,7 @@
     }
     .mainTitle{
         position: static;
+        margin-left: 1px;
         min-width: 160px;
         min-height: 24px;
         font-size: 22px;
@@ -352,10 +403,22 @@
         margin-top: 30px;
     }
     .secondaryTitle{
+        background-image:linear-gradient(66.45deg, #FFFFFF 7.69%, rgba(255, 255, 255, 0) 135.77%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
         position: static;
         font-weight: 400;
         font-size: 40px;
         line-height: 60px;
+    }
+    .secondaryTitleSM2{
+        position: static;
+        font-weight: 400;
+        font-size: 40px;
+        line-height: 60px;
+        background-image:linear-gradient(66.45deg, #FFFFFF 15.69%, rgba(255, 255, 255, 0.1) 156.77%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
     }
     .descriptionContainer{
         position: static;

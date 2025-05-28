@@ -170,9 +170,9 @@ const GameList: React.FC<GameListPropsType> = React.memo(({id, showFormHandler})
     const [screenWidth, setScreenWidth] = useState(window.innerWidth);
     const [isTransitioning, setIsTransitioning] = useState(false);
     const [imagesPreloaded, setImagesPreloaded] = useState<{[key: number]: boolean}>({});
-    // Заменяем NodeJS.Timeout на number для совместимости
-    const transitionTimeoutRef = useRef<number | null>(null);
-    const resetTimeoutRef = useRef<number | null>(null);
+    // Изменяем тип с number на NodeJS.Timeout
+    const transitionTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+    const resetTimeoutRef = useRef<NodeJS.Timeout | null>(null);
     
     // Предзагрузка изображений для более плавных переходов
     useEffect(() => {
@@ -201,8 +201,8 @@ const GameList: React.FC<GameListPropsType> = React.memo(({id, showFormHandler})
 
     // Оптимизированный обработчик изменения размера окна с debounce
     useEffect(() => {
-        // Заменяем NodeJS.Timeout на number
-        let debounceTimeout: number;
+        // Изменяем тип с number на NodeJS.Timeout
+        let debounceTimeout: NodeJS.Timeout;
         
         const handleResize = () => {
             clearTimeout(debounceTimeout);
@@ -314,8 +314,8 @@ const GameList: React.FC<GameListPropsType> = React.memo(({id, showFormHandler})
                         <div className={contentClassName}>
                             <div className={styles.mainTitleContainer}>
                                 <div className={styles.title}>
-                                    <div className={styles.mainTitle}>{titleMap[currentCard]}</div>
-                                    <div className={styles.secondaryTitle}>{mainTitleMap[currentCard]}</div>
+                                    <div  className={styles.mainTitle}>{titleMap[currentCard]}</div>
+                                    <div className={mainTitleMap[currentCard] === "SPACE MARINE 2" ?  styles.secondaryTitleSM2 : styles.secondaryTitle}>{mainTitleMap[currentCard]}</div>
                                 </div>
                                 <div className={styles.btn}>{orderButton}</div>
                             </div>

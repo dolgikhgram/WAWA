@@ -5,6 +5,7 @@
     position: absolute;
     font-family: Geologica,serif;
     color: rgba(255, 255, 255, 0.6);
+    transition: all 0.2s ease;
 }
 .inputField {
     outline: none;
@@ -21,7 +22,10 @@
     color: rgba(255, 255, 255, 0.6);
     box-shadow: none;
 }
-.inputField:focus  + .inputLabel {
+
+/* Shared styles for both focus and has-value states */
+.inputField:focus + .inputLabel,
+.inputField:not(:placeholder-shown) + .inputLabel {
     color: rgba(255, 255, 255, 0.6);
 }
 
@@ -58,7 +62,8 @@
         outline: none;
         box-shadow: none;
     }
-    .inputField:focus  + .inputLabel {
+    .inputField:focus + .inputLabel,
+    .inputField:not(:placeholder-shown) + .inputLabel {
         top: -18px;
         font-size: 10px;
     }
@@ -82,7 +87,8 @@
         width: 292px;
         font-size: 13px;
     }
-    .inputField:focus  + .inputLabel {
+    .inputField:focus + .inputLabel,
+    .inputField:not(:placeholder-shown) + .inputLabel {
         top: -15px;
         font-size: 11px;
     }
@@ -106,7 +112,8 @@
         width: 90%;
         font-size: 16px;
     }
-    .inputField:focus  + .inputLabel {
+    .inputField:focus + .inputLabel,
+    .inputField:not(:placeholder-shown) + .inputLabel {
         top: -8px;
         font-size: 15px;
     }
@@ -130,7 +137,8 @@
         width: 80%;
         font-size: 16px;
     }
-    .inputField:focus  + .inputLabel {
+    .inputField:focus + .inputLabel,
+    .inputField:not(:placeholder-shown) + .inputLabel {
         top: -25px;
         font-size: 15px;
     }
@@ -155,7 +163,8 @@
         width: 100%;
         font-size: 20px;
     }
-    .inputField:focus  + .inputLabel {
+    .inputField:focus + .inputLabel,
+    .inputField:not(:placeholder-shown) + .inputLabel {
         top: -25px;
         font-size: 15px;
     }

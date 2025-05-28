@@ -5,33 +5,40 @@ import RegistrationQuestion from "./RegistrationQuestion/RegistrationQuestion.ts
 
 type FAQPropsType = {
     id: string
-    showFormHandler: () => void
+    showFormOfGratitudeHandler: () => void
 }
 
 const questionMap = [
     {
         title: "What payment methods do you accept?",
-        answer:"We accept various payment methods, including credit/debit cards, PayPal, and cryptocurrencies. You’ll see all available options at checkout."
+        answer:"We accept cryptocurrency payments or payments through trusted third-party platforms like EasyBusy."
+
     },
     {
         title: "How long does it take to complete a boost?",
-        answer:"Boosting platform WAWA invites you to play in the team of the best and become a part of a great gaming community. Gain leadership imroving level and rating."
+        answer:"The duration depends on the specific task and game. Some boosts may take just a few hours, while others can take up to a week. We always write the order completion time on the service card aim to complete orders as quickly as possible without compromising quality."
+
+
     },
     {
-        title: "How do I track the progress of my boost?",
-        answer:"Boosting platform WAWA invites you to play in the team of the best and become a part of a great gaming community. Gain leadership imroving level and rating."
+        title: "How do I track my progress?",
+        answer:"You can stay updated by directly communicating with your booster or manager. We provide regular updates throughout the process to keep you informed."
+
+
+
     },
     {
         title: "Can I communicate with my booster during the process?",
-        answer:"Boosting platform WAWA invites you to play in the team of the best and become a part of a great gaming community. Gain leadership imroving level and rating."
+        answer:"Yes! You can contact your booster directly to ask questions or check in on your progress at any time."
+
     },
     {
         title: "On which platforms is the boosting service available",
-        answer:"Boosting platform WAWA invites you to play in the team of the best and become a part of a great gaming community. Gain leadership imroving level and rating."
+        answer:"Our boosting services are available on all major platforms, including PC, PlayStation, and Xbox."
     },
 ]
 
-const FAQ : React.FC<FAQPropsType>  = React.memo(({id, showFormHandler}) => {
+const FAQ : React.FC<FAQPropsType>  = React.memo(({id, showFormOfGratitudeHandler}) => {
     return (
         <div id={id} style={{display: "flex", justifyContent: "center", alignContent: "center", flexDirection: "column", marginBottom:'85px', width:'100%'}}>
             <div style={{display:'flex', justifyContent:'center', alignContent:'center'}}>
@@ -53,7 +60,7 @@ const FAQ : React.FC<FAQPropsType>  = React.memo(({id, showFormHandler}) => {
                 </div>
             </div>
             <div style={{display: "flex", justifyContent: "center", alignContent: "center"}}>
-                <RegistrationQuestion showFormHandler={showFormHandler}/>
+                <RegistrationQuestion showFormHandler={showFormOfGratitudeHandler}/>
             </div>
         </div>
 

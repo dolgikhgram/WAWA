@@ -37,6 +37,7 @@ const ScrollableContainer: React.FC<ScrollableContainerPropsType> = React.memo((
     const [currentGameIndex, setCurrentGameIndex] = useState(0);
     // Добавляем состояние для отслеживания видимых карточек
     const [visibleCardCount, setVisibleCardCount] = useState(5); // По умолчанию показываем 5 карточек
+    const [isButtonClicked, setIsButtonClicked] = useState(false);
 
     const extendedItems = [...gamesList, ...gamesList, ...gamesList];
 
@@ -138,15 +139,23 @@ const ScrollableContainer: React.FC<ScrollableContainerPropsType> = React.memo((
     };
 
     const handleNextClick = () => {
+        setIsButtonClicked(true);
         const nextIndex = currentIndex + 1;
         const nextHighlightedIndex = highlightedIndex + 1;
         handleCardChange(nextIndex, nextHighlightedIndex, 'next');
+        setTimeout(() => {
+            setIsButtonClicked(false);
+        }, 300);
     };
 
     const handlePrevClick = () => {
+        setIsButtonClicked(true);
         const nextIndex = currentIndex - 1;
         const nextHighlightedIndex = highlightedIndex - 1;
         handleCardChange(nextIndex, nextHighlightedIndex, 'prev');
+        setTimeout(() => {
+            setIsButtonClicked(false);
+        }, 300);
     };
 
     // Обработчик клика на карточку
@@ -236,7 +245,7 @@ const ScrollableContainer: React.FC<ScrollableContainerPropsType> = React.memo((
                 </ul>
             </div>
             <button
-                className={`${styles.scrollButton} ${styles.scrollButtonRight}`}
+                className={`${styles.scrollButton} ${styles.scrollButtonRight} ${isButtonClicked ? styles.buttonClicked : ''}`}
                 onClick={handleNextClick}
                 aria-label="Scroll right"
                 type="button"

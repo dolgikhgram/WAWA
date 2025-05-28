@@ -1,20 +1,29 @@
 import React, { useState, ChangeEvent } from 'react';
 import styles from './Form.module.css'
 import InputField from "../Content/FAQ/RegistrationQuestion/InputField/InputField.tsx";
+import { submitForm } from '../../services/formService';
+import { trackFormStart, trackFormComplete, trackButtonClick } from '../../services/analyticsService';
 
 type FormPropsType = {
     closeFormHandler:()=>void,
+    showFormOfGratitudeHandler:()=>void,
 }
 
-const Form : React.FC<FormPropsType> =React.memo(({closeFormHandler}) => {
+const Form : React.FC<FormPropsType> = React.memo(({closeFormHandler, showFormOfGratitudeHandler}) => {
     const [isHovering, setIsHovering] = useState(false);
     const [isChecked, setIsChecked] = useState(false);
+    const [isSubmitting, setIsSubmitting] = useState(false);
     const [formData, setFormData] = useState({
         name: '',
         gmail: '',
         number: '',
         describe: ''
     });
+    
+    // Отслеживаем начало заполнения формы
+    React.useEffect(() => {
+        trackFormStart('boost_request');
+    }, []);
     
     const handleInputChange = (id: string, event: ChangeEvent<HTMLInputElement>) => {
         const fieldName = id.replace('Form_', '').toLowerCase();
@@ -36,28 +45,61 @@ const Form : React.FC<FormPropsType> =React.memo(({closeFormHandler}) => {
         }
     };
     
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault(); // Предотвращаем стандартное поведение формы
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
         
-        // Проверяем, что чекбокс отмечен
         if (!isChecked) {
             alert('Пожалуйста, подтвердите условия перед отправкой');
             return;
         }
-        
-        // Здесь можно добавить логику отправки данных
-        console.log('Форма отправлена', formData);
-        
-        // Очистка формы после отправки
-        setFormData({
-            name: '',
-            gmail: '',
-            number: '',
-            describe: ''
-        });
-        setIsChecked(false);
+
+        if (!formData.name || !formData.gmail || !formData.number || !formData.describe) {
+            alert('Пожалуйста, заполните все поля');
+            return;
+        }
+
+        setIsSubmitting(true);
+        try {
+            const result = await submitForm({
+                name: formData.name,
+                email: formData.gmail,
+                phone: formData.number,
+                message: formData.describe
+            });
+
+            if (result.success) {
+                trackFormComplete('boost_request', true);
+                trackButtonClick('form_submit', 'form');
+                
+                // Очистка формы после успешной отправки
+                setFormData({
+                    name: '',
+                    gmail: '',
+                    number: '',
+                    describe: ''
+                });
+                setIsChecked(false);
+                
+                // Показываем форму благодарности
+                closeFormHandler();
+                showFormOfGratitudeHandler();
+            } else {
+                throw new Error('Failed to submit form');
+            }
+        } catch (error) {
+            console.error('Error submitting form:', error);
+            trackFormComplete('boost_request', false);
+            alert('Произошла ошибка при отправке формы. Пожалуйста, попробуйте позже.');
+        } finally {
+            setIsSubmitting(false);
+        }
     };
-    
+
+    const onClickHandler = () => {
+        closeFormHandler();
+        showFormOfGratitudeHandler();
+    }
+
     return (
         <div>
             <div onClick={closeFormHandler} className={styles.overlay}/>
@@ -118,11 +160,17 @@ const Form : React.FC<FormPropsType> =React.memo(({closeFormHandler}) => {
                                 <button
                                     type="submit"
                                     className={styles.btn}
+                                    onClick={onClickHandler}
                                     onMouseEnter={() => setIsHovering(true)}
                                     onMouseLeave={() => setIsHovering(false)}
+                                    disabled={!formData.name || !formData.gmail || !formData.number || !formData.describe || !isChecked || isSubmitting}
+                                    style={{
+                                        opacity: (!formData.name || !formData.gmail || !formData.number || !formData.describe || !isChecked || isSubmitting) ? 0.5 : 1,
+                                        cursor: (!formData.name || !formData.gmail || !formData.number || !formData.describe || !isChecked || isSubmitting) ? 'not-allowed' : 'pointer'
+                                    }}
                                 >
                                     <div className={styles.btnTitle}>
-                                        Send data
+                                        {isSubmitting ? 'Отправка...' : 'Send data'}
                                     </div>
                                     <img
                                         className={styles.img}
