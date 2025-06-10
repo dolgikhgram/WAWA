@@ -1,38 +1,59 @@
 import React, { useState, ChangeEvent } from 'react';
 import styles from './Form.module.css'
-import InputField from "../Content/FAQ/RegistrationQuestion/InputField/InputField.tsx";
+import InputField from "../Content/FAQ/RegistrationQuestion/InputField/InputField";
 import { submitForm } from '../../services/formService';
-import { trackFormStart, trackFormComplete, trackButtonClick } from '../../services/analyticsService';
+import { trackFormStart, trackFormComplete, trackButtonClick, FORM_TYPES } from '../../services/analyticsService';
 
 type FormPropsType = {
     closeFormHandler:()=>void,
     showFormOfGratitudeHandler:()=>void,
+    selectedGame?: string
 }
 
-const Form : React.FC<FormPropsType> = React.memo(({closeFormHandler, showFormOfGratitudeHandler}) => {
+const Form : React.FC<FormPropsType> = React.memo(({closeFormHandler, showFormOfGratitudeHandler, selectedGame}) => {
     const [isHovering, setIsHovering] = useState(false);
     const [isChecked, setIsChecked] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [formData, setFormData] = useState({
         name: '',
-        gmail: '',
-        number: '',
+        email: '',
+        game: '',
         describe: ''
     });
-    
+
+    const gameOptions = [
+        { value: 'Destiny 2', label: 'Destiny 2' },
+        { value: 'CoD MW2', label: 'CoD MW2' },
+        { value: 'WARZONE', label: 'WARZONE' },
+        { value: 'BLACK OPS 6', label: 'BLACK OPS 6' },
+        { value: 'CoD MW 3', label: 'CoD MW 3' },
+        { value: 'SPACE MARINE 2', label: 'SPACE MARINE 2' },
+        { value: 'ZOMBIES', label: 'ZOMBIES' }
+    ];
+
     // Отслеживаем начало заполнения формы
     React.useEffect(() => {
-        trackFormStart('boost_request');
+        trackFormStart(FORM_TYPES.CONTACT_FORM);
     }, []);
-    
-    const handleInputChange = (id: string, event: ChangeEvent<HTMLInputElement>) => {
+
+    // Автоматически заполняем поле game при получении selectedGame
+    React.useEffect(() => {
+        if (selectedGame) {
+            setFormData(prev => ({
+                ...prev,
+                game: selectedGame
+            }));
+        }
+    }, [selectedGame]);
+
+    const handleInputChange = (id: string, event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
         const fieldName = id.replace('Form_', '').toLowerCase();
         setFormData(prev => ({
             ...prev,
             [fieldName]: event.target.value
         }));
     };
-    
+
     const handleCheckboxChange = (e: ChangeEvent<HTMLInputElement>) => {
         setIsChecked(e.target.checked);
         if (e.target.checked) {
@@ -44,16 +65,16 @@ const Form : React.FC<FormPropsType> = React.memo(({closeFormHandler, showFormOf
             e.target.style.setProperty('--check-display', 'none');
         }
     };
-    
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        
+
         if (!isChecked) {
             alert('Пожалуйста, подтвердите условия перед отправкой');
             return;
         }
 
-        if (!formData.name || !formData.gmail || !formData.number || !formData.describe) {
+        if (!formData.name || !formData.email || !formData.game || !formData.describe) {
             alert('Пожалуйста, заполните все поля');
             return;
         }
@@ -62,24 +83,24 @@ const Form : React.FC<FormPropsType> = React.memo(({closeFormHandler, showFormOf
         try {
             const result = await submitForm({
                 name: formData.name,
-                email: formData.gmail,
-                phone: formData.number,
+                email: formData.email,
+                game: formData.game,
                 message: formData.describe
             });
 
             if (result.success) {
-                trackFormComplete('boost_request', true);
+                trackFormComplete(FORM_TYPES.CONTACT_FORM, true);
                 trackButtonClick('form_submit', 'form');
-                
+
                 // Очистка формы после успешной отправки
                 setFormData({
                     name: '',
-                    gmail: '',
-                    number: '',
+                    email: '',
+                    game: '',
                     describe: ''
                 });
                 setIsChecked(false);
-                
+
                 // Показываем форму благодарности
                 closeFormHandler();
                 showFormOfGratitudeHandler();
@@ -88,17 +109,12 @@ const Form : React.FC<FormPropsType> = React.memo(({closeFormHandler, showFormOf
             }
         } catch (error) {
             console.error('Error submitting form:', error);
-            trackFormComplete('boost_request', false);
+            trackFormComplete(FORM_TYPES.CONTACT_FORM, false);
             alert('Произошла ошибка при отправке формы. Пожалуйста, попробуйте позже.');
         } finally {
             setIsSubmitting(false);
         }
     };
-
-    const onClickHandler = () => {
-        closeFormHandler();
-        showFormOfGratitudeHandler();
-    }
 
     return (
         <div>
@@ -116,41 +132,42 @@ const Form : React.FC<FormPropsType> = React.memo(({closeFormHandler, showFormOf
                         <div className={styles.inputs}>
                             <div className={styles.inputs12Container}>
                                 <div>
-                                    <InputField 
-                                        id='Form_Name' 
-                                        type="text" 
-                                        label="Your name" 
+                                    <InputField
+                                        id='Form_Name'
+                                        type="text"
+                                        label="Your name"
                                         width={'230px'}
                                         value={formData.name}
                                         onChange={(e) => handleInputChange('Form_Name', e)}
                                     />
                                 </div>
                                 <div className={styles.inputNumber}>
-                                    <InputField 
-                                        id='Form_Number' 
-                                        type="tel" 
-                                        label="Your number" 
+                                    <InputField
+                                        id='Form_Game'
+                                        type="select"
+                                        label="Your game"
                                         width={'230px'}
-                                        value={formData.number}
-                                        onChange={(e) => handleInputChange('Form_Number', e)}
+                                        value={formData.game}
+                                        onChange={(e) => handleInputChange('Form_Game', e)}
+                                        options={gameOptions}
                                     />
                                 </div>
                             </div>
                             <div>
-                                <InputField 
-                                    id='Form_Gmail' 
-                                    type="email" 
-                                    label="Your mail" 
+                                <InputField
+                                    id='Form_Email'
+                                    type="email"
+                                    label="Your mail"
                                     width={'495px'}
-                                    value={formData.gmail}
-                                    onChange={(e) => handleInputChange('Form_Gmail', e)}
+                                    value={formData.email}
+                                    onChange={(e) => handleInputChange('Form_Email', e)}
                                 />
                             </div>
                             <div>
-                                <InputField 
-                                    id='Form_Describe' 
-                                    type="text" 
-                                    label="Describe your question" 
+                                <InputField
+                                    id='Form_Describe'
+                                    type="text"
+                                    label="Describe your question"
                                     width={'495px'}
                                     value={formData.describe}
                                     onChange={(e) => handleInputChange('Form_Describe', e)}
@@ -160,13 +177,12 @@ const Form : React.FC<FormPropsType> = React.memo(({closeFormHandler, showFormOf
                                 <button
                                     type="submit"
                                     className={styles.btn}
-                                    onClick={onClickHandler}
                                     onMouseEnter={() => setIsHovering(true)}
                                     onMouseLeave={() => setIsHovering(false)}
-                                    disabled={!formData.name || !formData.gmail || !formData.number || !formData.describe || !isChecked || isSubmitting}
+                                    disabled={!formData.name || !formData.email || !formData.game || !formData.describe || !isChecked || isSubmitting}
                                     style={{
-                                        opacity: (!formData.name || !formData.gmail || !formData.number || !formData.describe || !isChecked || isSubmitting) ? 0.5 : 1,
-                                        cursor: (!formData.name || !formData.gmail || !formData.number || !formData.describe || !isChecked || isSubmitting) ? 'not-allowed' : 'pointer'
+                                        opacity: (!formData.name || !formData.email || !formData.game || !formData.describe || !isChecked || isSubmitting) ? 0.5 : 1,
+                                        cursor: (!formData.name || !formData.email || !formData.game || !formData.describe || !isChecked || isSubmitting) ? 'not-allowed' : 'pointer'
                                     }}
                                 >
                                     <div className={styles.btnTitle}>
@@ -182,23 +198,23 @@ const Form : React.FC<FormPropsType> = React.memo(({closeFormHandler, showFormOf
                                     />
                                 </button>
                                 <div style={{display: 'flex', gap: '10px'}}>
-                                <input 
-                                    className={styles.checkBox} 
-                                    type='checkbox'
+                                    <input
+                                        className={styles.checkBox}
+                                        type='checkbox'
                                         id="form_confirmCheckbox"
                                         checked={isChecked}
-                                    style={{ 
-                                        backgroundColor: 'transparent',
-                                        appearance: 'none',
-                                        WebkitAppearance: 'none',
-                                        MozAppearance: 'none',
-                                        border: '1px solid #ccc',
-                                        cursor: 'pointer',
-                                        position: 'relative'
-                                    }}
+                                        style={{
+                                            backgroundColor: 'transparent',
+                                            appearance: 'none',
+                                            WebkitAppearance: 'none',
+                                            MozAppearance: 'none',
+                                            border: '1px solid #ccc',
+                                            cursor: 'pointer',
+                                            position: 'relative'
+                                        }}
                                         onChange={handleCheckboxChange}
-                                />
-                                <style>{`
+                                    />
+                                    <style>{`
                                     input[type="checkbox"]::before {
                                         content: '✓';
                                         position: absolute;
@@ -211,7 +227,7 @@ const Form : React.FC<FormPropsType> = React.memo(({closeFormHandler, showFormOf
                                 `}</style>
                                     <label htmlFor="form_confirmCheckbox" className={styles.checkBoxTitle}>
                                         I confirm that the information provided is
-                                    accurate and agree to the terms and conditions
+                                        accurate and agree to the terms and conditions
                                     </label>
                                 </div>
                             </div>

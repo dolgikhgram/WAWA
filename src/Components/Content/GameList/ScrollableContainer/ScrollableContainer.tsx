@@ -29,28 +29,22 @@ const ScrollableContainer: React.FC<ScrollableContainerPropsType> = React.memo((
     const [currentIndex, setCurrentIndex] = useState(gamesList.length);
     const [highlightedIndex, setHighlightedIndex] = useState(gamesList.length + 1);
     const [isAnimating, setIsAnimating] = useState(false);
-    // Добавляем состояние для предыдущего выделенного индекса
     const [prevHighlightedIndex, setPrevHighlightedIndex] = useState(gamesList.length);
-    // Состояние для отслеживания направления прокрутки
     const [scrollDirection, setScrollDirection] = useState<'next' | 'prev' | null>(null);
-    // Добавляем состояние для отслеживания текущей карточки игры
     const [currentGameIndex, setCurrentGameIndex] = useState(0);
-    // Добавляем состояние для отслеживания видимых карточек
-    const [visibleCardCount, setVisibleCardCount] = useState(5); // По умолчанию показываем 5 карточек
+    const [visibleCardCount, setVisibleCardCount] = useState(5);
     const [isButtonClicked, setIsButtonClicked] = useState(false);
 
     const extendedItems = [...gamesList, ...gamesList, ...gamesList];
 
-    // Функция для расчета количества видимых карточек на основе размера контейнера
     const calculateVisibleCards = () => {
         if (containerRef.current && listRef.current) {
             const containerWidth = containerRef.current.clientWidth;
             const items = listRef.current.querySelectorAll(`.${styles.item}`);
             if (items.length > 0) {
                 const itemWidth = items[0].getBoundingClientRect().width;
-                const itemMargin = 15; // Отступ между карточками
+                const itemMargin = 15;
                 
-                // Сколько карточек поместится в контейнер
                 const maxVisibleCards = Math.floor(containerWidth / (itemWidth + itemMargin));
                 setVisibleCardCount(maxVisibleCards);
             }
@@ -58,7 +52,6 @@ const ScrollableContainer: React.FC<ScrollableContainerPropsType> = React.memo((
     };
 
     useEffect(() => {
-        // Рассчитываем видимые карточки при монтировании и изменении размера окна
         calculateVisibleCards();
         
         const handleResize = () => {
@@ -82,23 +75,36 @@ const ScrollableContainer: React.FC<ScrollableContainerPropsType> = React.memo((
         }
     }, []);
 
-    // Общая функция для обработки переключения карточек
+    useEffect(() => {
+        if (!isAnimating && !isTransitioning) {
+            const targetIndex = gamesList.length + currentGameIndex;
+            setHighlightedIndex(targetIndex + 1);
+            setCurrentIndex(targetIndex);
+            
+            if (listRef.current) {
+                const items = listRef.current.querySelectorAll(`.${styles.item}`);
+                if (items.length > 0) {
+                    const itemWidth = items[0].getBoundingClientRect().width;
+                    const marginRight = 20;
+                    listRef.current.style.transition = 'transform 0.3s ease';
+                    listRef.current.style.transform = `translateX(-${(targetIndex * (itemWidth + marginRight)) - 20}px)`;
+                }
+            }
+        }
+    }, [currentGameIndex, isAnimating, isTransitioning]);
+
     const handleCardChange = (nextIndex: number, nextHighlightedIndex: number, direction: 'next' | 'prev') => {
         if (isAnimating || isTransitioning || !listRef.current) return;
         
         setIsAnimating(true);
-        // Устанавливаем направление прокрутки
         setScrollDirection(direction);
-        // Сохраняем предыдущий индекс для анимации
         setPrevHighlightedIndex(highlightedIndex);
         
         const items = listRef.current.querySelectorAll(`.${styles.item}`);
         if (items.length > 0) {
             const itemWidth = items[0].getBoundingClientRect().width;
-            // Увеличиваем отступ между карточками
             const marginRight = 20;
             
-            // Если достигли конца второго набора, перепрыгиваем в начало второго набора
             if (nextIndex >= gamesList.length * 2) {
                 nextIndex = gamesList.length;
                 nextHighlightedIndex = gamesList.length + 1;
@@ -107,7 +113,6 @@ const ScrollableContainer: React.FC<ScrollableContainerPropsType> = React.memo((
                 void listRef.current.offsetHeight;
                 listRef.current.style.transition = 'transform 0.3s ease';
             }
-            // Добавляем проверку для нижней границы
             else if (nextIndex < gamesList.length) {
                 nextIndex = gamesList.length * 2 - 1;
                 nextHighlightedIndex = gamesList.length * 2;
@@ -120,15 +125,10 @@ const ScrollableContainer: React.FC<ScrollableContainerPropsType> = React.memo((
             setCurrentIndex(nextIndex);
             setHighlightedIndex(nextHighlightedIndex);
             
-            // Вычисляем индекс карточки, которая будет выделена (видна пользователю)
-            // Мы хотим чтобы именно эта карточка стала текущей в GameList
             const actualGameIndex = (nextHighlightedIndex - 1) % gamesList.length;
             setCurrentGameIndex(actualGameIndex);
-            // Передаем индекс выбранной карточки родительскому компоненту
             currentCardHandler(actualGameIndex);
             
-            // Обновляем позицию списка с дополнительным отступом слева для предотвращения наложения
-            // Добавляем дополнительное смещение на 20px вправо
             listRef.current.style.transform = `translateX(-${(nextIndex * (itemWidth + marginRight)) - 20}px)`;
         }
 
@@ -158,35 +158,54 @@ const ScrollableContainer: React.FC<ScrollableContainerPropsType> = React.memo((
         }, 300);
     };
 
-    // Обработчик клика на карточку
     const handleCardClick = (index: number) => {
-        // Игнорируем клик на текущую выделенную карточку
-        if (index === highlightedIndex - 1) return;
+        if (isAnimating || isTransitioning) return;
         
-        // Вычисляем разницу между текущим индексом и индексом карточки, на которую кликнули
-        const diff = index - (highlightedIndex - 1);
-        const nextIndex = currentIndex + diff;
-        // Устанавливаем nextHighlightedIndex так, чтобы выделенной была карточка, на которую кликнули
-        const nextHighlightedIndex = index + 1;
+        const actualGameIndex = index % gamesList.length;
         
-        // Определяем направление прокрутки на основе разницы
-        const direction = diff > 0 ? 'next' : 'prev';
-        handleCardChange(nextIndex, nextHighlightedIndex, direction);
+        if (actualGameIndex === currentGameIndex) return;
+        
+        const targetIndex = gamesList.length + actualGameIndex;
+        
+        const direction = actualGameIndex > currentGameIndex ? 'next' : 'prev';
+        
+        setIsAnimating(true);
+        setScrollDirection(direction);
+        setPrevHighlightedIndex(highlightedIndex);
+        
+        if (listRef.current) {
+            const items = listRef.current.querySelectorAll(`.${styles.item}`);
+            if (items.length > 0) {
+                const itemWidth = items[0].getBoundingClientRect().width;
+                const marginRight = 20;
+                
+                listRef.current.style.transition = 'transform 0.3s ease';
+                listRef.current.style.transform = `translateX(-${(targetIndex * (itemWidth + marginRight)) - 20}px)`;
+                
+                setCurrentIndex(targetIndex);
+                setHighlightedIndex(targetIndex + 1);
+                setCurrentGameIndex(actualGameIndex);
+                
+                currentCardHandler(actualGameIndex);
+            }
+        }
+        
+        setTimeout(() => {
+            setIsAnimating(false);
+            setScrollDirection(null);
+        }, 300);
     };
 
     useEffect(() => {
-        // Применяем начальное смещение при монтировании
         if (listRef.current) {
             const items = listRef.current.querySelectorAll(`.${styles.item}`);
             if (items.length > 0) {
                 const itemWidth = items[0].getBoundingClientRect().width;
                 const marginRight = 10;
-                // Добавляем начальное дополнительное смещение на 20px вправо
                 listRef.current.style.transform = `translateX(-${(currentIndex * (itemWidth + marginRight)) - 20}px)`;
             }
         }
         
-        // Начальный вызов для установки правильного расположения
         handleNextClick();
     }, []);
 
@@ -195,24 +214,16 @@ const ScrollableContainer: React.FC<ScrollableContainerPropsType> = React.memo((
             <div className={`${styles.scrollableContainer} ${styles.adjustedContainer}`}>
                 <ul className={styles.list} ref={listRef}>
                     {extendedItems.map((item, index) => {
-                        // Определяем дополнительные классы для анимации
                         const isExiting = isAnimating && scrollDirection === 'next' && index === prevHighlightedIndex - 1;
                         const isEntering = isAnimating && scrollDirection === 'next' && index === highlightedIndex;
                         const isPrevExiting = isAnimating && scrollDirection === 'prev' && index === prevHighlightedIndex;
                         const isPrevEntering = isAnimating && scrollDirection === 'prev' && index === highlightedIndex - 1;
                         
-                        // Определяем, является ли карточка текущей выбранной игрой
-                        const isCurrentGame = item.id === currentGameIndex && index === highlightedIndex - 1;
+                        const isCurrentGame = (index % gamesList.length) === currentGameIndex && index === highlightedIndex - 1;
                         
-                        // Возвращаем скрытую предыдущую карточку для правильного отступа 
-                        // и предотвращения наложения на главное изображение
                         const isFirstItem = index === highlightedIndex - 2;
-                        
-                        // Определяем, помещается ли карточка полностью
                         const relativeIndex = index - (highlightedIndex - 1);
                         const isFullyVisible = relativeIndex >= 0 && relativeIndex < visibleCardCount;
-                        
-                        // Если карточка не помещается полностью, добавляем класс для её скрытия
                         const visibilityClass = isFullyVisible ? '' : styles.notFullyVisible;
                         
                         return (
@@ -231,6 +242,14 @@ const ScrollableContainer: React.FC<ScrollableContainerPropsType> = React.memo((
                                     ${visibilityClass}
                                 `}
                                 onClick={() => handleCardClick(index)}
+                                role="button"
+                                tabIndex={0}
+                                onKeyDown={(e) => {
+                                    if (e.key === 'Enter' || e.key === ' ') {
+                                        e.preventDefault();
+                                        handleCardClick(index);
+                                    }
+                                }}
                             >
                                 <div className={styles.gameCard}>
                                     <img 
@@ -273,7 +292,6 @@ const ScrollableContainer: React.FC<ScrollableContainerPropsType> = React.memo((
                     />
                 </svg>
             </button>
-            {/* Добавляем кнопку для прокрутки влево */}
             <button
                 className={`${styles.scrollButton} ${styles.scrollButtonLeft}`}
                 onClick={handlePrevClick}
@@ -284,7 +302,7 @@ const ScrollableContainer: React.FC<ScrollableContainerPropsType> = React.memo((
                     WebkitTapHighlightColor: 'transparent',
                     WebkitAppearance: 'none',
                     MozAppearance: 'none',
-                    display: 'none' // Скрываем кнопку, но оставляем функциональность
+                    display: 'none'
                 }}
             >
                 <svg 

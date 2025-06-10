@@ -1,0 +1,49 @@
+.inputWrapper {
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+.inputField {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: transparent;
+    color: inherit;
+    transition: border-color 0.3s ease;
+}
+
+.inputField:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+.inputField:disabled {
+    background-color: #f5f5f5;
+    cursor: not-allowed;
+}
+
+.textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.inputLabel {
+    position: absolute;
+    top: -8px;
+    left: 12px;
+    background-color: white;
+    padding: 0 4px;
+    font-size: 12px;
+    color: #666;
+    transition: color 0.3s ease;
+}
+
+.inputLabel.disabled {
+    color: #999;
+}
+
+.inputField:focus + .inputLabel {
+    color: #007bff;
+} 

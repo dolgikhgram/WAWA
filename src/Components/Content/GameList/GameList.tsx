@@ -12,7 +12,8 @@ const LoadingFallback = () => <div className={styles.loading}>Loading...</div>;
 
 type GameListPropsType = {
     id: string,
-    showFormHandler: ()=> void
+    showFormHandler: ()=> void,
+    setSelectedGameHandler: (game: string) => void
 };
 
 type ImageMap = {
@@ -165,7 +166,7 @@ const GameDataContext = React.createContext<{
     perkPower2: PerkPowerItem;
 } | null>(null);
 
-const GameList: React.FC<GameListPropsType> = React.memo(({id, showFormHandler}) => {
+const GameList: React.FC<GameListPropsType> = React.memo(({id, showFormHandler, setSelectedGameHandler}) => {
     const [currentCard, setCurrentCard] = useState<number>(0);
     const [screenWidth, setScreenWidth] = useState(window.innerWidth);
     const [isTransitioning, setIsTransitioning] = useState(false);
@@ -295,12 +296,21 @@ const GameList: React.FC<GameListPropsType> = React.memo(({id, showFormHandler})
         isTransitioning: isTransitioning
     }), [currentCardHandler, isTransitioning]);
 
+    // Обработчик для кнопки Order boosting
+    const handleOrderButtonClick = useCallback(() => {
+        // Устанавливаем выбранную игру на основе текущей карточки
+        const currentGame = mainTitleMap[currentCard];
+        setSelectedGameHandler(currentGame);
+        // Открываем форму
+        showFormHandler();
+    }, [currentCard, setSelectedGameHandler, showFormHandler]);
+
     // Мемоизируем кнопку, чтобы избежать ненужных ререндеров
     const orderButton = useMemo(() => (
-        <Button size={'small'} color={'secondary'} showFormHandler={showFormHandler}>
+        <Button size={'small'} color={'secondary'} showFormHandler={handleOrderButtonClick}>
             Order boosting
         </Button>
-    ), [showFormHandler]);
+    ), [handleOrderButtonClick]);
 
     return (
         <div id={id} className={styles.variants}>

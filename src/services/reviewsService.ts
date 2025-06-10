@@ -10,16 +10,17 @@ import {
     where 
 } from 'firebase/firestore';
 import { logEvent } from 'firebase/analytics';
+import { Review } from '../types';
 
-export interface Review {
-    id?: string;
-    name: string;
-    rating: number;
-    text: string;
-    game?: string;
-    timestamp?: any;
-    status: 'pending' | 'approved' | 'rejected';
-}
+const safeLogEvent = (eventName: string, eventParameters?: Record<string, string | number | boolean>) => {
+    if (analytics !== null) {
+        try {
+            logEvent(analytics, eventName, eventParameters);
+        } catch (error) {
+            console.warn('Analytics event failed:', error);
+        }
+    }
+};
 
 export const submitReview = async (reviewData: Omit<Review, 'id' | 'timestamp' | 'status'>) => {
     try {
@@ -32,7 +33,7 @@ export const submitReview = async (reviewData: Omit<Review, 'id' | 'timestamp' |
         const docRef = await addDoc(collection(db, 'reviews'), reviewWithMetadata);
 
         // Логируем событие в аналитике
-        logEvent(analytics, 'review_submission', {
+        safeLogEvent('review_submission', {
             review_id: docRef.id,
             game: reviewData.game || 'general'
         });
@@ -71,7 +72,7 @@ export const getApprovedReviews = async (game?: string) => {
         });
 
         // Логируем событие в аналитике
-        logEvent(analytics, 'reviews_viewed', {
+        safeLogEvent('reviews_viewed', {
             game: game || 'all',
             count: reviews.length
         });

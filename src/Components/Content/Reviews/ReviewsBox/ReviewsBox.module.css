@@ -198,6 +198,7 @@
         width: 300px;
         height: 427px;
         border-radius: 26px;
+        margin-bottom: -357px;
     }
     .gamesContainer{
         position: relative;
@@ -330,6 +331,7 @@
         width: 688px;
         height: 255px;
         border-radius: 41px;
+        margin-bottom: -357px;
     }
     .gamesContainer{
         position: relative;
@@ -458,6 +460,7 @@
         border-radius: 41px;
     }
     .content{
+        margin-bottom: -457px;
         width: 926px;
         height: 415px;
         border-radius: 41px;
@@ -587,6 +590,7 @@
         border-radius: 41px;
     }
     .content{
+        margin-bottom: 0;
         width: 926px;
         height: 415px;
         border-radius: 41px;

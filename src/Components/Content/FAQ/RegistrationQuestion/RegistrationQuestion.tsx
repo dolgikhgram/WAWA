@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent } from 'react';
+import React, { useState } from 'react';
 import styles from './RegistrationQuestion.module.css'
 import InputField from "./InputField/InputField.tsx";
 import StatisticsComponents from "./StatisticsComponents/StatisticsComponents.tsx";
@@ -11,11 +11,22 @@ const RegistrationQuestion: React.FC<RegistrationQuestionPropsType> = React.memo
     const [formData, setFormData] = useState({
         name: '',
         gmail: '',
-        number: '',
+        game: '',
         question: ''
     });
+    const [agreeToTerms, setAgreeToTerms] = useState(false);
 
-    const handleInputChange = (id: string, event: ChangeEvent<HTMLInputElement>) => {
+    const gameOptions = [
+        { value: 'Destiny 2', label: 'Destiny 2' },
+        { value: 'CoD MW2', label: 'CoD MW2' },
+        { value: 'WARZONE', label: 'WARZONE' },
+        { value: 'BLACK OPS 6', label: 'BLACK OPS 6' },
+        { value: 'CoD MW 3', label: 'CoD MW 3' },
+        { value: 'SPACE MARINE 2', label: 'SPACE MARINE 2' },
+        { value: 'ZOMBIES', label: 'ZOMBIES' }
+    ];
+
+    const handleInputChange = (id: string, event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
         setFormData(prev => ({
             ...prev,
             [id.toLowerCase()]: event.target.value
@@ -23,23 +34,25 @@ const RegistrationQuestion: React.FC<RegistrationQuestionPropsType> = React.memo
     };
 
     const isFormValid = () => {
-        return formData.name.trim() !== '' && 
-               formData.gmail.trim() !== '' && 
-               formData.number.trim() !== '' && 
-               formData.question.trim() !== '';
+        return formData.name.trim() !== '' &&
+            formData.gmail.trim() !== '' &&
+            formData.game.trim() !== '' &&
+            formData.question.trim() !== '' &&
+            agreeToTerms;
     };
 
     const handleSendData = () => {
         if (!isFormValid()) return;
-        
+
         // Очищаем все значения полей
         setFormData({
             name: '',
             gmail: '',
-            number: '',
+            game: '',
             question: ''
         });
-        
+        setAgreeToTerms(false);
+
         // Вызываем функцию из родительского компонента
         showFormHandler();
     };
@@ -51,38 +64,40 @@ const RegistrationQuestion: React.FC<RegistrationQuestionPropsType> = React.memo
             </img>
             <div style={{display: 'flex', flexDirection: 'column'}}>
                 <h1 className={styles.mainTitle}>Do you want to win?</h1>
+                <StatisticsComponents />
                 <div className={styles.inputGroup}>
                     <div className={styles.inputContainer}>
-                        <InputField 
-                            id='Name' 
-                            type="text" 
-                            label="Name" 
-                            width='340px'
+                        <InputField
+                            id='Name'
+                            type="text"
+                            label="Name"
+                            width='340px' 
                             value={formData.name}
                             onChange={(e) => handleInputChange('name', e)}
                         />
-                        <InputField 
-                            id='Gmail' 
-                            type="email" 
-                            label="Gmail" 
+                        <InputField
+                            id='Gmail'
+                            type="email"
+                            label="Gmail"
                             width='340px'
                             value={formData.gmail}
                             onChange={(e) => handleInputChange('gmail', e)}
                         />
                     </div>
                     <div className={styles.inputContainer}>
-                        <InputField 
-                            id='Number' 
-                            type="tel" 
-                            label="Number" 
+                        <InputField
+                            id='Game'
+                            type="select"
+                            label="Game"
                             width='340px'
-                            value={formData.number}
-                            onChange={(e) => handleInputChange('number', e)}
+                            value={formData.game}
+                            onChange={(e) => handleInputChange('game', e)}
+                            options={gameOptions}
                         />
-                        <InputField 
-                            id='Your question' 
-                            type="text" 
-                            label="Your question" 
+                        <InputField
+                            id='Question'
+                            type="text"
+                            label="Your question"
                             width='340px'
                             value={formData.question}
                             onChange={(e) => handleInputChange('question', e)}
@@ -90,7 +105,13 @@ const RegistrationQuestion: React.FC<RegistrationQuestionPropsType> = React.memo
                     </div>
                     <div>
                         <div className={styles.termsWrapper}>
-                            <input type="checkbox" id="terms" className={styles.termsCheckbox}/>
+                            <input 
+                                type="checkbox" 
+                                id="terms" 
+                                className={styles.termsCheckbox}
+                                checked={agreeToTerms}
+                                onChange={(e) => setAgreeToTerms(e.target.checked)}
+                            />
                             <div className={styles.labelContainer}>
                                 <label htmlFor="terms" className={styles.termsText}>
                                     I confirm that the information provided
@@ -103,8 +124,8 @@ const RegistrationQuestion: React.FC<RegistrationQuestionPropsType> = React.memo
                                 </label>
                             </div>
                         </div>
-                        <button 
-                            className={`${styles.btn} ${!isFormValid() ? styles.disabled : ''}`} 
+                        <button
+                            className={`${styles.btn} ${!isFormValid() ? styles.disabled : ''}`}
                             onClick={handleSendData}
                             disabled={!isFormValid()}
                         >
@@ -114,7 +135,6 @@ const RegistrationQuestion: React.FC<RegistrationQuestionPropsType> = React.memo
                     </div>
                 </div>
             </div>
-            <StatisticsComponents/>
         </div>
     );
 });

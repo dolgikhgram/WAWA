@@ -1,10 +1,9 @@
-import React, {useCallback, useState, useEffect} from 'react';
+import React, {useCallback, useState} from 'react';
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import styles from './Reviews.module.css';
 import '../../../index.css'
 import ReviewsBox from "./ReviewsBox/ReviewsBox.tsx";
-import { getApprovedReviews } from '../../../services/reviewsService';
 import { trackButtonClick } from '../../../services/analyticsService';
 
 type ReviewsPropsType = {
@@ -155,53 +154,12 @@ const reviewsData = [
 const Reviews: React.FC<ReviewsPropsType> = React.memo(({id, showFormHandler}) => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isAnimating, setIsAnimating] = useState(false);
-    const [isButtonVisible, setIsButtonVisible] = useState(true);
     const [slideDirection, setSlideDirection] = useState<'slideInFromLeft' | 'slideInFromRight' | ''>('');
-    const [reviews, setReviews] = useState<ReviewData[]>([]);
-    const [isLoading, setIsLoading] = useState(true);
-    const [error, setError] = useState<string | null>(null);
-
-    // Загрузка отзывов при монтировании компонента
-    useEffect(() => {
-        const loadReviews = async () => {
-            try {
-                const firebaseReviews = await getApprovedReviews();
-                // Преобразуем отзывы из Firebase в формат компонента
-                const formattedReviews = firebaseReviews.map(review => ({
-                    game: {
-                        title: review.game || 'General',
-                        duration: 'Completed',
-                        image: './imageDestiny2.png' // Можно добавить поле для изображения в Firebase
-                    },
-                    user: {
-                        name: review.name,
-                        status: 'Verified',
-                        avatar: './default-avatar.png' // Можно добавить поле для аватара в Firebase
-                    },
-                    review: {
-                        text: review.text,
-                        type: 'BOOSTING',
-                        date: new Date(review.timestamp?.toDate()).toLocaleDateString()
-                    }
-                }));
-                setReviews(formattedReviews);
-            } catch (err) {
-                console.error('Error loading reviews:', err);
-                setError('Failed to load reviews');
-                // Используем статические данные как запасной вариант
-                setReviews(reviewsData);
-            } finally {
-                setIsLoading(false);
-            }
-        };
-
-        loadReviews();
-    }, []);
+    const [reviews] = useState<ReviewData[]>(reviewsData);
 
     const handlePrevClick = useCallback(() => {
         if (isAnimating || reviews.length === 0) return;
         setIsAnimating(true);
-        setIsButtonVisible(false);
         setSlideDirection('slideInFromLeft');
         trackButtonClick('prev_review', 'reviews_section');
         
@@ -209,7 +167,6 @@ const Reviews: React.FC<ReviewsPropsType> = React.memo(({id, showFormHandler}) =
             setCurrentIndex(prev => (prev - 1 + reviews.length) % reviews.length);
             setTimeout(() => {
                 setIsAnimating(false);
-                setIsButtonVisible(true);
                 setSlideDirection('');
             }, 500);
         }, 0);
@@ -218,7 +175,6 @@ const Reviews: React.FC<ReviewsPropsType> = React.memo(({id, showFormHandler}) =
     const handleNextClick = useCallback(() => {
         if (isAnimating || reviews.length === 0) return;
         setIsAnimating(true);
-        setIsButtonVisible(false);
         setSlideDirection('slideInFromRight');
         trackButtonClick('next_review', 'reviews_section');
         
@@ -226,7 +182,6 @@ const Reviews: React.FC<ReviewsPropsType> = React.memo(({id, showFormHandler}) =
             setCurrentIndex(prev => (prev + 1) % reviews.length);
             setTimeout(() => {
                 setIsAnimating(false);
-                setIsButtonVisible(true);
                 setSlideDirection('');
             }, 500);
         }, 0);
@@ -240,14 +195,6 @@ const Reviews: React.FC<ReviewsPropsType> = React.memo(({id, showFormHandler}) =
         if (index === (currentIndex + 2) % reviews.length) return 'farRight';
         return '';
     };
-
-    if (isLoading) {
-        return <div className={styles.loading}>Loading reviews...</div>;
-    }
-
-    if (error) {
-        return <div className={styles.error}>{error}</div>;
-    }
 
     return (
         <div id={id}>
@@ -286,30 +233,22 @@ const Reviews: React.FC<ReviewsPropsType> = React.memo(({id, showFormHandler}) =
                     ))}
                 </div>
                 {reviews.length > 0 && (
-                    <>
-                        <div 
-                            className={`${styles.btnTabletContainer} ${!isButtonVisible ? styles.hidden : ''}`} 
-                            onClick={handleNextClick}
+                    <div className={styles.btnContainer}>
+                        <button
+                            className={styles.btn}
+                            onClick={handlePrevClick}
+                            disabled={isAnimating}
                         >
-                            <img className={styles.btnTablet} src='./BtnTablet.png' alt="next"/>
-                        </div>
-                        <div className={styles.btnContainer}>
-                            <button
-                                className={styles.btn}
-                                onClick={handlePrevClick}
-                                disabled={isAnimating}
-                            >
-                                <img src='./ArrowBtn.png' alt="arrow"/>
-                            </button>
-                            <button
-                                className={styles.btn}
-                                onClick={handleNextClick}
-                                disabled={isAnimating}
-                            >
-                                <img src='./ArrowBtnR.png' alt="arrow"/>
-                            </button>
-                        </div>
-                    </>
+                            <img src='./ArrowBtn.png' alt="arrow"/>
+                        </button>
+                        <button
+                            className={styles.btn}
+                            onClick={handleNextClick}
+                            disabled={isAnimating}
+                        >
+                            <img src='./ArrowBtnR.png' alt="arrow"/>
+                        </button>
+                    </div>
                 )}
             </div>
         </div>

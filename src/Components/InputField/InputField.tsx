@@ -1,57 +1,49 @@
-import React, { memo, useId, useState, useEffect, useRef } from 'react';
+import React, { memo, useId, useState, useEffect } from 'react';
 import styles from './InputField.module.css';
 
 interface InputFieldProps {
     label: string;
     type: 'text' | 'email' | 'select' | 'textarea';
+    name?: string;
     id?: string;
     width?: string;
     value?: string;
-    onChange?: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => void;
-    options?: { value: string; label: string }[];
-    name?: string;
+    onChange?: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => void;
+    options?: string[];
     required?: boolean;
     disabled?: boolean;
     placeholder?: string;
 }
 
-const InputField: React.FC<InputFieldProps> = memo(({
-                                                        label,
-                                                        type,
-                                                        id: externalId,
-                                                        width = '100%',
-                                                        value = '',
-                                                        onChange,
-                                                        options,
-                                                        name,
-                                                        required = false,
-                                                        disabled = false,
-                                                        placeholder
-                                                    }) => {
+const InputField: React.FC<InputFieldProps> = memo(({ 
+    label, 
+    type, 
+    name,
+    id: externalId, 
+    width = '100%',
+    value = '',
+    onChange,
+    options,
+    required = false,
+    disabled = false,
+    placeholder
+}) => {
     const internalId = useId();
     const id = externalId || internalId;
     const [isOtherSelected, setIsOtherSelected] = useState(false);
-    const textInputRef = useRef<HTMLInputElement>(null);
-
+    
     useEffect(() => {
         // Reset isOtherSelected when value changes from outside
-        if (value && options && !options.find(opt => opt.value === value)) {
+        if (value && options && !options.includes(value)) {
             setIsOtherSelected(true);
-        } else if (value && options && options.find(opt => opt.value === value)) {
+        } else if (value && options && options.includes(value)) {
             setIsOtherSelected(false);
         }
     }, [value, options]);
-
-    useEffect(() => {
-        // Focus on text input when switching to "Other" mode
-        if (isOtherSelected && textInputRef.current) {
-            textInputRef.current.focus();
-        }
-    }, [isOtherSelected]);
-
+    
     const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         const newValue = e.target.value;
-        if (newValue === 'other') {
+        if (newValue === 'Other') {
             setIsOtherSelected(true);
             // Trigger onChange with empty value to clear the input
             if (onChange) {
@@ -71,19 +63,19 @@ const InputField: React.FC<InputFieldProps> = memo(({
         if (!e.target.value.trim()) {
             setIsOtherSelected(false);
             if (onChange) {
-                const event = {
-                    ...e,
-                    target: {
-                        ...e.target,
+                const event = { 
+                    ...e, 
+                    target: { 
+                        ...e.target, 
                         value: '',
                         type: 'select'
-                    }
+                    } 
                 } as unknown as React.ChangeEvent<HTMLSelectElement>;
                 onChange(event);
             }
         }
     };
-
+    
     const renderInput = () => {
         if (type === 'select' && options) {
             if (isOtherSelected) {
@@ -102,11 +94,10 @@ const InputField: React.FC<InputFieldProps> = memo(({
                         autoComplete="off"
                         spellCheck="false"
                         placeholder={placeholder || "Enter game name"}
-                        ref={textInputRef}
                     />
                 );
             }
-
+            
             return (
                 <select
                     id={id}
@@ -120,11 +111,11 @@ const InputField: React.FC<InputFieldProps> = memo(({
                 >
                     <option value="" disabled>Select a game</option>
                     {options.map((option) => (
-                        <option key={option.value} value={option.value}>
-                            {option.label}
+                        <option key={option} value={option}>
+                            {option}
                         </option>
                     ))}
-                    <option value="other">Other</option>
+                    <option value="Other">Other</option>
                 </select>
             );
         }
@@ -145,7 +136,7 @@ const InputField: React.FC<InputFieldProps> = memo(({
                 />
             );
         }
-
+        
         return (
             <input
                 type={type}
@@ -160,26 +151,23 @@ const InputField: React.FC<InputFieldProps> = memo(({
                 autoComplete="off"
                 spellCheck="false"
                 placeholder={placeholder || " "}
-                ref={textInputRef}
             />
         );
     };
-
+    
     return (
-        <div className={styles.inputWrapper}>
-            <div style={{ width }}>
-                {renderInput()}
-                <label
-                    htmlFor={id}
-                    className={`${styles.inputLabel} ${disabled ? styles.disabled : ''}`}
-                >
-                    {label}
-                </label>
-            </div>
+        <div className={styles.inputWrapper} style={{ width }}>
+            {renderInput()}
+            <label 
+                htmlFor={id} 
+                className={`${styles.inputLabel} ${disabled ? styles.disabled : ''}`}
+            >
+                {label}
+            </label>
         </div>
     );
 });
 
 InputField.displayName = 'InputField';
 
-export default InputField;
+export default InputField; 

@@ -21,11 +21,49 @@
     border-bottom: 2px solid rgba(255, 255, 255, 0.6);
     color: rgba(255, 255, 255, 0.6);
     box-shadow: none;
+    transition: all 0.2s ease;
+}
+
+/* Select specific styles */
+.inputField[type="select"],
+.inputField[type="select"] option {
+    background-color: rgba(0, 0, 0, 0.8);
+    cursor: pointer;
+}
+
+.inputField[type="select"] {
+    padding-right: 20px;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='rgba(255, 255, 255, 0.6)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0 center;
+    background-size: 16px;
+}
+
+.inputField[type="select"]:focus,
+.inputField[type="text"]:focus {
+    border-bottom-color: rgba(255, 255, 255, 0.8);
+    outline: none;
+}
+
+.inputField[type="text"]::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+    transition: color 0.2s ease;
+}
+
+.inputField[type="text"]:focus::placeholder {
+    color: rgba(255, 255, 255, 0.5);
 }
 
 /* Shared styles for both focus and has-value states */
 .inputField:focus + .inputLabel,
-.inputField:not(:placeholder-shown) + .inputLabel {
+.inputField:not(:placeholder-shown) + .inputLabel,
+.inputField[type="select"]:not([value=""]) + .inputLabel {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* Special case for input with placeholder when focused */
+.inputField[type="text"]:focus:not(:placeholder-shown) + .inputLabel,
+.inputField[type="text"]:focus + .inputLabel {
     color: rgba(255, 255, 255, 0.6);
 }
 
@@ -67,6 +105,12 @@
         top: -18px;
         font-size: 10px;
     }
+
+    /* Special case for text input with placeholder when focused */
+    .inputField[type="text"]:focus + .inputLabel {
+        top: -18px;
+        font-size: 10px;
+    }
 }
 
 @media(min-width: 768px){
@@ -89,6 +133,12 @@
     }
     .inputField:focus + .inputLabel,
     .inputField:not(:placeholder-shown) + .inputLabel {
+        top: -15px;
+        font-size: 11px;
+    }
+
+    /* Special case for text input with placeholder when focused */
+    .inputField[type="text"]:focus + .inputLabel {
         top: -15px;
         font-size: 11px;
     }
@@ -117,6 +167,12 @@
         top: -8px;
         font-size: 15px;
     }
+
+    /* Special case for text input with placeholder when focused */
+    .inputField[type="text"]:focus + .inputLabel {
+        top: -8px;
+        font-size: 15px;
+    }
 }
 
 @media(min-width: 1200px) {
@@ -139,6 +195,12 @@
     }
     .inputField:focus + .inputLabel,
     .inputField:not(:placeholder-shown) + .inputLabel {
+        top: -25px;
+        font-size: 15px;
+    }
+
+    /* Special case for text input with placeholder when focused */
+    .inputField[type="text"]:focus + .inputLabel {
         top: -25px;
         font-size: 15px;
     }
@@ -165,6 +227,12 @@
     }
     .inputField:focus + .inputLabel,
     .inputField:not(:placeholder-shown) + .inputLabel {
+        top: -25px;
+        font-size: 15px;
+    }
+
+    /* Special case for text input with placeholder when focused */
+    .inputField[type="text"]:focus + .inputLabel {
         top: -25px;
         font-size: 15px;
     }
