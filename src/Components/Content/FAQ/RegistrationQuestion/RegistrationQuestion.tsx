@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styles from './RegistrationQuestion.module.css'
 import InputField from "./InputField/InputField.tsx";
 import StatisticsComponents from "./StatisticsComponents/StatisticsComponents.tsx";
+import { submitForm } from '../../../../services/formService.ts';
 
 type RegistrationQuestionPropsType = {
     showFormHandler: () => void
@@ -10,7 +11,7 @@ type RegistrationQuestionPropsType = {
 const RegistrationQuestion: React.FC<RegistrationQuestionPropsType> = React.memo(({showFormHandler}) => {
     const [formData, setFormData] = useState({
         name: '',
-        gmail: '',
+        email: '',
         game: '',
         question: ''
     });
@@ -35,26 +36,45 @@ const RegistrationQuestion: React.FC<RegistrationQuestionPropsType> = React.memo
 
     const isFormValid = () => {
         return formData.name.trim() !== '' &&
-            formData.gmail.trim() !== '' &&
+            formData.email.trim() !== '' &&
             formData.game.trim() !== '' &&
             formData.question.trim() !== '' &&
             agreeToTerms;
     };
 
-    const handleSendData = () => {
+    const handleSendData = async () => {
         if (!isFormValid()) return;
 
-        // Очищаем все значения полей
-        setFormData({
-            name: '',
-            gmail: '',
-            game: '',
-            question: ''
-        });
+        try {
+            const result = await submitForm({
+                name: formData.name,
+                email: formData.email,
+                game: formData.game,
+                message: formData.question
+            });
+
+            if (result.success) {
+                setFormData({
+                    name: '',
+                    email: '',
+                    game: '',
+                    question: ''
+                });
+                        // Очищаем все значения полей
+    
         setAgreeToTerms(false);
 
         // Вызываем функцию из родительского компонента
         showFormHandler();
+            } else {
+                throw new Error('Failed to submit form');
+            }
+        }
+        catch (error) {
+            alert('Failed to submit form:');
+            console.error('Error submitting form:', error);
+        }
+
     };
 
     return (
@@ -76,12 +96,12 @@ const RegistrationQuestion: React.FC<RegistrationQuestionPropsType> = React.memo
                             onChange={(e) => handleInputChange('name', e)}
                         />
                         <InputField
-                            id='Gmail'
+                            id='email'
                             type="email"
-                            label="Gmail"
+                            label="email"
                             width='340px'
-                            value={formData.gmail}
-                            onChange={(e) => handleInputChange('gmail', e)}
+                            value={formData.email}
+                            onChange={(e) => handleInputChange('email', e)}
                         />
                     </div>
                     <div className={styles.inputContainer}>
