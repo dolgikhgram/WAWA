@@ -8,9 +8,10 @@ type FormPropsType = {
     closeFormHandler:()=>void,
     showFormOfGratitudeHandler:()=>void,
     selectedGame?: string
+    id: string
 }
 
-const Form : React.FC<FormPropsType> = React.memo(({closeFormHandler, showFormOfGratitudeHandler, selectedGame}) => {
+const Form : React.FC<FormPropsType> = React.memo(({closeFormHandler, showFormOfGratitudeHandler, selectedGame, id}) => {
     const [isHovering, setIsHovering] = useState(false);
     const [isChecked, setIsChecked] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -121,7 +122,7 @@ const Form : React.FC<FormPropsType> = React.memo(({closeFormHandler, showFormOf
             <div onClick={closeFormHandler} className={styles.overlay}/>
             <div className={styles.container}>
                 <div className={styles.form}>
-                    <form onSubmit={handleSubmit}>
+                    <form onSubmit={handleSubmit} id={id}>
                         <div>
                             <div className={styles.textContainer}>
                                 <div className={styles.mainTitle}>Fill in the details</div>
