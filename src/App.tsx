@@ -88,7 +88,7 @@ function App() {
             <Reviews id={"Reviews"}  showFormHandler={showFormHandler}/>
             <FAQ id={"FAQ"}  showFormOfGratitudeHandler={showFormOfGratitudeHandler} />
             <Footer/>
-            {showForm ? <Form closeFormHandler={closeFormHandler} showFormOfGratitudeHandler={showFormOfGratitudeHandler} selectedGame={selectedGame}/> : null}
+            {showForm ? <Form id="game-form" closeFormHandler={closeFormHandler} showFormOfGratitudeHandler={showFormOfGratitudeHandler} selectedGame={selectedGame}/> : null}
             {showMenu ? <Menu showFormHandler={showFormHandler} closeMenuHandler={closeMenuHandler}/> : null}
             { showFormOfGratitude ? <FormOfGratitude showFormOfGratitudeHandler={showFormOfGratitudeHandler} closeFormOfGratitudeHandler={closeFormOfGratitudeHandler}/> : null}
         </div>
