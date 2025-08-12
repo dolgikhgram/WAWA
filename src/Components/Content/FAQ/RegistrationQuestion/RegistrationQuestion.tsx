@@ -78,7 +78,7 @@ const RegistrationQuestion: React.FC<RegistrationQuestionPropsType> = React.memo
     };
 
     return (
-        <div className={styles.container}>
+        <div className={styles.container} id="question-form">
             <img className={styles.background} src='./RegistrationQuestionBackground.png'
                  alt='background'>
             </img>
