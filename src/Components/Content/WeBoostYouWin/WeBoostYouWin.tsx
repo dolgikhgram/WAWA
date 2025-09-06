@@ -75,7 +75,7 @@ const WeBoostYouWin: React.FC<WeBoostYouWinPropsType> = ({ showFormHandler, isFo
                 <Polygon isFormOpen={isFormOpen || isMenuOpen}/>
             </div>
             <div  className={styles.arrowContainer}>
-                <img src='./ep_arrow-up.png' alt='Scroll up arrow'/>
+                <img src='./ep_arrow-up.svg' alt='Scroll up arrow'/>
             </div>
             <SaveTimeComponent/>
         </div>
