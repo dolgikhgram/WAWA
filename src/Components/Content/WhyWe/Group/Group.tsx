@@ -11,7 +11,7 @@ const Group:React.FC<GroupPropsType> = React.memo(({mainTitle,title}) => {
         <div>
             <div className={styles.group}>
                 <div className={styles.content}>
-                    <img className={styles.img} src='./iconGroup.png' alt={'Group'}/>
+                    <img className={styles.img} src='./iconGroup.svg' alt={'Group'}/>
                     <div className={styles.mainTitle}>{mainTitle}</div>
                     <div className={styles.title}>{title}</div>
                 </div>

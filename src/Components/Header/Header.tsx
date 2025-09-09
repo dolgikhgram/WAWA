@@ -21,7 +21,7 @@ const Header: React.FC<HeaderPropsType> =React.memo(({showFormHandler, showMenuH
 
     return (
         <div className={styles.container}>
-            <img className={styles.wawa} src='./WAWA.png' alt='WAWA' />
+            <img className={styles.wawa} src='./WAWA.svg' alt='WAWA' />
             <div className={styles.frame}>
                 <a href={'#GameList'} className={styles.landing} onClick={(e) => scrollToSection(e, 'GameList')}>Game list</a>
                 <a href={'#HowWeWork'} className={styles.landing} onClick={(e) => scrollToSection(e, 'HowWeWork')}>How we work</a>
@@ -35,7 +35,7 @@ const Header: React.FC<HeaderPropsType> =React.memo(({showFormHandler, showMenuH
                 </Button>
             </div>
                 <button className={styles.menu} onClick={()=> showMenuHandler()}>
-                    <img src='./menuBtn.png' alt='menuBtn' />
+                    <img src='./menuBtn.svg' alt='menuBtn' />
                 </button>
         </div>
     );
