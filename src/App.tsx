@@ -61,7 +61,7 @@ function App() {
             <div style={{position: "relative", display: "flex", flexDirection: "column", alignItems:"center"}}>
                 <img 
                     className={"wallpaper"} 
-                    src="./wallpaper.png"
+                    src="/components/App/wallpaper.png"
                     alt='wallpaper' 
                     style={{
                         width: "100vw",

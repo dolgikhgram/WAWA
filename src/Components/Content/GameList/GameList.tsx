@@ -35,33 +35,33 @@ type PerkPowerMap = {
 
 // Move all static data outside the component to prevent recreation on each render
     const mainImgMap: ImageMap = {
-        0: './Destiny2Back.png',
-        1: './CoDMW2.png',
-        2: './WarzoneBack.png',
-        3: './BlackOps6Back.png',
-        4: './CoDMW3Back.png',
-        5: './SP2Back.png',
-        6: './BlackOPS6ZombiesBack.png'
+        0: '/components/GameList/Destiny2Back.png',
+        1: '/components/GameList/CoDMW2.png',
+        2: '/components/GameList/WarzoneBack.png',
+        3: '/components/GameList/BlackOps6Back.png',
+        4: '/components/GameList/CoDMW3Back.png',
+        5: '/components/GameList/SP2Back.png',
+        6: '/components/GameList/BlackOPS6ZombiesBack.png'
 };
 
     const mainImgMobileMap: ImageMap = {
-        0: './Destiny2BackMobile.png',
-        1: './CoDMW2Mobile.png',
-        2: './WarzoneBackMobile.png',
-        3: './BlackOps6BackMobile.png',
-        4: './CoDMW3BackMobile.png',
-        5: './SP2BackMobile.png',
-        6: './BlackOPS6ZombiesBackMobile.png.png'
+        0: '/components/GameList/Destiny2BackMobile.png',
+        1: '/components/GameList/CoDMW2Mobile.png',
+        2: '/components/GameList/WarzoneBackMobile.png',
+        3: '/components/GameList/BlackOps6BackMobile.png',
+        4: '/components/GameList/CoDMW3BackMobile.png',
+        5: '/components/GameList/SP2BackMobile.png',
+        6: '/components/GameList/BlackOPS6ZombiesBackMobile.png.png'
 };
 
     const soldierMap: ImageMap = {
-        0:'./DestinySoldier.png',
-        1:'./CoDMW2Soldier.png',
-        2:'./WarzoneSoldier.png',
-        3:'./BlackOps6Soldier.png',
-        4:'./CoDMW3Soldier.png',
-        5:'./SMSoldier.png',
-        6:'./BO6ZombiesSoldier.png'
+        0:'/components/GameList/DestinySoldier.png',
+        1:'/components/GameList/CoDMW2Soldier.png',
+        2:'/components/GameList/WarzoneSoldier.png',
+        3:'/components/GameList/BlackOps6Soldier.png',
+        4:'/components/GameList/CoDMW3Soldier.png',
+        5:'/components/GameList/SMSoldier.png',
+        6:'/components/GameList/BO6ZombiesSoldier.png'
 };
 
     const mainTitleMap: TitleMap = {
