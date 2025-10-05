@@ -58,7 +58,7 @@ type PerkPowerMap = {
         0:'/components/GameList/DestinySoldier.png',
         1:'/components/GameList/CoDMW2Soldier.png',
         2:'/components/GameList/WarzoneSoldier.png',
-        3:'/components/GameList/BlackOps6Soldier.png',
+        3:'/components/GameList/BlackOps6SoldierV2.svg',
         4:'/components/GameList/CoDMW3Soldier.png',
         5:'/components/GameList/SMSoldier.png',
         6:'/components/GameList/BO6ZombiesSoldier.png'

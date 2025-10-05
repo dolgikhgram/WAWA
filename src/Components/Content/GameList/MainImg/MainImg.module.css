@@ -93,8 +93,8 @@
     }
     .imageSoldierBlackOps{
         position: absolute;
-        width: 116px;
-        height: 267px;
+        width: 104px; /* -10% */
+        height: 240px; /* -10% approx */
         top: -15px;
         left: 165px;
     }
@@ -174,8 +174,8 @@
     }
     .imageSoldierBlackOps{
         position: absolute;
-        width: 173px;
-        height: 407px;
+        width: 156px; /* -10% */
+        height: 366px; /* -10% approx */
         top: -5px;
         left: 80px;
     }
@@ -255,8 +255,8 @@
     }
     .imageSoldierBlackOps{
         position: absolute;
-        width: 173px;
-        height: 407px;
+        width: 156px; /* -10% */
+        height: 366px; /* -10% approx */
         top: -5px;
         left: 80px;
     }
@@ -330,8 +330,8 @@
     }
     .imageSoldierBlackOps{
         position: absolute;
-        width: 305px;
-        height: 688px;
+        width: 275px; /* -10% */
+        height: 619px; /* -10% approx */
         top: 6px;
         left: 125px;
     }
