@@ -16,7 +16,7 @@ export default defineConfig({
       ],
     },
   })],
-  base: "./",
+  base: "/WAWA/",
   resolve: {
     alias: {
       '@': '/src'
